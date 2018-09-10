@@ -1,9 +1,11 @@
 """
 Functions for generating boutiques descriptors from AFNI help
 """
+import argparse
+import json
 from pathlib import Path
 import re
-from json import json
+import boutiques.creator as bc
 
 FINDARGS = re.compile("ARGS=\((.*) ?\)")
 
@@ -26,19 +28,75 @@ def get_complete_args(fname):
     fpath = Path(fname).expanduser()
     if not fpath.exists():
         raise FileNotFoundError('{} does not seem to exist?'.format(fname))
+
     args = FINDARGS.findall(fpath.read_text())
     if len(args) < 1:
         raise ValueError('Unable to find arguments for {}'.format(fname))
     args = args[0].strip().replace('\'', '').split(' ')
+
     return args
 
 
-def get_args_dict(help_dir,outfile='output.json'):
-	tools = Path(help_dir).glob('*.complete.bash')
-	args_dict = {}
-	for tool in tools:
-		in_args = get_complete_args(tool)
-		tool_name = tool.as_posix().replace('.complete.bash','')
-		args_dict[tool_name] = in_args
-	with open(outfile) as dest: json.dump(args_dict,dest)
+def gen_args_dict(help_dir, outfile='output.json'):
+    """
+    Generates JSON `outfile` of AFNI commands and arguments in `help_dir`
 
+    Parameters
+    ----------
+    help_dir : str
+        Path to directory with AFNI help files
+    outfile : str
+        Path to desired output file
+
+    Returns
+    -------
+    outfile : str
+        Path to output JSON file
+    """
+    tools = Path(help_dir).glob('*.complete.bash')
+    args_dict = {}
+    for tool in tools:
+        in_args = get_complete_args(tool)
+        tool_name = tool.name.replace('.complete.bash', '')
+        args_dict[tool_name] = in_args
+
+    with open(outfile, 'w') as dest:
+        json.dump(args_dict, dest)
+
+    return outfile
+
+
+def gen_boutiques_descriptor(args_json, outdir='afni_boutiques'):
+    """
+    Writes boutiques descriptors to `outdir` for AFNI commands in `args_json`
+
+    Parameters
+    ----------
+    args_json : str
+        Filepath to JSON dictionary containing AFNI commands and putative
+        arguments
+
+    Returns
+    -------
+    descriptors : list
+        List of paths to generated boutiques descriptor JSON files
+    """
+    with open(args_json) as src:
+        afni = json.load(src)
+
+    out_path = Path(outdir).resolve()
+    out_path.mkdir(exist_ok=True)
+
+    descriptors = []
+    for cmd, args in afni.items():
+        out_fname = out_path.joinpath('{}.json'.format(cmd))
+        parser = argparse.ArgumentParser(add_help=False)
+        for arg in args:
+            if (arg.strip('-') not in parser.parse_args() and
+                    arg not in ['', '-', '--', '---']):
+                parser.add_argument(arg, type=str)
+        bout = bc.CreateDescriptor(parser, execname=cmd)
+        bout.save(out_fname)
+        descriptors.append(out_fname)
+
+    return descriptors
