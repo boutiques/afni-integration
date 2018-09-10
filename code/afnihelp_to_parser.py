@@ -6,7 +6,7 @@ from docopt import docopt
 
 def main():
     parser = ArgumentParser()
-    parser.add_argument('helpfile', action='store', help='File containing'
+    parser.add_argument('help_dir', action='store', help='File containing'
                         ' help text for an AFNI tool.')
 
     args = parser.parse_args()
