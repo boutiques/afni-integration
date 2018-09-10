@@ -1,0 +1,4 @@
+  File "/usr/afni_build_dir/src/afni_src/abin/RetroTS.py", line 139
+    print 'Could not read enough slice offsets from file'
+                                                        ^
+SyntaxError: Missing parentheses in call to 'print'. Did you mean print('Could not read enough slice offsets from file')?
