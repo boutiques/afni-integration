@@ -20,8 +20,8 @@ RUN apt-get install -yq --no-install-recommends g++
 RUN mkdir /usr/afni_build_dir
 WORKDIR /usr/afni_build_dir
 RUN mkdir src .git
-ADD src src
-ADD .git .git
+COPY src src
+COPY .git .git
 
 ENV PATH=$PATH:/usr/afni_build_dir/src/afni_src/abin
 ARG VERSION
@@ -38,4 +38,5 @@ RUN make -f  Makefile.linux_ubuntu_16_64  afni_src.tgz \
 WORKDIR /usr/afni_build_dir/src/afni_src
 # RUN make libmri.so
 RUN make itall && mv linux_ubuntu_16_64 abin
+RUN apsearch -update_all_afni_help
 WORKDIR /usr/afni_build_dir/src/afni_src/abin
