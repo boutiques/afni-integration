@@ -39,12 +39,16 @@ def get_complete_args(fname):
     return args
 
 
-def get_complete_help(fname, putative=None):
+def get_help_info(fname, putative=None):
     """
+    Gets command arguments and line number in help text for command in `fname`
+
     Parameters
     ----------
     fname : str
         Path to full helptext for a given AFNI command
+    putative : list of str
+        List of putative argument for a given AFNI command
 
     Returns
     -------
@@ -59,25 +63,70 @@ def get_complete_help(fname, putative=None):
     for n, f in enumerate(helptext):
         if FINDHELP.match(f) is None:
             continue
-        param = FINDHELP.findall(f)[0].strip()
+        param = FINDHELP.findall(f)[0].strip().split(' ')[0]
         params += [dict(param=param, line_start=n, length=None)]
 
-    # compare to list of putative arguments and
+    # compare to list of putative arguments
     if putative is not None:
-        pass
+        missing = list(set(putative) - set([p.get('param') for p in params]))
+        for miss in missing:
+            for n, f in enumerate(helptext):
+                if f.strip().startswith(miss):
+                    if n not in [p.get('line_start') for p in params]:
+                        params += [dict(param=miss, line_start=n, length=None)]
+    params = sorted(params, key=lambda x: x.get('line_start'))
 
     # update potential lengths of help text
-    for n, f in enumerate(params):
-        try:
-            length = params[n + 1].get('line_start') - f.get('line_start')
-        except IndexError:
-            length = None
-        params[n]['length'] = length
+    for n, f in enumerate(params[:-1]):
+        params[n]['length'] = (params[n + 1].get('line_start') -
+                               f.get('line_start'))
 
     return params, helptext
 
 
-def gen_args_dict(help_dir, outfile='output.json'):
+def gen_tool_dict(help_dir, outdir=None):
+    """
+    Generates individual JSON files for each AFNI command in `help_dir`
+
+    Output JSON files contain:
+        1. Entire helptext for command, split into lines
+        2. List of putative parameters for command, including starting line in
+           help text and length of description
+
+    Parameters
+    ----------
+    help_dir : str
+        Path to directory with AFNI help files
+    outdir : str
+        Path to where output JSON files should be saved
+
+    Returns
+    -------
+    jsons : list of str
+        Paths to saved JSON files
+    """
+    if outdir is None:
+        outdir = Path('.').resolve()
+    outdir = Path(outdir)
+    outdir.mkdir(exist_ok=True)
+    help_dir = Path(help_dir)
+    jsons = []
+
+    # iterate through tools and get help information
+    for tool in help_dir.glob('*.complete.bash'):
+        tool_name = tool.name.replace('.complete.bash', '')
+        help_fnames = help_dir.glob(tool_name + '.????_??_??-??_??_??.help')
+        params, helptext = get_help_info(sorted(help_fnames)[-1],
+                                         putative=get_complete_args(tool))
+        jsons.append(outdir.joinpath('{}.json'.format(tool_name)).as_posix())
+        # save to ugly json
+        with open(jsons[-1], 'w') as dest:
+            json.dump(dict(helptext=helptext, params=params), dest)
+
+    return jsons
+
+
+def gen_args_dict(help_dir, outfile='allhelp.json'):
     """
     Generates JSON `outfile` of AFNI commands and arguments in `help_dir`
 
@@ -94,12 +143,10 @@ def gen_args_dict(help_dir, outfile='output.json'):
         Path to output JSON file
     """
     help_dir = Path(help_dir)
-    tools = help_dir.glob('*.complete.bash')
     args_dict = {}
-    for tool in tools:
-        in_args = get_complete_args(tool)
+    for tool in help_dir.glob('*.complete.bash'):
         tool_name = tool.name.replace('.complete.bash', '')
-        args_dict[tool_name] = in_args
+        args_dict[tool_name] = get_complete_args(tool)
 
     with open(outfile, 'w') as dest:
         json.dump(args_dict, dest)
