@@ -7,7 +7,9 @@ from pathlib import Path
 import re
 import boutiques.creator as bc
 
+ALPHANUM = re.compile("[\W_]+")
 FINDARGS = re.compile("ARGS=\((.*) ?\)")
+FINDHELP = re.compile('\s*(-[\s\S]*)[=:}][\s\S]')
 
 
 def get_complete_args(fname):
@@ -37,6 +39,44 @@ def get_complete_args(fname):
     return args
 
 
+def get_complete_help(fname, putative=None):
+    """
+    Parameters
+    ----------
+    fname : str
+        Path to full helptext for a given AFNI command
+
+    Returns
+    -------
+    description : str
+        Primary description of tool in `fname`
+    arghelps : list of str
+        List of descriptions
+    """
+    helptext = Path(fname).read_text().splitlines()
+    params = []
+    # grab parameters and line starts
+    for n, f in enumerate(helptext):
+        if FINDHELP.match(f) is None:
+            continue
+        param = FINDHELP.findall(f)[0].strip()
+        params += [dict(param=param, line_start=n, length=None)]
+
+    # compare to list of putative arguments and
+    if putative is not None:
+        pass
+
+    # update potential lengths of help text
+    for n, f in enumerate(params):
+        try:
+            length = params[n + 1].get('line_start') - f.get('line_start')
+        except IndexError:
+            length = None
+        params[n]['length'] = length
+
+    return params, helptext
+
+
 def gen_args_dict(help_dir, outfile='output.json'):
     """
     Generates JSON `outfile` of AFNI commands and arguments in `help_dir`
@@ -53,7 +93,8 @@ def gen_args_dict(help_dir, outfile='output.json'):
     outfile : str
         Path to output JSON file
     """
-    tools = Path(help_dir).glob('*.complete.bash')
+    help_dir = Path(help_dir)
+    tools = help_dir.glob('*.complete.bash')
     args_dict = {}
     for tool in tools:
         in_args = get_complete_args(tool)
@@ -88,15 +129,19 @@ def gen_boutiques_descriptor(args_json, outdir='afni_boutiques'):
     out_path.mkdir(exist_ok=True)
 
     descriptors = []
+    # iterate through all afni command / argument pairs and generate boutique
+    # descriptor files for each,
     for cmd, args in afni.items():
         out_fname = out_path.joinpath('{}.json'.format(cmd))
         parser = argparse.ArgumentParser(add_help=False)
         for arg in args:
-            if (arg.strip('-') not in parser.parse_args() and
-                    arg not in ['', '-', '--', '---']):
-                parser.add_argument(arg, type=str)
+            arg = '-' + ALPHANUM.sub('', arg)
+            # ensure argument not already in parser (and not invalid / empty)
+            if arg.strip('-') not in [f.dest for f in parser._actions] + ['']:
+                kwargs = {'required': True} if arg == '-input' else {}
+                parser.add_argument(arg, type=str, help='NA', **kwargs)
         bout = bc.CreateDescriptor(parser, execname=cmd)
         bout.save(out_fname)
-        descriptors.append(out_fname)
+        descriptors.append(out_fname.as_posix())
 
     return descriptors
