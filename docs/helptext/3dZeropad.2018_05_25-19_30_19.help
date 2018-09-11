@@ -1,4 +1,4 @@
-++ 3dZeropad: AFNI version=AFNI_18.2.06 (Aug 20 2018) [64-bit]
+++ 3dZeropad: AFNI version=AFNI_18.1.18 (May 25 2018) [64-bit]
 Usage: 3dZeropad [options] dataset
 Adds planes of zeros to a dataset (i.e., pads it out).
 
@@ -51,5 +51,5 @@ Nota Bene:
 
  Author: RWCox - July 2000
 
-++ Compile date = Aug 20 2018 {AFNI_18.2.06:linux_ubuntu_16_64}
+++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}
 
