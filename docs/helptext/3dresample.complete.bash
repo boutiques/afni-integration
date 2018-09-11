@@ -1,0 +1,1 @@
+ARGS=('-bound_type' '-debug' '-dxyz' '-dxyz.' '-help' '-hist' '-input' '-inset' '-master' '-orient' '-prefix' '-rmode' '-version' ) ; complete -W "${ARGS[*]}" -o bashdefault -o default 3dresample ; ##3dresample##
