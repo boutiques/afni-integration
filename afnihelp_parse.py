@@ -64,12 +64,16 @@ def get_help_info(fname, putative=None):
         if FINDHELP.match(f) is None:
             continue
         param = FINDHELP.findall(f)[0].strip().split(' ')[0]
+        if ALPHANUM.sub('', param) == '':
+            continue
         params += [dict(param=param, line_start=n, length=None)]
 
     # compare to list of putative arguments
     if putative is not None:
         missing = list(set(putative) - set([p.get('param') for p in params]))
         for miss in missing:
+            if ALPHANUM.sub('', miss) == '':
+                continue
             for n, f in enumerate(helptext):
                 if f.strip().startswith(miss):
                     if n not in [p.get('line_start') for p in params]:
