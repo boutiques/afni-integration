@@ -57,7 +57,7 @@ def get_help_info(fname, putative=None):
     arghelps : list of str
         List of descriptions
     """
-    helptext = Path(fname).read_text().splitlines()
+    helptext = Path(fname).read_text(errors='ignore').splitlines()
     params = []
     # grab parameters and line starts
     for n, f in enumerate(helptext):
