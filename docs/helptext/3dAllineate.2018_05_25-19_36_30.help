@@ -282,7 +282,6 @@ TECHNICAL OPTIONS (used for fine control of the program):
  -verb       = Print out verbose progress reports.
                [Using '-VERB' will give even more prolix reports.]
  -quiet      = Don't print out verbose stuff.
-
  -usetemp    = Write intermediate stuff to disk, to economize on RAM.
                Using this will slow the program down, but may make it
                possible to register datasets that need lots of space.
@@ -293,9 +292,6 @@ TECHNICAL OPTIONS (used for fine control of the program):
                may have to delete them manually. (TIM=Temporary IMage)
        **N.B.: If the program fails with a 'malloc failure' type of
                message, then try '-usetemp' (malloc=memory allocator).
-       **N.B.: If you use '-verb', then memory usage is printed out
-               at various points along the way.
-
  -nousetemp  = Don't use temporary workspace on disk [the default].
 
  -check hhh  = After cost functional optimization is done, start at the
@@ -317,43 +313,20 @@ TECHNICAL OPTIONS (used for fine control of the program):
                'hel' might not actually mean anything useful (e.g.).
 
  ** PARAMETERS THAT AFFECT THE COST OPTIMIZATION STRATEGY **
-
  -onepass    = Use only the refining pass -- do not try a coarse
                resolution pass first.  Useful if you know that only
                small amounts of image alignment are needed.
                [The default is to use both passes.]
-
  -twopass    = Use a two pass alignment strategy, first searching for
                a large rotation+shift and then refining the alignment.
                [Two passes are used by default for the first sub-brick]
                [in the source dataset, and then one pass for the others.]
                ['-twopass' will do two passes for ALL source sub-bricks.]
-            *** The first (coarse) pass is relatively slow, as it tries
-                 to search a large volume of parameter (rotations+shifts)
-                 space for initial guesses at the alignment transformation.
-              * A lot of these initial guesses are kept and checked to
-                 see which ones lead to good starting points for the
-                 further refinement.
-              * The winners of this competition are then passed to the
-                 '-twobest' (infra) successive optimization passes.
-              * The ultimate winner of THAT stage is what starts
-                 the second (fine) pass alignment. Usually, this starting
-                 point is so good that the fine pass optimization does
-                 not provide a lot of improvement.
-              * All of these stages are intended to help the program avoid
-                 stopping at a 'false' minimum in the cost functional.
-                 They were added to the software as we gathered experience
-                 with difficult 3D alignment problems. The combination of
-                 multiple stages of partial optimization of multiple
-                 parameter candidates makes the coarse pass slow, but also
-                 makes it (usually) work well.
-
  -twoblur rr = Set the blurring radius for the first pass to 'rr'
                millimeters.  [Default == 11 mm]
        **N.B.: You may want to change this from the default if
                your voxels are unusually small or unusually large
                (e.g., outside the range 1-4 mm along each axis).
-
  -twofirst   = Use -twopass on the first image to be registered, and
                then on all subsequent images from the source dataset,
                use results from the first image's coarse pass to start
@@ -363,20 +336,17 @@ TECHNICAL OPTIONS (used for fine control of the program):
                (the source dataset itself; since the coarse pass can )
                (be slow, doing it only once makes sense in this case.)
        **N.B.: [-twofirst is on by default; '-twopass' turns it off.]
-
  -twobest bb = In the coarse pass, use the best 'bb' set of initial
                points to search for the starting point for the fine
                pass.  If bb==0, then no search is made for the best
                starting point, and the identity transformation is
                used as the starting point.  [Default=5; min=0 max=22]
        **N.B.: Setting bb=0 will make things run faster, but less reliably.
-
  -fineblur x = Set the blurring radius to use in the fine resolution
                pass to 'x' mm.  A small amount (1-2 mm?) of blurring at
                the fine step may help with convergence, if there is
                some problem, especially if the base volume is very noisy.
                [Default == 0 mm = no blurring at the final alignment pass]
-
    **NOTES ON
    **STRATEGY: * If you expect only small-ish (< 2 voxels?) image movement,
                  then using '-onepass' or '-twobest 0' makes sense.
@@ -402,12 +372,10 @@ TECHNICAL OPTIONS (used for fine control of the program):
                  If given in the form '-cmass+xy' (for example), means to
                  do the CoM calculation in the x- and y-directions, but
                  not the z-direction.
-
  -nocmass      = Don't use the center-of-mass calculation. [The default]
                   (You would not want to use the C-o-M calculation if the  )
                   (source sub-bricks have very different spatial locations,)
                   (since the source C-o-M is calculated from all sub-bricks)
-
  **EXAMPLE: You have a limited coverage set of axial EPI slices you want to
             register into a larger head volume (after 3dSkullStrip, of course).
             In this case, '-cmass+xy' makes sense, allowing CoM adjustment
@@ -435,24 +403,20 @@ TECHNICAL OPTIONS (used for fine control of the program):
                then the conversion into '-automask' will NOT happen.
                Thus, using a small positive '+xxx' can be used trick
                -autoweight into working on any cost functional.
-
  -automask   = Compute a mask function, which is like -autoweight,
                but the weight for a voxel is set to either 0 or 1.
        **N.B.: '-automask+3' means to compute the mask function, and
                then dilate it outwards by 3 voxels (e.g.).
                ** Note that '+' means something very different
                   for '-automask' and '-autoweight'!!
-
  -autobox    = Expand the -automask function to enclose a rectangular
                box that holds the irregular mask.
        **N.B.: This is the default mode of operation!
                For intra-modality registration, '-autoweight' may be better!
              * If the cost functional is 'ls', then '-autoweight' will be
                the default, instead of '-autobox'.
-
  -nomask     = Don't compute the autoweight/mask; if -weight is not
                also used, then every voxel will be counted equally.
-
  -weight www = Set the weighting for each voxel in the base dataset;
                larger weights mean that voxel counts more in the cost
                function.
@@ -461,11 +425,9 @@ TECHNICAL OPTIONS (used for fine control of the program):
        **N.B.: Even if a method does not allow -autoweight, you CAN
                use a weight dataset that is not 0/1 valued.  The
                risk is yours, of course (!*! as always in AFNI !*!).
-
  -wtprefix p = Write the weight volume to disk as a dataset with
                prefix name 'p'.  Used with '-autoweight/mask', this option
                lets you see what voxels were important in the algorithm.
-
  -emask ee   = This option lets you specify a mask of voxels to EXCLUDE from
                the analysis. The voxels where the dataset 'ee' is nonzero
                will not be included (i.e., their weights will be set to zero).
@@ -531,10 +493,8 @@ TECHNICAL OPTIONS (used for fine control of the program):
                '-EPI' on the command line if you do not want these options used.
 
  -parfix n v   = Fix parameter #n to be exactly at value 'v'.
-
  -parang n b t = Allow parameter #n to range only between 'b' and 't'.
                  If not given, default ranges are used.
-
  -parini n v   = Initialize parameter #n to value 'v', but then
                  allow the algorithm to adjust it.
          **N.B.: Multiple '-par...' options can be used, to constrain
@@ -546,17 +506,14 @@ TECHNICAL OPTIONS (used for fine control of the program):
  -maxrot dd    = Allow maximum rotation of 'dd' degrees.  Equivalent
                  to '-parang 4 -dd dd -parang 5 -dd dd -parang 6 -dd dd'
                  [Default=30 degrees]
-
  -maxshf dd    = Allow maximum shift of 'dd' millimeters.  Equivalent
                  to '-parang 1 -dd dd -parang 2 -dd dd -parang 3 -dd dd'
                  [Default=32% of the size of the base image]
          **N.B.: This max shift setting is relative to the center-of-mass
                  shift, if the '-cmass' option is used.
-
  -maxscl dd    = Allow maximum scaling factor to be 'dd'.  Equivalent
                  to '-parang 7 1/dd dd -parang 8 1/dd dd -paran2 9 1/dd dd'
                  [Default=1.2=image can go up or down 20% in size]
-
  -maxshr dd    = Allow maximum shearing factor to be 'dd'. Equivalent
                  to '-parang 10 -dd dd -parang 11 -dd dd -parang 12 -dd dd'
                  [Default=0.1111 for no good reason]
@@ -646,7 +603,6 @@ NOTE WELL: If you use '-EPI', then the output warp parameters (e.g., in
            defined relative to the RAI (DICOM) spatial coordinates.
 
 *********** CHANGING THE ORDER OF MATRIX APPLICATION ***********
-   {{{ There is no good reason to ever use these options! }}}
 
   -SDU or -SUD }= Set the order of the matrix multiplication
   -DSU or -DUS }= for the affine transformations:
@@ -694,12 +650,10 @@ NOTE WELL: If you use '-EPI', then the output warp parameters (e.g., in
                case is starting with the identity transformation, which
                helps insure against the chance that the coarse pass
                optimizations ran totally amok.
-
  -nocast     = By default, parameter vectors that are too close to the
                best one are cast out at the end of the coarse pass
                refinement process. Use this option if you want to keep
                them all for the fine resolution pass.
-
  -norefinal  = Do NOT re-start the fine iteration step after it
                has converged.  The default is to re-start it, which
                usually results in a small improvement to the result
@@ -720,7 +674,6 @@ NOTE WELL: If you use '-EPI', then the output warp parameters (e.g., in
                   also used
  -median       = Smooth with median filter instead of Gaussian blur.
                  (Somewhat slower, and not obviously useful.)
-
  -powell m a   = Set the Powell NEWUOA dimensional parameters to
                  'm' and 'a' (cf. source code in powell_int.c).
                  The number of points used for approximating the
@@ -729,7 +682,6 @@ NOTE WELL: If you use '-EPI', then the output warp parameters (e.g., in
                  are m=2 and a=3.  Larger values will probably slow
                  the program down for no good reason.  The smallest
                  allowed values are 1.
-
  -target ttt   = Same as '-source ttt'.  In the earliest versions,
                  what I now call the 'source' dataset was called the
                  'target' dataset:
@@ -741,7 +693,6 @@ NOTE WELL: If you use '-EPI', then the output warp parameters (e.g., in
  -Ywarp       =} axis is stretched & sheared.  Useful for EPI, where 'X',
  -Zwarp       =} 'Y', or 'Z' corresponds to the phase encoding direction.
  -FPS fps      = Generalizes -EPI to arbitrary permutation of directions.
-
  -histpow pp   = By default, the number of bins in the histogram used
                  for calculating the Hellinger, Mutual Information, and
                  Correlation Ratio statistics is n^(1/3), where n is
@@ -759,7 +710,6 @@ NOTE WELL: If you use '-EPI', then the output warp parameters (e.g., in
                          non-negative; any negative voxels in either
                          the input or source volumes will force a switch
                          to all equal-spaced bins.
-
  -wtmrad  mm   = Set autoweight/mask median filter radius to 'mm' voxels.
  -wtgrad  gg   = Set autoweight/mask Gaussian filter radius to 'gg' voxels.
  -nmsetup nn   = Use 'nn' points for the setup matching [default=98756]
@@ -869,32 +819,27 @@ Notes for the new [Feb 2010] lpc+ cost functional:
       functionals also available as standalone options.
    ++ 'ov' is a measure of the overlap of the automasks of the base and
       source volumes; ov is not available as a standalone option.
-
  * The purpose of lpc+ is to avoid situations where the pure lpc cost
    goes wild; this especially happens if '-source_automask' isn't used.
    ++ Even with lpc+, you should use '-source_automask+2' (say) to be safe.
-
  * You can alter the weighting of the extra functionals by giving the
    option in the form (for example)
      '-lpc+hel*0.5+nmi*0+mi*0+crA*1.0+ov*0.5'
-
  * The quotes are needed to prevent the shell from wild-card expanding
    the '*' character.
    --> You can now use ':' in place of '*' to avoid this wildcard problem:
          -lpc+hel:0.5+nmi:0+mi:0+crA:1+ov:0.5+ZZ
-
  * Notice the weight factors FOLLOW the name of the extra functionals.
    ++ If you want a weight to be 0 or 1, you have to provide for that
       explicitly -- if you leave a weight off, then it will get its
       default value!
    ++ The order of the weight factor names is unimportant here:
         '-lpc+hel*0.5+nmi*0.8' == '-lpc+nmi*0.8+hel*0.5'
-
  * Only the 5 functionals listed (hel,crA,nmi,mi,ov) can be used in '-lpc+'.
-
  * In addition, if you want the initial alignments to be with '-lpc+' and
    then finish the Final alignment with pure '-lpc', you can indicate this
    by putting 'ZZ' somewhere in the option string, as in '-lpc+ZZ'.
+ * This stuff should be considered really experimental at this moment!
 
 Cost functional descriptions (for use with -allcost output):
 ------------------------------------------------------------
@@ -1169,5 +1114,5 @@ Cost functional descriptions (for use with -allcost output):
    Probably because my parallelization efforts were pretty limited.
  =========================================================================
 
-++ Compile date = Aug 20 2018 {AFNI_18.2.06:linux_ubuntu_16_64}
+++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}
 
