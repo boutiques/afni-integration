@@ -2,6 +2,7 @@
 Functions for generating boutiques descriptors from AFNI help
 """
 import argparse
+from itertools import chain
 import json
 from pathlib import Path
 import re
@@ -110,10 +111,20 @@ def get_usage_params(fname):
             '\s+',
             ' ',
             text_without_bracket_args).strip()
-        args = text_with_spaces.split(' ')[1:]
-        args = [a for a in args if not a.startswith('~')]
+        args = []
+        ignore = False
+        for a in text_with_spaces.split(' ')[1:]:
+            if a.startswith('~'):
+                continue
+            if a.startswith('-'):
+                ignore = True
+                continue
+            if ignore:
+                ignore = False
+                continue
+            args += [a]
     else:
-        args = None
+        args = []
     return args
 
 
@@ -166,13 +177,19 @@ def get_basic_help(fname, putative=None):
     helptext = Path(fname).read_text(errors='ignore').splitlines()
     params = []
     # grab parameters and line starts
+    currchar = 0
     for n, f in enumerate(helptext):
         if FINDHELP.match(f) is None:
+            currchar += len(f) + 1
             continue
         param = FINDHELP.findall(f)[0].strip().split(' ')[0]
         if ALPHANUM.sub('', param) == '':
+            currchar += len(f) + 1
             continue
-        params += [dict(param=param, line_start=n, length=None)]
+        begin = currchar + f.find(param)
+        params += [dict(param=param, line_start=n, length=None,
+                        param_range=[begin, begin + len(param)])]
+        currchar += len(f) + 1
 
     # compare to list of putative arguments
     if putative is not None:
@@ -180,10 +197,14 @@ def get_basic_help(fname, putative=None):
         for miss in missing:
             if ALPHANUM.sub('', miss) == '':
                 continue
+            currchar = 0
             for n, f in enumerate(helptext):
                 starts = [p.get('line_start') for p in params]
                 if f.strip().startswith(miss) and n not in starts:
-                    params += [dict(param=miss, line_start=n, length=None)]
+                    begin = currchar + f.find(miss)
+                    params += [dict(param=miss, line_start=n, length=None,
+                                    param_range=[begin, begin + len(miss)])]
+                currchar += len(f) + 1
 
     # sort by line start in preparation for calculating lengths of descriptions
     params = sorted(params, key=lambda x: x.get('line_start'))
@@ -227,13 +248,17 @@ def get_full_help(fname, putative=None):
             ln = len(helptext) + 1 - ls
         lines = helptext[ls:ls + ln]
         for n, f in enumerate(lines):
-            stripped = f.strip()
+            stripped = f.lstrip()
             match = FINDHELP.match(stripped)
             if match is not None:
-                f = stripped[match.end():]
-            lines[n] = f
-        param_descrip = '\n'.join([f for f in lines if f != ''])
-        param['description'] = param_descrip
+                lines[n] = stripped[match.end():]
+                break
+        param_descrip = '\n'.join(lines).rstrip()
+        param['help'] = param_descrip
+        ind = fullhelp.find(param_descrip)
+        if ind == -1:
+            ind = param['param_range'][0]
+        param['help_range'] = [ind, ind + len(param_descrip)]
 
     return params, helptext
 
@@ -299,18 +324,22 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
     descriptors = []
     for cmd in programs:
         help_fname = get_help_fname(help_dir, cmd)
-        params = get_full_help(help_fname)
-        positional = get_usage_params(help_fname)
+        params = get_full_help(help_fname)[0]
+        params += [{'param': f} for f in get_usage_params(help_fname)]
         out_fname = outdir.joinpath('{}.json'.format(cmd))
         parser = argparse.ArgumentParser(add_help=False)
         for param in params:
-            arg = '-' + ALPHANUM.sub('', param.get('param'))
+            arg = param.get('param')
+            previous = [f.option_strings for f in parser._actions] + [['']]
             # ensure argument not already in parser (and not invalid / empty)
-            if arg.strip('-') not in [f.dest for f in parser._actions] + ['']:
+            if arg not in list(chain.from_iterable(previous)):
                 kwargs = {'required': True} if arg == '-input' else {}
-                descrip = param.get('description', 'NA')
-                descrip = ' '.join([f.strip() for f in descrip.split('\n')])
-                parser.add_argument(arg, type=str, help=descrip, **kwargs)
+                kwargs.update({'dest': '[{}]'.format(arg.strip('-').upper())}
+                              if arg.startswith('-') else {})
+                desc = param.get('description', 'NA')
+                if desc != 'NA':
+                    desc = ' '.join([f.strip() for f in desc.split('\n')])
+                parser.add_argument(arg, type=str, help=desc, **kwargs)
         bout = bc.CreateDescriptor(parser, execname=cmd)
         bout.save(out_fname)
         descriptors.append(out_fname.as_posix())
