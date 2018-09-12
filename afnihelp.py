@@ -339,7 +339,7 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
                 kwargs = {'required': True} if arg == '-input' else {}
                 kwargs.update({'dest': '__{}__'.format(arg.strip('-').upper())}
                               if arg.startswith('-') else {})
-                desc = param.get('description', 'NA')
+                desc = param.get('help', 'NA')
                 if desc != 'NA':
                     desc = ' '.join([f.strip() for f in desc.split('\n')])
                 parser.add_argument(arg, type=str, help=desc, **kwargs)

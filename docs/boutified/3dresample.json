@@ -4,7 +4,7 @@
     "inputs": [
         {
             "command-line-flag": "-help",
-            "description": "NA",
+            "description": "show this help information",
             "id": "__HELP__",
             "name": "__HELP__",
             "optional": true,
@@ -13,7 +13,7 @@
         },
         {
             "command-line-flag": "-hist",
-            "description": "NA",
+            "description": "output the history of program changes",
             "id": "__HIST__",
             "name": "__HIST__",
             "optional": true,
@@ -22,7 +22,7 @@
         },
         {
             "command-line-flag": "-debug",
-            "description": "NA",
+            "description": "print debug info along the way e.g.  -debug 1 default level is 0, max is 2",
             "id": "__DEBUG__",
             "name": "__DEBUG__",
             "optional": true,
@@ -31,7 +31,7 @@
         },
         {
             "command-line-flag": "-version",
-            "description": "NA",
+            "description": "show version information",
             "id": "__VERSION__",
             "name": "__VERSION__",
             "optional": true,
@@ -40,7 +40,7 @@
         },
         {
             "command-line-flag": "-bound_type",
-            "description": "NA",
+            "description": "specify which boundary is preserved e.g.  -bound_type SLAB default is FOV (field of view)  The default and original use preserves the field of of view when resampling, allowing the extents (SLABs) to grow or shrink by half of the difference in the dimension size (big voxels to small will cause the extents to expand, for example, while small to big will cause them to shrink).  Using -bound_type SLAB will have the opposite effect. The extents should be unchanged, while the FOV will grow or shrink in the opposite way as above).  Note that when using SLAB, edge voxels should be mostly unaffected by the interpolation.",
             "id": "__BOUND_TYPE__",
             "name": "__BOUND_TYPE__",
             "optional": true,
@@ -49,7 +49,7 @@
         },
         {
             "command-line-flag": "-dxyz",
-            "description": "NA",
+            "description": "resample to new dx, dy and dz e.g.  -dxyz 1.0 1.0 0.9 default is to leave unchanged  Each of DX,DY,DZ must be a positive real number, and will be used for a voxel delta in the new dataset (according to any new orientation).",
             "id": "__DXYZ__",
             "name": "__DXYZ__",
             "optional": true,
@@ -58,7 +58,7 @@
         },
         {
             "command-line-flag": "-orient",
-            "description": "NA",
+            "description": "reorient to new axis order. e.g.  -orient asl default is to leave unchanged  The orientation code is a 3 character string, where the characters come from the respective sets {A,P}, {I,S}, {L,R}.  For example OR_CODE = LPI is the standard 'neuroscience' orientation, where the x-axis is Left-to-Right, the y-axis is Posterior-to-Anterior, and the z-axis is Inferior-to-Superior.",
             "id": "__ORIENT__",
             "name": "__ORIENT__",
             "optional": true,
@@ -67,7 +67,7 @@
         },
         {
             "command-line-flag": "-rmode",
-            "description": "NA",
+            "description": "use this resampling method e.g.  -rmode Linear default is NN (nearest neighbor)  The resampling method string RESAM should come from the set {'NN', 'Li', 'Cu', 'Bk'}.  These are for 'Nearest Neighbor', 'Linear', 'Cubic' and 'Blocky' interpolation, respectively.  For details, go to the 'Define Datamode' panel of the afni GUI, click BHelp and then the 'ULay resam mode' menu.",
             "id": "__RMODE__",
             "name": "__RMODE__",
             "optional": true,
@@ -76,7 +76,7 @@
         },
         {
             "command-line-flag": "-master",
-            "description": "NA",
+            "description": "align dataset grid to that of MAST_DSET e.g.  -master master.dset+orig  Get dxyz and orient from a master dataset.  The resulting grid will match that of the master.  This option can be used with -dxyz, but not with -orient.",
             "id": "__MASTER__",
             "name": "__MASTER__",
             "optional": true,
@@ -85,7 +85,7 @@
         },
         {
             "command-line-flag": "-prefix",
-            "description": "NA",
+            "description": "required prefix for output dataset e.g.  -prefix reori.asl.pickle",
             "id": "__PREFIX__",
             "name": "__PREFIX__",
             "optional": true,
@@ -94,7 +94,7 @@
         },
         {
             "command-line-flag": "-input",
-            "description": "NA",
+            "description": "required input dataset to reorient e.g.  -input old.dset+orig",
             "id": "__INPUT__",
             "name": "__INPUT__",
             "optional": false,
@@ -103,7 +103,7 @@
         },
         {
             "command-line-flag": "-inset",
-            "description": "NA",
+            "description": "alternative to -input ------------------------------------------------------------  Author: R. Reynolds - Version 1.10 <June 26, 2014>",
             "id": "__INSET__",
             "name": "__INSET__",
             "optional": true,
