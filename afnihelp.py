@@ -55,7 +55,7 @@ def get_complete_args(fname):
     if not fpath.exists():
         raise FileNotFoundError('{} does not seem to exist?'.format(fname))
 
-    args = FINDARGS.findall(fpath.read_text())
+    args = FINDARGS.findall(fpath.read_text(errors='ignore'))
     try:
         args = args[0].strip().replace('\'', '').split(' ')
     except IndexError:
@@ -82,7 +82,7 @@ def get_usage_string(fname):
     usage : str
         Line detailing usage for command in `fname`
     """
-    text_list = fname.read_text().splitlines()
+    text_list = fname.read_text(errors = 'ignore').splitlines()
     usage_text = [val for val in text_list if
                   val.lower().strip().startswith('usage')]
     if usage_text:
