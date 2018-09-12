@@ -1,1 +1,1 @@
-ARGS=() ; complete -W "${ARGS[*]}" -o bashdefault -o default 3dLME ; ##3dLME##
+ARGS=('-ICC' '-ICCb' '-LOGIT' '-ML' '-Rio' '-SS_type' '-cio' '-corStr' '-cutoff' '-dataTable' '-dbgArgs' '-glfCode' '-glfCode.' '-glfLabel' '-gltCode' '-gltCode.' '-gltLabel' '-help' '-jobs' '-logLik' '-mask' '-model' '-num_glf' '-num_glt' '-prefix' '-qVarCenters' '-qVars' '-ranEff' '-resid' '-show_allowed_options' '-vVarCenters' '-vVars' ) ; complete -W "${ARGS[*]}" -o bashdefault -o default 3dLME ; ##3dLME##

@@ -1,1 +1,1 @@
-ARGS=() ; complete -W "${ARGS[*]}" -o bashdefault -o default 3dMVM ; ##3dMVM##
+ARGS=('-GES' '-Rio' '-SC' '-SS_type' '-bsVars' '-cio' '-dataTable' '-dbgArgs' '-glfCode' '-glfCode.' '-glfLabel' '-gltCode' '-gltCode.' '-gltLabel' '-help' '-jobs' '-mVar' '-mask' '-model' '-num_glf' '-num_glt' '-prefix' '-qVarCenters' '-qVars' '-robust' '-show_allowed_options' '-vVarCenters' '-vVars' '-verb' '-wsE2' '-wsMVT' '-wsVars' ) ; complete -W "${ARGS[*]}" -o bashdefault -o default 3dMVM ; ##3dMVM##
