@@ -9,6 +9,7 @@ import re
 import boutiques.creator as bc
 
 ALPHANUM = re.compile("[\W_]+")
+CLEANARG = re.compile("[^0-9_a-zA-Z\-]")
 FINDARGS = re.compile("ARGS=\((.*) ?\)")
 FINDHELP = re.compile("\s*(-[\s\w]*)[=:}][\s\S]")
 
@@ -60,6 +61,7 @@ def get_complete_args(fname):
     except IndexError:
         raise IndexError('Unable to find arguments for {}'.format(fname))
 
+    args = list(set([CLEANARG.sub('', a) for a in args]))
     return args
 
 
@@ -153,7 +155,7 @@ def get_help_fname(help_dir, cmd):
                                 .format(cmd, help_dir.as_posix()))
 
 
-def get_basic_help(fname, putative=None):
+def _get_basic_help(fname, putative=None):
     """
     Gets command arguments and line number in help text for command in `fname`
 
@@ -239,7 +241,7 @@ def get_full_help(fname, putative=None):
     helptext : str
         Full helptext of tool in `fname`
     """
-    params, helptext = get_basic_help(fname, putative=putative)
+    params, helptext = _get_basic_help(fname, putative=putative)
     fullhelp = '\n'.join(helptext)
     # iterate through parameters and get approximate description for each
     for param in params:
@@ -302,14 +304,15 @@ def gen_help_jsons(help_dir, outdir='to_boutify'):
 
 def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
     """
-    Writes boutiques descriptors to `outdir` for AFNI help in `help_dir`
+    Generates ``boutiques`` descriptors for each AFNI command in `help_dir`
 
     Parameters
     ----------
     help_dir : str
         Path to directory with AFNI help files
     outdir : str
-        Path to directory where generated boutiques descriptors should be saved
+        Path to directory where generated ``boutiques`` descriptors should be
+        saved
 
     Returns
     -------
@@ -319,12 +322,12 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
     outdir = gen_outdir(outdir)
     help_dir = Path(help_dir).resolve()
 
-    programs = [tool.name.replace('.complete.bash', '') for tool in
-                help_dir.glob('*.complete.bash')]
     descriptors = []
-    for cmd in programs:
+    for tool in help_dir.glob('*.complete.bash'):
+        cmd = tool.name.replace('.complete.bash', '')
         help_fname = get_help_fname(help_dir, cmd)
-        params = get_full_help(help_fname)[0]
+        params = get_full_help(help_fname,
+                               putative=get_complete_args(tool))[0]
         params += [{'param': f} for f in get_usage_params(help_fname)]
         out_fname = outdir.joinpath('{}.json'.format(cmd))
         parser = argparse.ArgumentParser(add_help=False)
@@ -334,7 +337,7 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
             # ensure argument not already in parser (and not invalid / empty)
             if arg not in list(chain.from_iterable(previous)):
                 kwargs = {'required': True} if arg == '-input' else {}
-                kwargs.update({'dest': '[{}]'.format(arg.strip('-').upper())}
+                kwargs.update({'dest': '__{}__'.format(arg.strip('-').upper())}
                               if arg.startswith('-') else {})
                 desc = param.get('description', 'NA')
                 if desc != 'NA':
