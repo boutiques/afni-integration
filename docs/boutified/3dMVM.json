@@ -1,0 +1,285 @@
+{
+    "command-line": "3dMVM __SS_TYPE__ __GES__ __RIO__ __SC__ __BSVARS__ __CIO__ __DATATABLE__ __DBGARGS__ __GLFCODE__ __GLFLABEL__ __GLTCODE__ __GLTLABEL__ __HELP__ __JOBS__ __MVAR__ __MASK__ __MODEL__ __NUM_GLF__ __NUM_GLT__ __PREFIX__ __QVARS__ __QVARCENTERS__ __ROBUST__ __SHOW_ALLOWED_OPTIONS__ __VVARCENTERS__ __VVARS__ __VERB__ __WSE2__ __WSMVT__ __WSVARS__",
+    "description": "tool description",
+    "inputs": [
+        {
+            "command-line-flag": "-SS_type",
+            "description": "NA",
+            "id": "__SS_TYPE__",
+            "name": "__SS_TYPE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SS_TYPE__"
+        },
+        {
+            "command-line-flag": "-GES",
+            "description": "NA",
+            "id": "__GES__",
+            "name": "__GES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__GES__"
+        },
+        {
+            "command-line-flag": "-Rio",
+            "description": "NA",
+            "id": "__RIO__",
+            "name": "__RIO__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RIO__"
+        },
+        {
+            "command-line-flag": "-SC",
+            "description": "NA",
+            "id": "__SC__",
+            "name": "__SC__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SC__"
+        },
+        {
+            "command-line-flag": "-bsVars",
+            "description": "NA",
+            "id": "__BSVARS__",
+            "name": "__BSVARS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BSVARS__"
+        },
+        {
+            "command-line-flag": "-cio",
+            "description": "NA",
+            "id": "__CIO__",
+            "name": "__CIO__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CIO__"
+        },
+        {
+            "command-line-flag": "-dataTable",
+            "description": "NA",
+            "id": "__DATATABLE__",
+            "name": "__DATATABLE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DATATABLE__"
+        },
+        {
+            "command-line-flag": "-dbgArgs",
+            "description": "NA",
+            "id": "__DBGARGS__",
+            "name": "__DBGARGS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DBGARGS__"
+        },
+        {
+            "command-line-flag": "-glfCode",
+            "description": "NA",
+            "id": "__GLFCODE__",
+            "name": "__GLFCODE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__GLFCODE__"
+        },
+        {
+            "command-line-flag": "-glfLabel",
+            "description": "NA",
+            "id": "__GLFLABEL__",
+            "name": "__GLFLABEL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__GLFLABEL__"
+        },
+        {
+            "command-line-flag": "-gltCode",
+            "description": "NA",
+            "id": "__GLTCODE__",
+            "name": "__GLTCODE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__GLTCODE__"
+        },
+        {
+            "command-line-flag": "-gltLabel",
+            "description": "NA",
+            "id": "__GLTLABEL__",
+            "name": "__GLTLABEL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__GLTLABEL__"
+        },
+        {
+            "command-line-flag": "-help",
+            "description": "NA",
+            "id": "__HELP__",
+            "name": "__HELP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__HELP__"
+        },
+        {
+            "command-line-flag": "-jobs",
+            "description": "NA",
+            "id": "__JOBS__",
+            "name": "__JOBS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__JOBS__"
+        },
+        {
+            "command-line-flag": "-mVar",
+            "description": "NA",
+            "id": "__MVAR__",
+            "name": "__MVAR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MVAR__"
+        },
+        {
+            "command-line-flag": "-mask",
+            "description": "NA",
+            "id": "__MASK__",
+            "name": "__MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK__"
+        },
+        {
+            "command-line-flag": "-model",
+            "description": "NA",
+            "id": "__MODEL__",
+            "name": "__MODEL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MODEL__"
+        },
+        {
+            "command-line-flag": "-num_glf",
+            "description": "NA",
+            "id": "__NUM_GLF__",
+            "name": "__NUM_GLF__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NUM_GLF__"
+        },
+        {
+            "command-line-flag": "-num_glt",
+            "description": "NA",
+            "id": "__NUM_GLT__",
+            "name": "__NUM_GLT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NUM_GLT__"
+        },
+        {
+            "command-line-flag": "-prefix",
+            "description": "NA",
+            "id": "__PREFIX__",
+            "name": "__PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__PREFIX__"
+        },
+        {
+            "command-line-flag": "-qVars",
+            "description": "NA",
+            "id": "__QVARS__",
+            "name": "__QVARS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__QVARS__"
+        },
+        {
+            "command-line-flag": "-qVarCenters",
+            "description": "NA",
+            "id": "__QVARCENTERS__",
+            "name": "__QVARCENTERS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__QVARCENTERS__"
+        },
+        {
+            "command-line-flag": "-robust",
+            "description": "NA",
+            "id": "__ROBUST__",
+            "name": "__ROBUST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ROBUST__"
+        },
+        {
+            "command-line-flag": "-show_allowed_options",
+            "description": "NA",
+            "id": "__SHOW_ALLOWED_OPTIONS__",
+            "name": "__SHOW_ALLOWED_OPTIONS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SHOW_ALLOWED_OPTIONS__"
+        },
+        {
+            "command-line-flag": "-vVarCenters",
+            "description": "NA",
+            "id": "__VVARCENTERS__",
+            "name": "__VVARCENTERS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VVARCENTERS__"
+        },
+        {
+            "command-line-flag": "-vVars",
+            "description": "NA",
+            "id": "__VVARS__",
+            "name": "__VVARS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VVARS__"
+        },
+        {
+            "command-line-flag": "-verb",
+            "description": "NA",
+            "id": "__VERB__",
+            "name": "__VERB__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VERB__"
+        },
+        {
+            "command-line-flag": "-wsE2",
+            "description": "NA",
+            "id": "__WSE2__",
+            "name": "__WSE2__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WSE2__"
+        },
+        {
+            "command-line-flag": "-wsMVT",
+            "description": "NA",
+            "id": "__WSMVT__",
+            "name": "__WSMVT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WSMVT__"
+        },
+        {
+            "command-line-flag": "-wsVars",
+            "description": "NA",
+            "id": "__WSVARS__",
+            "name": "__WSVARS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WSVARS__"
+        }
+    ],
+    "name": "tool name",
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {},
+    "tool-version": "v0.1.0"
+}

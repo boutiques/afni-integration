@@ -1,0 +1,824 @@
+{
+    "command-line": "3dAllineate __BASE__ __SOURCE__ __INPUT__ __PREFIX__ __OUT__ __FLOATIZE__ __FLOAT__ __1DPARAM_SAVE__ __1DPARAM_APPLY__ __1DMATRIX_SAVE__ __1DMATRIX_APPLY__ __COST__ __INTERP__ __FINAL__ __NMATCH__ __NOPAD__ __ZCLIP__ __CONV__ __VERB__ __QUIET__ __USETEMP__ __NOUSETEMP__ __CHECK__ __NMI__ __ONEPASS__ __TWOPASS__ __TWOBLUR__ __TWOFIRST__ __TWOBEST__ __FINEBLUR__ __CMASS__ __NOCMASS__ __AUTOWEIGHT__ __AUTOMASK__ __AUTOBOX__ __NOMASK__ __WEIGHT__ __WTPREFIX__ __EMASK__ __SOURCE_MASK__ __SOURCE_AUTOMASK__ __WARP__ __WARPFREEZE__ __REPLACEBASE__ __REPLACEMETH__ __EPI__ __PARFIX__ __PARANG__ __PARINI__ __MAXROT__ __MAXSHF__ __MAXSCL__ __MAXSHR__ __MASTER__ __MAST_DXYZ__ __NEWGRID__ __SDU__ __DSU__ __USD__ __SUPPER__ __SLOWER__ __ASHIFT__ __BSHIFT__ __NUM_RTB__ __NOCAST__ __NOREFINAL__ __REALAXES__ __SAVEHIST__ __MEDIAN__ __POWELL__ __TARGET__ __XWARP__ __YWARP__ __ZWARP__ __FPS__ __HISTPOW__ __HISTBIN__ __EQBIN__ __CLBIN__ __WTMRAD__ __WTGRAD__ __NMSETUP__ __IGNOUT__ __BLOK__ __ALLCOST__ __ALLCOSTX__ __ALLCOSTX1D__ __DAFNI_WSINC5_RADIUS__ __NWARP__ SOURCEDATASET",
+    "description": "tool description",
+    "inputs": [
+        {
+            "command-line-flag": "-base",
+            "description": "NA",
+            "id": "__BASE__",
+            "name": "__BASE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BASE__"
+        },
+        {
+            "command-line-flag": "-source",
+            "description": "NA",
+            "id": "__SOURCE__",
+            "name": "__SOURCE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SOURCE__"
+        },
+        {
+            "command-line-flag": "-input",
+            "description": "NA",
+            "id": "__INPUT__",
+            "name": "__INPUT__",
+            "optional": false,
+            "type": "String",
+            "value-key": "__INPUT__"
+        },
+        {
+            "command-line-flag": "-prefix",
+            "description": "NA",
+            "id": "__PREFIX__",
+            "name": "__PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__PREFIX__"
+        },
+        {
+            "command-line-flag": "-out",
+            "description": "NA",
+            "id": "__OUT__",
+            "name": "__OUT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__OUT__"
+        },
+        {
+            "command-line-flag": "-floatize",
+            "description": "NA",
+            "id": "__FLOATIZE__",
+            "name": "__FLOATIZE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__FLOATIZE__"
+        },
+        {
+            "command-line-flag": "-float",
+            "description": "NA",
+            "id": "__FLOAT__",
+            "name": "__FLOAT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__FLOAT__"
+        },
+        {
+            "command-line-flag": "-1Dparam_save",
+            "description": "NA",
+            "id": "__1DPARAM_SAVE__",
+            "name": "__1DPARAM_SAVE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__1DPARAM_SAVE__"
+        },
+        {
+            "command-line-flag": "-1Dparam_apply",
+            "description": "NA",
+            "id": "__1DPARAM_APPLY__",
+            "name": "__1DPARAM_APPLY__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__1DPARAM_APPLY__"
+        },
+        {
+            "command-line-flag": "-1Dmatrix_save",
+            "description": "NA",
+            "id": "__1DMATRIX_SAVE__",
+            "name": "__1DMATRIX_SAVE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__1DMATRIX_SAVE__"
+        },
+        {
+            "command-line-flag": "-1Dmatrix_apply",
+            "description": "NA",
+            "id": "__1DMATRIX_APPLY__",
+            "name": "__1DMATRIX_APPLY__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__1DMATRIX_APPLY__"
+        },
+        {
+            "command-line-flag": "-cost",
+            "description": "NA",
+            "id": "__COST__",
+            "name": "__COST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__COST__"
+        },
+        {
+            "command-line-flag": "-interp",
+            "description": "NA",
+            "id": "__INTERP__",
+            "name": "__INTERP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__INTERP__"
+        },
+        {
+            "command-line-flag": "-final",
+            "description": "NA",
+            "id": "__FINAL__",
+            "name": "__FINAL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__FINAL__"
+        },
+        {
+            "command-line-flag": "-nmatch",
+            "description": "NA",
+            "id": "__NMATCH__",
+            "name": "__NMATCH__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NMATCH__"
+        },
+        {
+            "command-line-flag": "-nopad",
+            "description": "NA",
+            "id": "__NOPAD__",
+            "name": "__NOPAD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NOPAD__"
+        },
+        {
+            "command-line-flag": "-zclip",
+            "description": "NA",
+            "id": "__ZCLIP__",
+            "name": "__ZCLIP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ZCLIP__"
+        },
+        {
+            "command-line-flag": "-conv",
+            "description": "NA",
+            "id": "__CONV__",
+            "name": "__CONV__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CONV__"
+        },
+        {
+            "command-line-flag": "-verb",
+            "description": "NA",
+            "id": "__VERB__",
+            "name": "__VERB__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VERB__"
+        },
+        {
+            "command-line-flag": "-quiet",
+            "description": "NA",
+            "id": "__QUIET__",
+            "name": "__QUIET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__QUIET__"
+        },
+        {
+            "command-line-flag": "-usetemp",
+            "description": "NA",
+            "id": "__USETEMP__",
+            "name": "__USETEMP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__USETEMP__"
+        },
+        {
+            "command-line-flag": "-nousetemp",
+            "description": "NA",
+            "id": "__NOUSETEMP__",
+            "name": "__NOUSETEMP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NOUSETEMP__"
+        },
+        {
+            "command-line-flag": "-check",
+            "description": "NA",
+            "id": "__CHECK__",
+            "name": "__CHECK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CHECK__"
+        },
+        {
+            "command-line-flag": "-nmi",
+            "description": "NA",
+            "id": "__NMI__",
+            "name": "__NMI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NMI__"
+        },
+        {
+            "command-line-flag": "-onepass",
+            "description": "NA",
+            "id": "__ONEPASS__",
+            "name": "__ONEPASS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ONEPASS__"
+        },
+        {
+            "command-line-flag": "-twopass",
+            "description": "NA",
+            "id": "__TWOPASS__",
+            "name": "__TWOPASS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TWOPASS__"
+        },
+        {
+            "command-line-flag": "-twoblur",
+            "description": "NA",
+            "id": "__TWOBLUR__",
+            "name": "__TWOBLUR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TWOBLUR__"
+        },
+        {
+            "command-line-flag": "-twofirst",
+            "description": "NA",
+            "id": "__TWOFIRST__",
+            "name": "__TWOFIRST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TWOFIRST__"
+        },
+        {
+            "command-line-flag": "-twobest",
+            "description": "NA",
+            "id": "__TWOBEST__",
+            "name": "__TWOBEST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TWOBEST__"
+        },
+        {
+            "command-line-flag": "-fineblur",
+            "description": "NA",
+            "id": "__FINEBLUR__",
+            "name": "__FINEBLUR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__FINEBLUR__"
+        },
+        {
+            "command-line-flag": "-cmass",
+            "description": "NA",
+            "id": "__CMASS__",
+            "name": "__CMASS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CMASS__"
+        },
+        {
+            "command-line-flag": "-nocmass",
+            "description": "NA",
+            "id": "__NOCMASS__",
+            "name": "__NOCMASS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NOCMASS__"
+        },
+        {
+            "command-line-flag": "-autoweight",
+            "description": "NA",
+            "id": "__AUTOWEIGHT__",
+            "name": "__AUTOWEIGHT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__AUTOWEIGHT__"
+        },
+        {
+            "command-line-flag": "-automask",
+            "description": "NA",
+            "id": "__AUTOMASK__",
+            "name": "__AUTOMASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__AUTOMASK__"
+        },
+        {
+            "command-line-flag": "-autobox",
+            "description": "NA",
+            "id": "__AUTOBOX__",
+            "name": "__AUTOBOX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__AUTOBOX__"
+        },
+        {
+            "command-line-flag": "-nomask",
+            "description": "NA",
+            "id": "__NOMASK__",
+            "name": "__NOMASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NOMASK__"
+        },
+        {
+            "command-line-flag": "-weight",
+            "description": "NA",
+            "id": "__WEIGHT__",
+            "name": "__WEIGHT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WEIGHT__"
+        },
+        {
+            "command-line-flag": "-wtprefix",
+            "description": "NA",
+            "id": "__WTPREFIX__",
+            "name": "__WTPREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WTPREFIX__"
+        },
+        {
+            "command-line-flag": "-emask",
+            "description": "NA",
+            "id": "__EMASK__",
+            "name": "__EMASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__EMASK__"
+        },
+        {
+            "command-line-flag": "-source_mask",
+            "description": "NA",
+            "id": "__SOURCE_MASK__",
+            "name": "__SOURCE_MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SOURCE_MASK__"
+        },
+        {
+            "command-line-flag": "-source_automask",
+            "description": "NA",
+            "id": "__SOURCE_AUTOMASK__",
+            "name": "__SOURCE_AUTOMASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SOURCE_AUTOMASK__"
+        },
+        {
+            "command-line-flag": "-warp",
+            "description": "NA",
+            "id": "__WARP__",
+            "name": "__WARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WARP__"
+        },
+        {
+            "command-line-flag": "-warpfreeze",
+            "description": "NA",
+            "id": "__WARPFREEZE__",
+            "name": "__WARPFREEZE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WARPFREEZE__"
+        },
+        {
+            "command-line-flag": "-replacebase",
+            "description": "NA",
+            "id": "__REPLACEBASE__",
+            "name": "__REPLACEBASE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REPLACEBASE__"
+        },
+        {
+            "command-line-flag": "-replacemeth",
+            "description": "NA",
+            "id": "__REPLACEMETH__",
+            "name": "__REPLACEMETH__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REPLACEMETH__"
+        },
+        {
+            "command-line-flag": "-EPI",
+            "description": "NA",
+            "id": "__EPI__",
+            "name": "__EPI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__EPI__"
+        },
+        {
+            "command-line-flag": "-parfix",
+            "description": "NA",
+            "id": "__PARFIX__",
+            "name": "__PARFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__PARFIX__"
+        },
+        {
+            "command-line-flag": "-parang",
+            "description": "NA",
+            "id": "__PARANG__",
+            "name": "__PARANG__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__PARANG__"
+        },
+        {
+            "command-line-flag": "-parini",
+            "description": "NA",
+            "id": "__PARINI__",
+            "name": "__PARINI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__PARINI__"
+        },
+        {
+            "command-line-flag": "-maxrot",
+            "description": "NA",
+            "id": "__MAXROT__",
+            "name": "__MAXROT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MAXROT__"
+        },
+        {
+            "command-line-flag": "-maxshf",
+            "description": "NA",
+            "id": "__MAXSHF__",
+            "name": "__MAXSHF__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MAXSHF__"
+        },
+        {
+            "command-line-flag": "-maxscl",
+            "description": "NA",
+            "id": "__MAXSCL__",
+            "name": "__MAXSCL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MAXSCL__"
+        },
+        {
+            "command-line-flag": "-maxshr",
+            "description": "NA",
+            "id": "__MAXSHR__",
+            "name": "__MAXSHR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MAXSHR__"
+        },
+        {
+            "command-line-flag": "-master",
+            "description": "NA",
+            "id": "__MASTER__",
+            "name": "__MASTER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASTER__"
+        },
+        {
+            "command-line-flag": "-mast_dxyz",
+            "description": "NA",
+            "id": "__MAST_DXYZ__",
+            "name": "__MAST_DXYZ__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MAST_DXYZ__"
+        },
+        {
+            "command-line-flag": "-newgrid",
+            "description": "NA",
+            "id": "__NEWGRID__",
+            "name": "__NEWGRID__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NEWGRID__"
+        },
+        {
+            "command-line-flag": "-SDU",
+            "description": "NA",
+            "id": "__SDU__",
+            "name": "__SDU__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SDU__"
+        },
+        {
+            "command-line-flag": "-DSU",
+            "description": "NA",
+            "id": "__DSU__",
+            "name": "__DSU__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DSU__"
+        },
+        {
+            "command-line-flag": "-USD",
+            "description": "NA",
+            "id": "__USD__",
+            "name": "__USD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__USD__"
+        },
+        {
+            "command-line-flag": "-Supper",
+            "description": "NA",
+            "id": "__SUPPER__",
+            "name": "__SUPPER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SUPPER__"
+        },
+        {
+            "command-line-flag": "-Slower",
+            "description": "NA",
+            "id": "__SLOWER__",
+            "name": "__SLOWER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SLOWER__"
+        },
+        {
+            "command-line-flag": "-ashift",
+            "description": "NA",
+            "id": "__ASHIFT__",
+            "name": "__ASHIFT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ASHIFT__"
+        },
+        {
+            "command-line-flag": "-bshift",
+            "description": "NA",
+            "id": "__BSHIFT__",
+            "name": "__BSHIFT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BSHIFT__"
+        },
+        {
+            "command-line-flag": "-num_rtb",
+            "description": "NA",
+            "id": "__NUM_RTB__",
+            "name": "__NUM_RTB__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NUM_RTB__"
+        },
+        {
+            "command-line-flag": "-nocast",
+            "description": "NA",
+            "id": "__NOCAST__",
+            "name": "__NOCAST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NOCAST__"
+        },
+        {
+            "command-line-flag": "-norefinal",
+            "description": "NA",
+            "id": "__NOREFINAL__",
+            "name": "__NOREFINAL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NOREFINAL__"
+        },
+        {
+            "command-line-flag": "-realaxes",
+            "description": "NA",
+            "id": "__REALAXES__",
+            "name": "__REALAXES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REALAXES__"
+        },
+        {
+            "command-line-flag": "-savehist",
+            "description": "NA",
+            "id": "__SAVEHIST__",
+            "name": "__SAVEHIST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SAVEHIST__"
+        },
+        {
+            "command-line-flag": "-median",
+            "description": "NA",
+            "id": "__MEDIAN__",
+            "name": "__MEDIAN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MEDIAN__"
+        },
+        {
+            "command-line-flag": "-powell",
+            "description": "NA",
+            "id": "__POWELL__",
+            "name": "__POWELL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__POWELL__"
+        },
+        {
+            "command-line-flag": "-target",
+            "description": "NA",
+            "id": "__TARGET__",
+            "name": "__TARGET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TARGET__"
+        },
+        {
+            "command-line-flag": "-Xwarp",
+            "description": "NA",
+            "id": "__XWARP__",
+            "name": "__XWARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__XWARP__"
+        },
+        {
+            "command-line-flag": "-Ywarp",
+            "description": "NA",
+            "id": "__YWARP__",
+            "name": "__YWARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__YWARP__"
+        },
+        {
+            "command-line-flag": "-Zwarp",
+            "description": "NA",
+            "id": "__ZWARP__",
+            "name": "__ZWARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ZWARP__"
+        },
+        {
+            "command-line-flag": "-FPS",
+            "description": "NA",
+            "id": "__FPS__",
+            "name": "__FPS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__FPS__"
+        },
+        {
+            "command-line-flag": "-histpow",
+            "description": "NA",
+            "id": "__HISTPOW__",
+            "name": "__HISTPOW__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__HISTPOW__"
+        },
+        {
+            "command-line-flag": "-histbin",
+            "description": "NA",
+            "id": "__HISTBIN__",
+            "name": "__HISTBIN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__HISTBIN__"
+        },
+        {
+            "command-line-flag": "-eqbin",
+            "description": "NA",
+            "id": "__EQBIN__",
+            "name": "__EQBIN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__EQBIN__"
+        },
+        {
+            "command-line-flag": "-clbin",
+            "description": "NA",
+            "id": "__CLBIN__",
+            "name": "__CLBIN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CLBIN__"
+        },
+        {
+            "command-line-flag": "-wtmrad",
+            "description": "NA",
+            "id": "__WTMRAD__",
+            "name": "__WTMRAD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WTMRAD__"
+        },
+        {
+            "command-line-flag": "-wtgrad",
+            "description": "NA",
+            "id": "__WTGRAD__",
+            "name": "__WTGRAD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WTGRAD__"
+        },
+        {
+            "command-line-flag": "-nmsetup",
+            "description": "NA",
+            "id": "__NMSETUP__",
+            "name": "__NMSETUP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NMSETUP__"
+        },
+        {
+            "command-line-flag": "-ignout",
+            "description": "NA",
+            "id": "__IGNOUT__",
+            "name": "__IGNOUT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__IGNOUT__"
+        },
+        {
+            "command-line-flag": "-blok",
+            "description": "NA",
+            "id": "__BLOK__",
+            "name": "__BLOK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLOK__"
+        },
+        {
+            "command-line-flag": "-allcost",
+            "description": "NA",
+            "id": "__ALLCOST__",
+            "name": "__ALLCOST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ALLCOST__"
+        },
+        {
+            "command-line-flag": "-allcostX",
+            "description": "NA",
+            "id": "__ALLCOSTX__",
+            "name": "__ALLCOSTX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ALLCOSTX__"
+        },
+        {
+            "command-line-flag": "-allcostX1D",
+            "description": "NA",
+            "id": "__ALLCOSTX1D__",
+            "name": "__ALLCOSTX1D__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ALLCOSTX1D__"
+        },
+        {
+            "command-line-flag": "-DAFNI_WSINC5_RADIUS",
+            "description": "NA",
+            "id": "__DAFNI_WSINC5_RADIUS__",
+            "name": "__DAFNI_WSINC5_RADIUS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DAFNI_WSINC5_RADIUS__"
+        },
+        {
+            "command-line-flag": "-nwarp",
+            "description": "NA",
+            "id": "__NWARP__",
+            "name": "__NWARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NWARP__"
+        },
+        {
+            "description": "NA",
+            "id": "sourcedataset",
+            "name": "sourcedataset",
+            "optional": false,
+            "type": "String",
+            "value-key": "SOURCEDATASET"
+        }
+    ],
+    "name": "tool name",
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {},
+    "tool-version": "v0.1.0"
+}

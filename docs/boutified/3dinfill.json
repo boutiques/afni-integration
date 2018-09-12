@@ -1,0 +1,105 @@
+{
+    "command-line": "3dinfill __INPUT__ __PREFIX__ __NITER__ __BLEND__ __MINHITS__ __ED__ __MASK__ __MASK_RANGE__ __MRANGE__ __CMASK__",
+    "description": "tool description",
+    "inputs": [
+        {
+            "command-line-flag": "-input",
+            "description": "NA",
+            "id": "__INPUT__",
+            "name": "__INPUT__",
+            "optional": false,
+            "type": "String",
+            "value-key": "__INPUT__"
+        },
+        {
+            "command-line-flag": "-prefix",
+            "description": "NA",
+            "id": "__PREFIX__",
+            "name": "__PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__PREFIX__"
+        },
+        {
+            "command-line-flag": "-Niter",
+            "description": "NA",
+            "id": "__NITER__",
+            "name": "__NITER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NITER__"
+        },
+        {
+            "command-line-flag": "-blend",
+            "description": "NA",
+            "id": "__BLEND__",
+            "name": "__BLEND__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLEND__"
+        },
+        {
+            "command-line-flag": "-minhits",
+            "description": "NA",
+            "id": "__MINHITS__",
+            "name": "__MINHITS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MINHITS__"
+        },
+        {
+            "command-line-flag": "-ed",
+            "description": "NA",
+            "id": "__ED__",
+            "name": "__ED__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ED__"
+        },
+        {
+            "command-line-flag": "-mask",
+            "description": "NA",
+            "id": "__MASK__",
+            "name": "__MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK__"
+        },
+        {
+            "command-line-flag": "-mask_range",
+            "description": "NA",
+            "id": "__MASK_RANGE__",
+            "name": "__MASK_RANGE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_RANGE__"
+        },
+        {
+            "command-line-flag": "-mrange",
+            "description": "NA",
+            "id": "__MRANGE__",
+            "name": "__MRANGE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MRANGE__"
+        },
+        {
+            "command-line-flag": "-cmask",
+            "description": "NA",
+            "id": "__CMASK__",
+            "name": "__CMASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CMASK__"
+        }
+    ],
+    "name": "tool name",
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {},
+    "tool-version": "v0.1.0"
+}

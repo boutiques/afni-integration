@@ -1,0 +1,123 @@
+{
+    "command-line": "3dresample __HELP__ __HIST__ __DEBUG__ __VERSION__ __BOUND_TYPE__ __DXYZ__ __ORIENT__ __RMODE__ __MASTER__ __PREFIX__ __INPUT__ __INSET__",
+    "description": "tool description",
+    "inputs": [
+        {
+            "command-line-flag": "-help",
+            "description": "NA",
+            "id": "__HELP__",
+            "name": "__HELP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__HELP__"
+        },
+        {
+            "command-line-flag": "-hist",
+            "description": "NA",
+            "id": "__HIST__",
+            "name": "__HIST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__HIST__"
+        },
+        {
+            "command-line-flag": "-debug",
+            "description": "NA",
+            "id": "__DEBUG__",
+            "name": "__DEBUG__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DEBUG__"
+        },
+        {
+            "command-line-flag": "-version",
+            "description": "NA",
+            "id": "__VERSION__",
+            "name": "__VERSION__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VERSION__"
+        },
+        {
+            "command-line-flag": "-bound_type",
+            "description": "NA",
+            "id": "__BOUND_TYPE__",
+            "name": "__BOUND_TYPE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BOUND_TYPE__"
+        },
+        {
+            "command-line-flag": "-dxyz",
+            "description": "NA",
+            "id": "__DXYZ__",
+            "name": "__DXYZ__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DXYZ__"
+        },
+        {
+            "command-line-flag": "-orient",
+            "description": "NA",
+            "id": "__ORIENT__",
+            "name": "__ORIENT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ORIENT__"
+        },
+        {
+            "command-line-flag": "-rmode",
+            "description": "NA",
+            "id": "__RMODE__",
+            "name": "__RMODE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RMODE__"
+        },
+        {
+            "command-line-flag": "-master",
+            "description": "NA",
+            "id": "__MASTER__",
+            "name": "__MASTER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASTER__"
+        },
+        {
+            "command-line-flag": "-prefix",
+            "description": "NA",
+            "id": "__PREFIX__",
+            "name": "__PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__PREFIX__"
+        },
+        {
+            "command-line-flag": "-input",
+            "description": "NA",
+            "id": "__INPUT__",
+            "name": "__INPUT__",
+            "optional": false,
+            "type": "String",
+            "value-key": "__INPUT__"
+        },
+        {
+            "command-line-flag": "-inset",
+            "description": "NA",
+            "id": "__INSET__",
+            "name": "__INSET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__INSET__"
+        }
+    ],
+    "name": "tool name",
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {},
+    "tool-version": "v0.1.0"
+}

@@ -1,0 +1,1815 @@
+{
+    "command-line": "afni_proc.py __REGRESS_STIM_FILES__ __DSETS__ __REGRESS_STIM_TIMES__ __REGRESS_STIM_LABELS__ __REGRESS_OPTS_3DD__ __DO_BLOCK__ __RICOR_REGS__ __REGRESS_APPLY_MOT_TYPES__ __REGRESS_RUN_CLUSTSIM__ __ALIGN_OPTS_AEA__ __REGRESS_STIM_TYPES__ __REGRESS_BASIS_MULTI__ __BLOCKS__ __SURF_ANAT__ __SURF_SPEC__ __MASK_SEGMENT_ERODE__ __MASK_SEGMENT_ANAT__ __REGRESS_ROI__ __ANAT_FOLLOWER_ERODE__ __REGRESS_MAKE_CORR_VOLS__ __E__ __DSETS_ME_ECHO__ __DSETS_ME_RUN__ __ECHO_TIMES__ __COMBINE_METHOD__ __MASK_EPI_ANAT__ __BLUR_IN_MASK__ __ASK_ME__ __GIANT_MOVE__ __EPI_BASE__ __HELP__ __HIST__ __REQUIRES_AFNI_VERSION__ __REQUIRES_AFNI_HIST__ __SHOW_VALID_OPTS__ __VER__ __ANAT_FOLLOWER__ __ANAT_FOLLOWER_ROI__ __ANAT_HAS_SKULL__ __ANAT_UNIFORM_METHOD__ __ANAT_OPTS_UNIF__ __ANAT_UNIF_GM__ __BASH__ __CHECK_AFNI_VERSION__ __CHECK_RESULTS_DIR__ __CHECK_SETUP_ERRORS__ __COPY_ANAT__ __COPY_FILES__ __EXECUTE__ __GEN_EPI_REVIEW__ __NO_EPI_REVIEW__ __KEEP_RM_FILES__ __MOVE_PREPROC_FILES__ __NO_PROC_COMMAND__ __OUT_DIR__ __OUTLIER_COUNT__ __OUTLIER_LEGENDRE__ __OUTLIER_POLORT__ __RADIAL_CORRELATE__ __REG_ECHO__ __REMOVE_PREPROC_FILES__ __SCRIPT__ __SCR_OVERWRITE__ __SEP_CHAR__ __SUBJ_CURLY__ __SUBJ_ID__ __TEST_FOR_DSETS__ __TEST_STIM_FILES__ __VERB__ __WRITE_3DD_PREFIX__ __WRITE_3DD_SCRIPT__ __WRITE_PPI_3DD_SCRIPTS__ __REGRESS_PPI_STIM_FILES__ __REGRESS_PPI_STIM_LABELS__ __TCAT_PRESS_WARN_LIMIT__ __TCAT_REMOVE_FIRST_TRS__ __TCAT_REMOVE_LAST_TRS__ __DESPIKE_MASK__ __DESPIKE_NEW__ __DESPIKE_OPTS_3DDES__ __RICOR_DATUM__ __RICOR_POLORT__ __RICOR_REGRESS_METHOD__ __RICOR_REGRESS_SOLVER__ __RICOR_REGS_NFIRST__ __RICOR_REGS_RM_NLAST__ __TSHIFT_ALIGN_TO__ __TSHIFT_INTERP__ __TSHIFT_OPTS_TS__ __BLIP_FORWARD_DSET__ __BLIP_REVERSE_DSET__ __BLIP_OPTS_QW__ __TLRC_ANAT__ __TLRC_BASE__ __TLRC_NL_WARP__ __TLRC_NL_WARPED_DSETS__ __TLRC_NL_AWPY_RM__ __TLRC_NO_SS__ __TLRC_OPTS_AT__ __TLRC_RMODE__ __TLRC_SUFFIX__ __ALIGN_EPI_EXT_DSET__ __ALIGN_EPI_STRIP_METHOD__ __ALIGN_UNIFIZE_EPI__ __VOLREG_ALIGN_E2A__ __VOLREG_ALIGN_TO__ __VOLREG_BASE_DSET__ __VOLREG_BASE_IND__ __VOLREG_GET_ALLCOSTX__ __VOLREG_COMPUTE_TSNR__ __VOLREG_INTERP__ __VOLREG_MOTSIM__ __VOLREG_OPTS_MS__ __VOLREG_OPTS_VR__ __VOLREG_NO_EXTENT_MASK__ __VOLREG_REGRESS_PER_RUN__ __VOLREG_TLRC_ADWARP__ __VOLREG_TLRC_WARP__ __VOLREG_WARP_DXYZ__ __VOLREG_ZPAD__ __SURF_A__ __SURF_B__ __SURF_BLUR_FWHM__ __BLUR_FILTER__ __BLUR_IN_AUTOMASK__ __BLUR_OPTS_BIM__ __BLUR_OPTS_MERGE__ __BLUR_SIZE__ __BLUR_TO_FWHM__ __BLUR_OPTS_B2FW__ __MASK_APPLY__ __MASK_DILATE__ __MASK_IMPORT__ __MASK_INTERSECT__ __MASK_UNION__ __MASK_RM_SEGSY__ __MASK_TEST_OVERLAP__ __MASK_TYPE__ __COMBINE_OPTS_TEDANA__ __COMBINE_OPTS_TEDWRAP__ __COMBINE_TEDANA_PATH__ __SCALE_MAX_VAL__ __SCALE_NO_MAX__ __REGRESS_3DD_STOP__ __REGRESS_ANATICOR__ __REGRESS_ANATICOR_LABEL__ __REGRESS_ANATICOR_RADIUS__ __REGRESS_ANATICOR_FAST__ __REGRESS_ANATICOR_FWHM__ __REGRESS_APPLY_MASK__ __REGRESS_APPLY_RICOR__ __REGRESS_BANDPASS__ __REGRESS_BASIS__ __REGRESS_BASIS_NORMALL__ __REGRESS_CENSOR_EXTERN__ __REGRESS_CENSOR_MOTION__ __REGRESS_CENSOR_FIRST_TRS__ __REGRESS_CENSOR_PREV__ __REGRESS_CENSOR_OUTLIERS__ __REGRESS_COMPUTE_GCOR__ __REGRESS_COMPUTE_TSNR__ __REGRESS_FOUT__ __REGRESS_MAKE_CBUCKET__ __REGRESS_MOT_AS_ORT__ __STIM_FILE__ __ORTVEC__ __REGRESS_MOTION_PER_RUN__ __REGRESS_SKIP_FIRST_OUTLIERS__ __REGRESS_COMPUTE_FITTS__ __REGRESS_CORMAT_WARNINGS__ __REGRESS_EST_BLUR_EPITS__ __REGRESS_EST_BLUR_ERRTS__ __REGRESS_ERRTS_PREFIX__ __REGRESS_FITTS_PREFIX__ __REGRESS_GLOBAL_TIMES__ __REGRESS_LOCAL_TIMES__ __REGRESS_IRESP_PREFIX__ __IRESP__ __REGRESS_MAKE_IDEAL_SUM__ __REGRESS_MOTION_FILE__ __REGRESS_NO_FITTS__ __REGRESS_NO_IDEAL_SUM__ __REGRESS_NO_IDEALS__ __REGRESS_NO_IRESP__ __REGRESS_NO_MASK__ __REGRESS_NO_MOTION__ __REGRESS_NO_MOTION_DEMEAN__ __REGRESS_NO_MOTION_DERIV__ __REGRESS_OPTS_REML__ __REGRESS_POLORT__ __REGRESS_REML_EXEC__ __REGRESS_ROI_PC__ __REGRESS_RSFC__ __REGRESS_RONI__ __REGRESS_EXTRA_STIM_FILES__ __REGRESS_EXTRA_STIM_LABELS__ __REGRESS_STIM_TIMES_OFFSET__ __REGRESS_USE_STIM_FILES__ __REGRESS_OPTS_CS__ __REGRESS_CS_NN__",
+    "description": "tool description",
+    "inputs": [
+        {
+            "command-line-flag": "-regress_stim_files",
+            "description": "NA",
+            "id": "__REGRESS_STIM_FILES__",
+            "name": "__REGRESS_STIM_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_STIM_FILES__"
+        },
+        {
+            "command-line-flag": "-dsets",
+            "description": "NA",
+            "id": "__DSETS__",
+            "name": "__DSETS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DSETS__"
+        },
+        {
+            "command-line-flag": "-regress_stim_times",
+            "description": "NA",
+            "id": "__REGRESS_STIM_TIMES__",
+            "name": "__REGRESS_STIM_TIMES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_STIM_TIMES__"
+        },
+        {
+            "command-line-flag": "-regress_stim_labels",
+            "description": "NA",
+            "id": "__REGRESS_STIM_LABELS__",
+            "name": "__REGRESS_STIM_LABELS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_STIM_LABELS__"
+        },
+        {
+            "command-line-flag": "-regress_opts_3dD",
+            "description": "NA",
+            "id": "__REGRESS_OPTS_3DD__",
+            "name": "__REGRESS_OPTS_3DD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_OPTS_3DD__"
+        },
+        {
+            "command-line-flag": "-do_block",
+            "description": "NA",
+            "id": "__DO_BLOCK__",
+            "name": "__DO_BLOCK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DO_BLOCK__"
+        },
+        {
+            "command-line-flag": "-ricor_regs",
+            "description": "NA",
+            "id": "__RICOR_REGS__",
+            "name": "__RICOR_REGS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RICOR_REGS__"
+        },
+        {
+            "command-line-flag": "-regress_apply_mot_types",
+            "description": "NA",
+            "id": "__REGRESS_APPLY_MOT_TYPES__",
+            "name": "__REGRESS_APPLY_MOT_TYPES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_APPLY_MOT_TYPES__"
+        },
+        {
+            "command-line-flag": "-regress_run_clustsim",
+            "description": "NA",
+            "id": "__REGRESS_RUN_CLUSTSIM__",
+            "name": "__REGRESS_RUN_CLUSTSIM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_RUN_CLUSTSIM__"
+        },
+        {
+            "command-line-flag": "-align_opts_aea",
+            "description": "NA",
+            "id": "__ALIGN_OPTS_AEA__",
+            "name": "__ALIGN_OPTS_AEA__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ALIGN_OPTS_AEA__"
+        },
+        {
+            "command-line-flag": "-regress_stim_types",
+            "description": "NA",
+            "id": "__REGRESS_STIM_TYPES__",
+            "name": "__REGRESS_STIM_TYPES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_STIM_TYPES__"
+        },
+        {
+            "command-line-flag": "-regress_basis_multi",
+            "description": "NA",
+            "id": "__REGRESS_BASIS_MULTI__",
+            "name": "__REGRESS_BASIS_MULTI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_BASIS_MULTI__"
+        },
+        {
+            "command-line-flag": "-blocks",
+            "description": "NA",
+            "id": "__BLOCKS__",
+            "name": "__BLOCKS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLOCKS__"
+        },
+        {
+            "command-line-flag": "-surf_anat",
+            "description": "NA",
+            "id": "__SURF_ANAT__",
+            "name": "__SURF_ANAT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SURF_ANAT__"
+        },
+        {
+            "command-line-flag": "-surf_spec",
+            "description": "NA",
+            "id": "__SURF_SPEC__",
+            "name": "__SURF_SPEC__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SURF_SPEC__"
+        },
+        {
+            "command-line-flag": "-mask_segment_erode",
+            "description": "NA",
+            "id": "__MASK_SEGMENT_ERODE__",
+            "name": "__MASK_SEGMENT_ERODE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_SEGMENT_ERODE__"
+        },
+        {
+            "command-line-flag": "-mask_segment_anat",
+            "description": "NA",
+            "id": "__MASK_SEGMENT_ANAT__",
+            "name": "__MASK_SEGMENT_ANAT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_SEGMENT_ANAT__"
+        },
+        {
+            "command-line-flag": "-regress_ROI",
+            "description": "NA",
+            "id": "__REGRESS_ROI__",
+            "name": "__REGRESS_ROI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ROI__"
+        },
+        {
+            "command-line-flag": "-anat_follower_erode",
+            "description": "NA",
+            "id": "__ANAT_FOLLOWER_ERODE__",
+            "name": "__ANAT_FOLLOWER_ERODE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ANAT_FOLLOWER_ERODE__"
+        },
+        {
+            "command-line-flag": "-regress_make_corr_vols",
+            "description": "NA",
+            "id": "__REGRESS_MAKE_CORR_VOLS__",
+            "name": "__REGRESS_MAKE_CORR_VOLS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_MAKE_CORR_VOLS__"
+        },
+        {
+            "command-line-flag": "-e",
+            "description": "NA",
+            "id": "__E__",
+            "name": "__E__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__E__"
+        },
+        {
+            "command-line-flag": "-dsets_me_echo",
+            "description": "NA",
+            "id": "__DSETS_ME_ECHO__",
+            "name": "__DSETS_ME_ECHO__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DSETS_ME_ECHO__"
+        },
+        {
+            "command-line-flag": "-dsets_me_run",
+            "description": "NA",
+            "id": "__DSETS_ME_RUN__",
+            "name": "__DSETS_ME_RUN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DSETS_ME_RUN__"
+        },
+        {
+            "command-line-flag": "-echo_times",
+            "description": "NA",
+            "id": "__ECHO_TIMES__",
+            "name": "__ECHO_TIMES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ECHO_TIMES__"
+        },
+        {
+            "command-line-flag": "-combine_method",
+            "description": "NA",
+            "id": "__COMBINE_METHOD__",
+            "name": "__COMBINE_METHOD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__COMBINE_METHOD__"
+        },
+        {
+            "command-line-flag": "-mask_epi_anat",
+            "description": "NA",
+            "id": "__MASK_EPI_ANAT__",
+            "name": "__MASK_EPI_ANAT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_EPI_ANAT__"
+        },
+        {
+            "command-line-flag": "-blur_in_mask",
+            "description": "NA",
+            "id": "__BLUR_IN_MASK__",
+            "name": "__BLUR_IN_MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_IN_MASK__"
+        },
+        {
+            "command-line-flag": "-ask_me",
+            "description": "NA",
+            "id": "__ASK_ME__",
+            "name": "__ASK_ME__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ASK_ME__"
+        },
+        {
+            "command-line-flag": "-giant_move",
+            "description": "NA",
+            "id": "__GIANT_MOVE__",
+            "name": "__GIANT_MOVE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__GIANT_MOVE__"
+        },
+        {
+            "command-line-flag": "-epi_base",
+            "description": "NA",
+            "id": "__EPI_BASE__",
+            "name": "__EPI_BASE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__EPI_BASE__"
+        },
+        {
+            "command-line-flag": "-help",
+            "description": "NA",
+            "id": "__HELP__",
+            "name": "__HELP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__HELP__"
+        },
+        {
+            "command-line-flag": "-hist",
+            "description": "NA",
+            "id": "__HIST__",
+            "name": "__HIST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__HIST__"
+        },
+        {
+            "command-line-flag": "-requires_afni_version",
+            "description": "NA",
+            "id": "__REQUIRES_AFNI_VERSION__",
+            "name": "__REQUIRES_AFNI_VERSION__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REQUIRES_AFNI_VERSION__"
+        },
+        {
+            "command-line-flag": "-requires_afni_hist",
+            "description": "NA",
+            "id": "__REQUIRES_AFNI_HIST__",
+            "name": "__REQUIRES_AFNI_HIST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REQUIRES_AFNI_HIST__"
+        },
+        {
+            "command-line-flag": "-show_valid_opts",
+            "description": "NA",
+            "id": "__SHOW_VALID_OPTS__",
+            "name": "__SHOW_VALID_OPTS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SHOW_VALID_OPTS__"
+        },
+        {
+            "command-line-flag": "-ver",
+            "description": "NA",
+            "id": "__VER__",
+            "name": "__VER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VER__"
+        },
+        {
+            "command-line-flag": "-anat_follower",
+            "description": "NA",
+            "id": "__ANAT_FOLLOWER__",
+            "name": "__ANAT_FOLLOWER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ANAT_FOLLOWER__"
+        },
+        {
+            "command-line-flag": "-anat_follower_ROI",
+            "description": "NA",
+            "id": "__ANAT_FOLLOWER_ROI__",
+            "name": "__ANAT_FOLLOWER_ROI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ANAT_FOLLOWER_ROI__"
+        },
+        {
+            "command-line-flag": "-anat_has_skull",
+            "description": "NA",
+            "id": "__ANAT_HAS_SKULL__",
+            "name": "__ANAT_HAS_SKULL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ANAT_HAS_SKULL__"
+        },
+        {
+            "command-line-flag": "-anat_uniform_method",
+            "description": "NA",
+            "id": "__ANAT_UNIFORM_METHOD__",
+            "name": "__ANAT_UNIFORM_METHOD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ANAT_UNIFORM_METHOD__"
+        },
+        {
+            "command-line-flag": "-anat_opts_unif",
+            "description": "NA",
+            "id": "__ANAT_OPTS_UNIF__",
+            "name": "__ANAT_OPTS_UNIF__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ANAT_OPTS_UNIF__"
+        },
+        {
+            "command-line-flag": "-anat_unif_GM",
+            "description": "NA",
+            "id": "__ANAT_UNIF_GM__",
+            "name": "__ANAT_UNIF_GM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ANAT_UNIF_GM__"
+        },
+        {
+            "command-line-flag": "-bash",
+            "description": "NA",
+            "id": "__BASH__",
+            "name": "__BASH__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BASH__"
+        },
+        {
+            "command-line-flag": "-check_afni_version",
+            "description": "NA",
+            "id": "__CHECK_AFNI_VERSION__",
+            "name": "__CHECK_AFNI_VERSION__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CHECK_AFNI_VERSION__"
+        },
+        {
+            "command-line-flag": "-check_results_dir",
+            "description": "NA",
+            "id": "__CHECK_RESULTS_DIR__",
+            "name": "__CHECK_RESULTS_DIR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CHECK_RESULTS_DIR__"
+        },
+        {
+            "command-line-flag": "-check_setup_errors",
+            "description": "NA",
+            "id": "__CHECK_SETUP_ERRORS__",
+            "name": "__CHECK_SETUP_ERRORS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__CHECK_SETUP_ERRORS__"
+        },
+        {
+            "command-line-flag": "-copy_anat",
+            "description": "NA",
+            "id": "__COPY_ANAT__",
+            "name": "__COPY_ANAT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__COPY_ANAT__"
+        },
+        {
+            "command-line-flag": "-copy_files",
+            "description": "NA",
+            "id": "__COPY_FILES__",
+            "name": "__COPY_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__COPY_FILES__"
+        },
+        {
+            "command-line-flag": "-execute",
+            "description": "NA",
+            "id": "__EXECUTE__",
+            "name": "__EXECUTE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__EXECUTE__"
+        },
+        {
+            "command-line-flag": "-gen_epi_review",
+            "description": "NA",
+            "id": "__GEN_EPI_REVIEW__",
+            "name": "__GEN_EPI_REVIEW__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__GEN_EPI_REVIEW__"
+        },
+        {
+            "command-line-flag": "-no_epi_review",
+            "description": "NA",
+            "id": "__NO_EPI_REVIEW__",
+            "name": "__NO_EPI_REVIEW__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NO_EPI_REVIEW__"
+        },
+        {
+            "command-line-flag": "-keep_rm_files",
+            "description": "NA",
+            "id": "__KEEP_RM_FILES__",
+            "name": "__KEEP_RM_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__KEEP_RM_FILES__"
+        },
+        {
+            "command-line-flag": "-move_preproc_files",
+            "description": "NA",
+            "id": "__MOVE_PREPROC_FILES__",
+            "name": "__MOVE_PREPROC_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MOVE_PREPROC_FILES__"
+        },
+        {
+            "command-line-flag": "-no_proc_command",
+            "description": "NA",
+            "id": "__NO_PROC_COMMAND__",
+            "name": "__NO_PROC_COMMAND__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__NO_PROC_COMMAND__"
+        },
+        {
+            "command-line-flag": "-out_dir",
+            "description": "NA",
+            "id": "__OUT_DIR__",
+            "name": "__OUT_DIR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__OUT_DIR__"
+        },
+        {
+            "command-line-flag": "-outlier_count",
+            "description": "NA",
+            "id": "__OUTLIER_COUNT__",
+            "name": "__OUTLIER_COUNT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__OUTLIER_COUNT__"
+        },
+        {
+            "command-line-flag": "-outlier_legendre",
+            "description": "NA",
+            "id": "__OUTLIER_LEGENDRE__",
+            "name": "__OUTLIER_LEGENDRE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__OUTLIER_LEGENDRE__"
+        },
+        {
+            "command-line-flag": "-outlier_polort",
+            "description": "NA",
+            "id": "__OUTLIER_POLORT__",
+            "name": "__OUTLIER_POLORT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__OUTLIER_POLORT__"
+        },
+        {
+            "command-line-flag": "-radial_correlate",
+            "description": "NA",
+            "id": "__RADIAL_CORRELATE__",
+            "name": "__RADIAL_CORRELATE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RADIAL_CORRELATE__"
+        },
+        {
+            "command-line-flag": "-reg_echo",
+            "description": "NA",
+            "id": "__REG_ECHO__",
+            "name": "__REG_ECHO__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REG_ECHO__"
+        },
+        {
+            "command-line-flag": "-remove_preproc_files",
+            "description": "NA",
+            "id": "__REMOVE_PREPROC_FILES__",
+            "name": "__REMOVE_PREPROC_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REMOVE_PREPROC_FILES__"
+        },
+        {
+            "command-line-flag": "-script",
+            "description": "NA",
+            "id": "__SCRIPT__",
+            "name": "__SCRIPT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SCRIPT__"
+        },
+        {
+            "command-line-flag": "-scr_overwrite",
+            "description": "NA",
+            "id": "__SCR_OVERWRITE__",
+            "name": "__SCR_OVERWRITE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SCR_OVERWRITE__"
+        },
+        {
+            "command-line-flag": "-sep_char",
+            "description": "NA",
+            "id": "__SEP_CHAR__",
+            "name": "__SEP_CHAR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SEP_CHAR__"
+        },
+        {
+            "command-line-flag": "-subj_curly",
+            "description": "NA",
+            "id": "__SUBJ_CURLY__",
+            "name": "__SUBJ_CURLY__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SUBJ_CURLY__"
+        },
+        {
+            "command-line-flag": "-subj_id",
+            "description": "NA",
+            "id": "__SUBJ_ID__",
+            "name": "__SUBJ_ID__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SUBJ_ID__"
+        },
+        {
+            "command-line-flag": "-test_for_dsets",
+            "description": "NA",
+            "id": "__TEST_FOR_DSETS__",
+            "name": "__TEST_FOR_DSETS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TEST_FOR_DSETS__"
+        },
+        {
+            "command-line-flag": "-test_stim_files",
+            "description": "NA",
+            "id": "__TEST_STIM_FILES__",
+            "name": "__TEST_STIM_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TEST_STIM_FILES__"
+        },
+        {
+            "command-line-flag": "-verb",
+            "description": "NA",
+            "id": "__VERB__",
+            "name": "__VERB__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VERB__"
+        },
+        {
+            "command-line-flag": "-write_3dD_prefix",
+            "description": "NA",
+            "id": "__WRITE_3DD_PREFIX__",
+            "name": "__WRITE_3DD_PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WRITE_3DD_PREFIX__"
+        },
+        {
+            "command-line-flag": "-write_3dD_script",
+            "description": "NA",
+            "id": "__WRITE_3DD_SCRIPT__",
+            "name": "__WRITE_3DD_SCRIPT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WRITE_3DD_SCRIPT__"
+        },
+        {
+            "command-line-flag": "-write_ppi_3dD_scripts",
+            "description": "NA",
+            "id": "__WRITE_PPI_3DD_SCRIPTS__",
+            "name": "__WRITE_PPI_3DD_SCRIPTS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__WRITE_PPI_3DD_SCRIPTS__"
+        },
+        {
+            "command-line-flag": "-regress_ppi_stim_files",
+            "description": "NA",
+            "id": "__REGRESS_PPI_STIM_FILES__",
+            "name": "__REGRESS_PPI_STIM_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_PPI_STIM_FILES__"
+        },
+        {
+            "command-line-flag": "-regress_ppi_stim_labels",
+            "description": "NA",
+            "id": "__REGRESS_PPI_STIM_LABELS__",
+            "name": "__REGRESS_PPI_STIM_LABELS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_PPI_STIM_LABELS__"
+        },
+        {
+            "command-line-flag": "-tcat_preSS_warn_limit",
+            "description": "NA",
+            "id": "__TCAT_PRESS_WARN_LIMIT__",
+            "name": "__TCAT_PRESS_WARN_LIMIT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TCAT_PRESS_WARN_LIMIT__"
+        },
+        {
+            "command-line-flag": "-tcat_remove_first_trs",
+            "description": "NA",
+            "id": "__TCAT_REMOVE_FIRST_TRS__",
+            "name": "__TCAT_REMOVE_FIRST_TRS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TCAT_REMOVE_FIRST_TRS__"
+        },
+        {
+            "command-line-flag": "-tcat_remove_last_trs",
+            "description": "NA",
+            "id": "__TCAT_REMOVE_LAST_TRS__",
+            "name": "__TCAT_REMOVE_LAST_TRS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TCAT_REMOVE_LAST_TRS__"
+        },
+        {
+            "command-line-flag": "-despike_mask",
+            "description": "NA",
+            "id": "__DESPIKE_MASK__",
+            "name": "__DESPIKE_MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DESPIKE_MASK__"
+        },
+        {
+            "command-line-flag": "-despike_new",
+            "description": "NA",
+            "id": "__DESPIKE_NEW__",
+            "name": "__DESPIKE_NEW__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DESPIKE_NEW__"
+        },
+        {
+            "command-line-flag": "-despike_opts_3dDes",
+            "description": "NA",
+            "id": "__DESPIKE_OPTS_3DDES__",
+            "name": "__DESPIKE_OPTS_3DDES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__DESPIKE_OPTS_3DDES__"
+        },
+        {
+            "command-line-flag": "-ricor_datum",
+            "description": "NA",
+            "id": "__RICOR_DATUM__",
+            "name": "__RICOR_DATUM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RICOR_DATUM__"
+        },
+        {
+            "command-line-flag": "-ricor_polort",
+            "description": "NA",
+            "id": "__RICOR_POLORT__",
+            "name": "__RICOR_POLORT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RICOR_POLORT__"
+        },
+        {
+            "command-line-flag": "-ricor_regress_method",
+            "description": "NA",
+            "id": "__RICOR_REGRESS_METHOD__",
+            "name": "__RICOR_REGRESS_METHOD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RICOR_REGRESS_METHOD__"
+        },
+        {
+            "command-line-flag": "-ricor_regress_solver",
+            "description": "NA",
+            "id": "__RICOR_REGRESS_SOLVER__",
+            "name": "__RICOR_REGRESS_SOLVER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RICOR_REGRESS_SOLVER__"
+        },
+        {
+            "command-line-flag": "-ricor_regs_nfirst",
+            "description": "NA",
+            "id": "__RICOR_REGS_NFIRST__",
+            "name": "__RICOR_REGS_NFIRST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RICOR_REGS_NFIRST__"
+        },
+        {
+            "command-line-flag": "-ricor_regs_rm_nlast",
+            "description": "NA",
+            "id": "__RICOR_REGS_RM_NLAST__",
+            "name": "__RICOR_REGS_RM_NLAST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__RICOR_REGS_RM_NLAST__"
+        },
+        {
+            "command-line-flag": "-tshift_align_to",
+            "description": "NA",
+            "id": "__TSHIFT_ALIGN_TO__",
+            "name": "__TSHIFT_ALIGN_TO__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TSHIFT_ALIGN_TO__"
+        },
+        {
+            "command-line-flag": "-tshift_interp",
+            "description": "NA",
+            "id": "__TSHIFT_INTERP__",
+            "name": "__TSHIFT_INTERP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TSHIFT_INTERP__"
+        },
+        {
+            "command-line-flag": "-tshift_opts_ts",
+            "description": "NA",
+            "id": "__TSHIFT_OPTS_TS__",
+            "name": "__TSHIFT_OPTS_TS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TSHIFT_OPTS_TS__"
+        },
+        {
+            "command-line-flag": "-blip_forward_dset",
+            "description": "NA",
+            "id": "__BLIP_FORWARD_DSET__",
+            "name": "__BLIP_FORWARD_DSET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLIP_FORWARD_DSET__"
+        },
+        {
+            "command-line-flag": "-blip_reverse_dset",
+            "description": "NA",
+            "id": "__BLIP_REVERSE_DSET__",
+            "name": "__BLIP_REVERSE_DSET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLIP_REVERSE_DSET__"
+        },
+        {
+            "command-line-flag": "-blip_opts_qw",
+            "description": "NA",
+            "id": "__BLIP_OPTS_QW__",
+            "name": "__BLIP_OPTS_QW__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLIP_OPTS_QW__"
+        },
+        {
+            "command-line-flag": "-tlrc_anat",
+            "description": "NA",
+            "id": "__TLRC_ANAT__",
+            "name": "__TLRC_ANAT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_ANAT__"
+        },
+        {
+            "command-line-flag": "-tlrc_base",
+            "description": "NA",
+            "id": "__TLRC_BASE__",
+            "name": "__TLRC_BASE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_BASE__"
+        },
+        {
+            "command-line-flag": "-tlrc_NL_warp",
+            "description": "NA",
+            "id": "__TLRC_NL_WARP__",
+            "name": "__TLRC_NL_WARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_NL_WARP__"
+        },
+        {
+            "command-line-flag": "-tlrc_NL_warped_dsets",
+            "description": "NA",
+            "id": "__TLRC_NL_WARPED_DSETS__",
+            "name": "__TLRC_NL_WARPED_DSETS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_NL_WARPED_DSETS__"
+        },
+        {
+            "command-line-flag": "-tlrc_NL_awpy_rm",
+            "description": "NA",
+            "id": "__TLRC_NL_AWPY_RM__",
+            "name": "__TLRC_NL_AWPY_RM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_NL_AWPY_RM__"
+        },
+        {
+            "command-line-flag": "-tlrc_no_ss",
+            "description": "NA",
+            "id": "__TLRC_NO_SS__",
+            "name": "__TLRC_NO_SS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_NO_SS__"
+        },
+        {
+            "command-line-flag": "-tlrc_opts_at",
+            "description": "NA",
+            "id": "__TLRC_OPTS_AT__",
+            "name": "__TLRC_OPTS_AT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_OPTS_AT__"
+        },
+        {
+            "command-line-flag": "-tlrc_rmode",
+            "description": "NA",
+            "id": "__TLRC_RMODE__",
+            "name": "__TLRC_RMODE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_RMODE__"
+        },
+        {
+            "command-line-flag": "-tlrc_suffix",
+            "description": "NA",
+            "id": "__TLRC_SUFFIX__",
+            "name": "__TLRC_SUFFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__TLRC_SUFFIX__"
+        },
+        {
+            "command-line-flag": "-align_epi_ext_dset",
+            "description": "NA",
+            "id": "__ALIGN_EPI_EXT_DSET__",
+            "name": "__ALIGN_EPI_EXT_DSET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ALIGN_EPI_EXT_DSET__"
+        },
+        {
+            "command-line-flag": "-align_epi_strip_method",
+            "description": "NA",
+            "id": "__ALIGN_EPI_STRIP_METHOD__",
+            "name": "__ALIGN_EPI_STRIP_METHOD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ALIGN_EPI_STRIP_METHOD__"
+        },
+        {
+            "command-line-flag": "-align_unifize_epi",
+            "description": "NA",
+            "id": "__ALIGN_UNIFIZE_EPI__",
+            "name": "__ALIGN_UNIFIZE_EPI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ALIGN_UNIFIZE_EPI__"
+        },
+        {
+            "command-line-flag": "-volreg_align_e2a",
+            "description": "NA",
+            "id": "__VOLREG_ALIGN_E2A__",
+            "name": "__VOLREG_ALIGN_E2A__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_ALIGN_E2A__"
+        },
+        {
+            "command-line-flag": "-volreg_align_to",
+            "description": "NA",
+            "id": "__VOLREG_ALIGN_TO__",
+            "name": "__VOLREG_ALIGN_TO__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_ALIGN_TO__"
+        },
+        {
+            "command-line-flag": "-volreg_base_dset",
+            "description": "NA",
+            "id": "__VOLREG_BASE_DSET__",
+            "name": "__VOLREG_BASE_DSET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_BASE_DSET__"
+        },
+        {
+            "command-line-flag": "-volreg_base_ind",
+            "description": "NA",
+            "id": "__VOLREG_BASE_IND__",
+            "name": "__VOLREG_BASE_IND__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_BASE_IND__"
+        },
+        {
+            "command-line-flag": "-volreg_get_allcostX",
+            "description": "NA",
+            "id": "__VOLREG_GET_ALLCOSTX__",
+            "name": "__VOLREG_GET_ALLCOSTX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_GET_ALLCOSTX__"
+        },
+        {
+            "command-line-flag": "-volreg_compute_tsnr",
+            "description": "NA",
+            "id": "__VOLREG_COMPUTE_TSNR__",
+            "name": "__VOLREG_COMPUTE_TSNR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_COMPUTE_TSNR__"
+        },
+        {
+            "command-line-flag": "-volreg_interp",
+            "description": "NA",
+            "id": "__VOLREG_INTERP__",
+            "name": "__VOLREG_INTERP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_INTERP__"
+        },
+        {
+            "command-line-flag": "-volreg_motsim",
+            "description": "NA",
+            "id": "__VOLREG_MOTSIM__",
+            "name": "__VOLREG_MOTSIM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_MOTSIM__"
+        },
+        {
+            "command-line-flag": "-volreg_opts_ms",
+            "description": "NA",
+            "id": "__VOLREG_OPTS_MS__",
+            "name": "__VOLREG_OPTS_MS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_OPTS_MS__"
+        },
+        {
+            "command-line-flag": "-volreg_opts_vr",
+            "description": "NA",
+            "id": "__VOLREG_OPTS_VR__",
+            "name": "__VOLREG_OPTS_VR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_OPTS_VR__"
+        },
+        {
+            "command-line-flag": "-volreg_no_extent_mask",
+            "description": "NA",
+            "id": "__VOLREG_NO_EXTENT_MASK__",
+            "name": "__VOLREG_NO_EXTENT_MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_NO_EXTENT_MASK__"
+        },
+        {
+            "command-line-flag": "-volreg_regress_per_run",
+            "description": "NA",
+            "id": "__VOLREG_REGRESS_PER_RUN__",
+            "name": "__VOLREG_REGRESS_PER_RUN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_REGRESS_PER_RUN__"
+        },
+        {
+            "command-line-flag": "-volreg_tlrc_adwarp",
+            "description": "NA",
+            "id": "__VOLREG_TLRC_ADWARP__",
+            "name": "__VOLREG_TLRC_ADWARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_TLRC_ADWARP__"
+        },
+        {
+            "command-line-flag": "-volreg_tlrc_warp",
+            "description": "NA",
+            "id": "__VOLREG_TLRC_WARP__",
+            "name": "__VOLREG_TLRC_WARP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_TLRC_WARP__"
+        },
+        {
+            "command-line-flag": "-volreg_warp_dxyz",
+            "description": "NA",
+            "id": "__VOLREG_WARP_DXYZ__",
+            "name": "__VOLREG_WARP_DXYZ__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_WARP_DXYZ__"
+        },
+        {
+            "command-line-flag": "-volreg_zpad",
+            "description": "NA",
+            "id": "__VOLREG_ZPAD__",
+            "name": "__VOLREG_ZPAD__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__VOLREG_ZPAD__"
+        },
+        {
+            "command-line-flag": "-surf_A",
+            "description": "NA",
+            "id": "__SURF_A__",
+            "name": "__SURF_A__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SURF_A__"
+        },
+        {
+            "command-line-flag": "-surf_B",
+            "description": "NA",
+            "id": "__SURF_B__",
+            "name": "__SURF_B__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SURF_B__"
+        },
+        {
+            "command-line-flag": "-surf_blur_fwhm",
+            "description": "NA",
+            "id": "__SURF_BLUR_FWHM__",
+            "name": "__SURF_BLUR_FWHM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SURF_BLUR_FWHM__"
+        },
+        {
+            "command-line-flag": "-blur_filter",
+            "description": "NA",
+            "id": "__BLUR_FILTER__",
+            "name": "__BLUR_FILTER__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_FILTER__"
+        },
+        {
+            "command-line-flag": "-blur_in_automask",
+            "description": "NA",
+            "id": "__BLUR_IN_AUTOMASK__",
+            "name": "__BLUR_IN_AUTOMASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_IN_AUTOMASK__"
+        },
+        {
+            "command-line-flag": "-blur_opts_BIM",
+            "description": "NA",
+            "id": "__BLUR_OPTS_BIM__",
+            "name": "__BLUR_OPTS_BIM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_OPTS_BIM__"
+        },
+        {
+            "command-line-flag": "-blur_opts_merge",
+            "description": "NA",
+            "id": "__BLUR_OPTS_MERGE__",
+            "name": "__BLUR_OPTS_MERGE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_OPTS_MERGE__"
+        },
+        {
+            "command-line-flag": "-blur_size",
+            "description": "NA",
+            "id": "__BLUR_SIZE__",
+            "name": "__BLUR_SIZE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_SIZE__"
+        },
+        {
+            "command-line-flag": "-blur_to_fwhm",
+            "description": "NA",
+            "id": "__BLUR_TO_FWHM__",
+            "name": "__BLUR_TO_FWHM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_TO_FWHM__"
+        },
+        {
+            "command-line-flag": "-blur_opts_B2FW",
+            "description": "NA",
+            "id": "__BLUR_OPTS_B2FW__",
+            "name": "__BLUR_OPTS_B2FW__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__BLUR_OPTS_B2FW__"
+        },
+        {
+            "command-line-flag": "-mask_apply",
+            "description": "NA",
+            "id": "__MASK_APPLY__",
+            "name": "__MASK_APPLY__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_APPLY__"
+        },
+        {
+            "command-line-flag": "-mask_dilate",
+            "description": "NA",
+            "id": "__MASK_DILATE__",
+            "name": "__MASK_DILATE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_DILATE__"
+        },
+        {
+            "command-line-flag": "-mask_import",
+            "description": "NA",
+            "id": "__MASK_IMPORT__",
+            "name": "__MASK_IMPORT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_IMPORT__"
+        },
+        {
+            "command-line-flag": "-mask_intersect",
+            "description": "NA",
+            "id": "__MASK_INTERSECT__",
+            "name": "__MASK_INTERSECT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_INTERSECT__"
+        },
+        {
+            "command-line-flag": "-mask_union",
+            "description": "NA",
+            "id": "__MASK_UNION__",
+            "name": "__MASK_UNION__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_UNION__"
+        },
+        {
+            "command-line-flag": "-mask_rm_segsy",
+            "description": "NA",
+            "id": "__MASK_RM_SEGSY__",
+            "name": "__MASK_RM_SEGSY__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_RM_SEGSY__"
+        },
+        {
+            "command-line-flag": "-mask_test_overlap",
+            "description": "NA",
+            "id": "__MASK_TEST_OVERLAP__",
+            "name": "__MASK_TEST_OVERLAP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_TEST_OVERLAP__"
+        },
+        {
+            "command-line-flag": "-mask_type",
+            "description": "NA",
+            "id": "__MASK_TYPE__",
+            "name": "__MASK_TYPE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__MASK_TYPE__"
+        },
+        {
+            "command-line-flag": "-combine_opts_tedana",
+            "description": "NA",
+            "id": "__COMBINE_OPTS_TEDANA__",
+            "name": "__COMBINE_OPTS_TEDANA__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__COMBINE_OPTS_TEDANA__"
+        },
+        {
+            "command-line-flag": "-combine_opts_tedwrap",
+            "description": "NA",
+            "id": "__COMBINE_OPTS_TEDWRAP__",
+            "name": "__COMBINE_OPTS_TEDWRAP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__COMBINE_OPTS_TEDWRAP__"
+        },
+        {
+            "command-line-flag": "-combine_tedana_path",
+            "description": "NA",
+            "id": "__COMBINE_TEDANA_PATH__",
+            "name": "__COMBINE_TEDANA_PATH__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__COMBINE_TEDANA_PATH__"
+        },
+        {
+            "command-line-flag": "-scale_max_val",
+            "description": "NA",
+            "id": "__SCALE_MAX_VAL__",
+            "name": "__SCALE_MAX_VAL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SCALE_MAX_VAL__"
+        },
+        {
+            "command-line-flag": "-scale_no_max",
+            "description": "NA",
+            "id": "__SCALE_NO_MAX__",
+            "name": "__SCALE_NO_MAX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__SCALE_NO_MAX__"
+        },
+        {
+            "command-line-flag": "-regress_3dD_stop",
+            "description": "NA",
+            "id": "__REGRESS_3DD_STOP__",
+            "name": "__REGRESS_3DD_STOP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_3DD_STOP__"
+        },
+        {
+            "command-line-flag": "-regress_anaticor",
+            "description": "NA",
+            "id": "__REGRESS_ANATICOR__",
+            "name": "__REGRESS_ANATICOR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ANATICOR__"
+        },
+        {
+            "command-line-flag": "-regress_anaticor_label",
+            "description": "NA",
+            "id": "__REGRESS_ANATICOR_LABEL__",
+            "name": "__REGRESS_ANATICOR_LABEL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ANATICOR_LABEL__"
+        },
+        {
+            "command-line-flag": "-regress_anaticor_radius",
+            "description": "NA",
+            "id": "__REGRESS_ANATICOR_RADIUS__",
+            "name": "__REGRESS_ANATICOR_RADIUS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ANATICOR_RADIUS__"
+        },
+        {
+            "command-line-flag": "-regress_anaticor_fast",
+            "description": "NA",
+            "id": "__REGRESS_ANATICOR_FAST__",
+            "name": "__REGRESS_ANATICOR_FAST__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ANATICOR_FAST__"
+        },
+        {
+            "command-line-flag": "-regress_anaticor_fwhm",
+            "description": "NA",
+            "id": "__REGRESS_ANATICOR_FWHM__",
+            "name": "__REGRESS_ANATICOR_FWHM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ANATICOR_FWHM__"
+        },
+        {
+            "command-line-flag": "-regress_apply_mask",
+            "description": "NA",
+            "id": "__REGRESS_APPLY_MASK__",
+            "name": "__REGRESS_APPLY_MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_APPLY_MASK__"
+        },
+        {
+            "command-line-flag": "-regress_apply_ricor",
+            "description": "NA",
+            "id": "__REGRESS_APPLY_RICOR__",
+            "name": "__REGRESS_APPLY_RICOR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_APPLY_RICOR__"
+        },
+        {
+            "command-line-flag": "-regress_bandpass",
+            "description": "NA",
+            "id": "__REGRESS_BANDPASS__",
+            "name": "__REGRESS_BANDPASS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_BANDPASS__"
+        },
+        {
+            "command-line-flag": "-regress_basis",
+            "description": "NA",
+            "id": "__REGRESS_BASIS__",
+            "name": "__REGRESS_BASIS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_BASIS__"
+        },
+        {
+            "command-line-flag": "-regress_basis_normall",
+            "description": "NA",
+            "id": "__REGRESS_BASIS_NORMALL__",
+            "name": "__REGRESS_BASIS_NORMALL__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_BASIS_NORMALL__"
+        },
+        {
+            "command-line-flag": "-regress_censor_extern",
+            "description": "NA",
+            "id": "__REGRESS_CENSOR_EXTERN__",
+            "name": "__REGRESS_CENSOR_EXTERN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_CENSOR_EXTERN__"
+        },
+        {
+            "command-line-flag": "-regress_censor_motion",
+            "description": "NA",
+            "id": "__REGRESS_CENSOR_MOTION__",
+            "name": "__REGRESS_CENSOR_MOTION__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_CENSOR_MOTION__"
+        },
+        {
+            "command-line-flag": "-regress_censor_first_trs",
+            "description": "NA",
+            "id": "__REGRESS_CENSOR_FIRST_TRS__",
+            "name": "__REGRESS_CENSOR_FIRST_TRS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_CENSOR_FIRST_TRS__"
+        },
+        {
+            "command-line-flag": "-regress_censor_prev",
+            "description": "NA",
+            "id": "__REGRESS_CENSOR_PREV__",
+            "name": "__REGRESS_CENSOR_PREV__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_CENSOR_PREV__"
+        },
+        {
+            "command-line-flag": "-regress_censor_outliers",
+            "description": "NA",
+            "id": "__REGRESS_CENSOR_OUTLIERS__",
+            "name": "__REGRESS_CENSOR_OUTLIERS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_CENSOR_OUTLIERS__"
+        },
+        {
+            "command-line-flag": "-regress_compute_gcor",
+            "description": "NA",
+            "id": "__REGRESS_COMPUTE_GCOR__",
+            "name": "__REGRESS_COMPUTE_GCOR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_COMPUTE_GCOR__"
+        },
+        {
+            "command-line-flag": "-regress_compute_tsnr",
+            "description": "NA",
+            "id": "__REGRESS_COMPUTE_TSNR__",
+            "name": "__REGRESS_COMPUTE_TSNR__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_COMPUTE_TSNR__"
+        },
+        {
+            "command-line-flag": "-regress_fout",
+            "description": "NA",
+            "id": "__REGRESS_FOUT__",
+            "name": "__REGRESS_FOUT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_FOUT__"
+        },
+        {
+            "command-line-flag": "-regress_make_cbucket",
+            "description": "NA",
+            "id": "__REGRESS_MAKE_CBUCKET__",
+            "name": "__REGRESS_MAKE_CBUCKET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_MAKE_CBUCKET__"
+        },
+        {
+            "command-line-flag": "-regress_mot_as_ort",
+            "description": "NA",
+            "id": "__REGRESS_MOT_AS_ORT__",
+            "name": "__REGRESS_MOT_AS_ORT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_MOT_AS_ORT__"
+        },
+        {
+            "command-line-flag": "-stim_file",
+            "description": "NA",
+            "id": "__STIM_FILE__",
+            "name": "__STIM_FILE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__STIM_FILE__"
+        },
+        {
+            "command-line-flag": "-ortvec",
+            "description": "NA",
+            "id": "__ORTVEC__",
+            "name": "__ORTVEC__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__ORTVEC__"
+        },
+        {
+            "command-line-flag": "-regress_motion_per_run",
+            "description": "NA",
+            "id": "__REGRESS_MOTION_PER_RUN__",
+            "name": "__REGRESS_MOTION_PER_RUN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_MOTION_PER_RUN__"
+        },
+        {
+            "command-line-flag": "-regress_skip_first_outliers",
+            "description": "NA",
+            "id": "__REGRESS_SKIP_FIRST_OUTLIERS__",
+            "name": "__REGRESS_SKIP_FIRST_OUTLIERS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_SKIP_FIRST_OUTLIERS__"
+        },
+        {
+            "command-line-flag": "-regress_compute_fitts",
+            "description": "NA",
+            "id": "__REGRESS_COMPUTE_FITTS__",
+            "name": "__REGRESS_COMPUTE_FITTS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_COMPUTE_FITTS__"
+        },
+        {
+            "command-line-flag": "-regress_cormat_warnings",
+            "description": "NA",
+            "id": "__REGRESS_CORMAT_WARNINGS__",
+            "name": "__REGRESS_CORMAT_WARNINGS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_CORMAT_WARNINGS__"
+        },
+        {
+            "command-line-flag": "-regress_est_blur_epits",
+            "description": "NA",
+            "id": "__REGRESS_EST_BLUR_EPITS__",
+            "name": "__REGRESS_EST_BLUR_EPITS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_EST_BLUR_EPITS__"
+        },
+        {
+            "command-line-flag": "-regress_est_blur_errts",
+            "description": "NA",
+            "id": "__REGRESS_EST_BLUR_ERRTS__",
+            "name": "__REGRESS_EST_BLUR_ERRTS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_EST_BLUR_ERRTS__"
+        },
+        {
+            "command-line-flag": "-regress_errts_prefix",
+            "description": "NA",
+            "id": "__REGRESS_ERRTS_PREFIX__",
+            "name": "__REGRESS_ERRTS_PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ERRTS_PREFIX__"
+        },
+        {
+            "command-line-flag": "-regress_fitts_prefix",
+            "description": "NA",
+            "id": "__REGRESS_FITTS_PREFIX__",
+            "name": "__REGRESS_FITTS_PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_FITTS_PREFIX__"
+        },
+        {
+            "command-line-flag": "-regress_global_times",
+            "description": "NA",
+            "id": "__REGRESS_GLOBAL_TIMES__",
+            "name": "__REGRESS_GLOBAL_TIMES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_GLOBAL_TIMES__"
+        },
+        {
+            "command-line-flag": "-regress_local_times",
+            "description": "NA",
+            "id": "__REGRESS_LOCAL_TIMES__",
+            "name": "__REGRESS_LOCAL_TIMES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_LOCAL_TIMES__"
+        },
+        {
+            "command-line-flag": "-regress_iresp_prefix",
+            "description": "NA",
+            "id": "__REGRESS_IRESP_PREFIX__",
+            "name": "__REGRESS_IRESP_PREFIX__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_IRESP_PREFIX__"
+        },
+        {
+            "command-line-flag": "-iresp",
+            "description": "NA",
+            "id": "__IRESP__",
+            "name": "__IRESP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__IRESP__"
+        },
+        {
+            "command-line-flag": "-regress_make_ideal_sum",
+            "description": "NA",
+            "id": "__REGRESS_MAKE_IDEAL_SUM__",
+            "name": "__REGRESS_MAKE_IDEAL_SUM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_MAKE_IDEAL_SUM__"
+        },
+        {
+            "command-line-flag": "-regress_motion_file",
+            "description": "NA",
+            "id": "__REGRESS_MOTION_FILE__",
+            "name": "__REGRESS_MOTION_FILE__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_MOTION_FILE__"
+        },
+        {
+            "command-line-flag": "-regress_no_fitts",
+            "description": "NA",
+            "id": "__REGRESS_NO_FITTS__",
+            "name": "__REGRESS_NO_FITTS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_FITTS__"
+        },
+        {
+            "command-line-flag": "-regress_no_ideal_sum",
+            "description": "NA",
+            "id": "__REGRESS_NO_IDEAL_SUM__",
+            "name": "__REGRESS_NO_IDEAL_SUM__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_IDEAL_SUM__"
+        },
+        {
+            "command-line-flag": "-regress_no_ideals",
+            "description": "NA",
+            "id": "__REGRESS_NO_IDEALS__",
+            "name": "__REGRESS_NO_IDEALS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_IDEALS__"
+        },
+        {
+            "command-line-flag": "-regress_no_iresp",
+            "description": "NA",
+            "id": "__REGRESS_NO_IRESP__",
+            "name": "__REGRESS_NO_IRESP__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_IRESP__"
+        },
+        {
+            "command-line-flag": "-regress_no_mask",
+            "description": "NA",
+            "id": "__REGRESS_NO_MASK__",
+            "name": "__REGRESS_NO_MASK__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_MASK__"
+        },
+        {
+            "command-line-flag": "-regress_no_motion",
+            "description": "NA",
+            "id": "__REGRESS_NO_MOTION__",
+            "name": "__REGRESS_NO_MOTION__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_MOTION__"
+        },
+        {
+            "command-line-flag": "-regress_no_motion_demean",
+            "description": "NA",
+            "id": "__REGRESS_NO_MOTION_DEMEAN__",
+            "name": "__REGRESS_NO_MOTION_DEMEAN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_MOTION_DEMEAN__"
+        },
+        {
+            "command-line-flag": "-regress_no_motion_deriv",
+            "description": "NA",
+            "id": "__REGRESS_NO_MOTION_DERIV__",
+            "name": "__REGRESS_NO_MOTION_DERIV__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_NO_MOTION_DERIV__"
+        },
+        {
+            "command-line-flag": "-regress_opts_reml",
+            "description": "NA",
+            "id": "__REGRESS_OPTS_REML__",
+            "name": "__REGRESS_OPTS_REML__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_OPTS_REML__"
+        },
+        {
+            "command-line-flag": "-regress_polort",
+            "description": "NA",
+            "id": "__REGRESS_POLORT__",
+            "name": "__REGRESS_POLORT__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_POLORT__"
+        },
+        {
+            "command-line-flag": "-regress_reml_exec",
+            "description": "NA",
+            "id": "__REGRESS_REML_EXEC__",
+            "name": "__REGRESS_REML_EXEC__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_REML_EXEC__"
+        },
+        {
+            "command-line-flag": "-regress_ROI_PC",
+            "description": "NA",
+            "id": "__REGRESS_ROI_PC__",
+            "name": "__REGRESS_ROI_PC__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_ROI_PC__"
+        },
+        {
+            "command-line-flag": "-regress_RSFC",
+            "description": "NA",
+            "id": "__REGRESS_RSFC__",
+            "name": "__REGRESS_RSFC__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_RSFC__"
+        },
+        {
+            "command-line-flag": "-regress_RONI",
+            "description": "NA",
+            "id": "__REGRESS_RONI__",
+            "name": "__REGRESS_RONI__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_RONI__"
+        },
+        {
+            "command-line-flag": "-regress_extra_stim_files",
+            "description": "NA",
+            "id": "__REGRESS_EXTRA_STIM_FILES__",
+            "name": "__REGRESS_EXTRA_STIM_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_EXTRA_STIM_FILES__"
+        },
+        {
+            "command-line-flag": "-regress_extra_stim_labels",
+            "description": "NA",
+            "id": "__REGRESS_EXTRA_STIM_LABELS__",
+            "name": "__REGRESS_EXTRA_STIM_LABELS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_EXTRA_STIM_LABELS__"
+        },
+        {
+            "command-line-flag": "-regress_stim_times_offset",
+            "description": "NA",
+            "id": "__REGRESS_STIM_TIMES_OFFSET__",
+            "name": "__REGRESS_STIM_TIMES_OFFSET__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_STIM_TIMES_OFFSET__"
+        },
+        {
+            "command-line-flag": "-regress_use_stim_files",
+            "description": "NA",
+            "id": "__REGRESS_USE_STIM_FILES__",
+            "name": "__REGRESS_USE_STIM_FILES__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_USE_STIM_FILES__"
+        },
+        {
+            "command-line-flag": "-regress_opts_CS",
+            "description": "NA",
+            "id": "__REGRESS_OPTS_CS__",
+            "name": "__REGRESS_OPTS_CS__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_OPTS_CS__"
+        },
+        {
+            "command-line-flag": "-regress_CS_NN",
+            "description": "NA",
+            "id": "__REGRESS_CS_NN__",
+            "name": "__REGRESS_CS_NN__",
+            "optional": true,
+            "type": "String",
+            "value-key": "__REGRESS_CS_NN__"
+        }
+    ],
+    "name": "tool name",
+    "schema-version": "0.5",
+    "suggested-resources": {
+        "cpu-cores": 1,
+        "ram": 1,
+        "walltime-estimate": 60
+    },
+    "tags": {},
+    "tool-version": "v0.1.0"
+}
