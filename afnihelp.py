@@ -13,6 +13,9 @@ ALPHANUM = re.compile("[\W_]+")
 CLEANARG = re.compile("[^0-9_a-zA-Z\-]")
 FINDARGS = re.compile("ARGS=\((.*) ?\)")
 FINDHELP = re.compile("\s*(-[\s\w]*)[=:}][\s\S]")
+IGNOREOR = re.compile("^\s*\*\s*OR\s*\*")
+PARTJSON = re.compile("(_part\d+)$")
+WHISPACE = re.compile('\s+')
 
 
 def gen_outdir(outdir):
@@ -83,7 +86,7 @@ def get_usage_string(fname):
     usage : str
         Line detailing usage for command in `fname`
     """
-    text_list = fname.read_text(errors = 'ignore').splitlines()
+    text_list = fname.read_text(errors='ignore').splitlines()
     usage_text = [val for val in text_list if
                   val.lower().strip().startswith('usage')]
     if usage_text:
@@ -204,6 +207,9 @@ def _get_basic_help(fname, putative=None):
             for n, f in enumerate(helptext):
                 starts = [p.get('line_start') for p in params]
                 if f.strip().startswith(miss) and n not in starts:
+                    if IGNOREOR.match(helptext[n - 1]) is not None:
+                        print('Ignoring {}'.format(f))
+                        continue
                     begin = currchar + f.find(miss)
                     params += [dict(param=miss, line_start=n, length=None,
                                     param_range=[begin, begin + len(miss)])]
@@ -304,26 +310,37 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
     # iterate through tools and get help information
     for tool in help_dir.glob('*.complete.bash'):
         tool_name = tool.name.replace('.complete.bash', '')
+        # get parameter information + helptext
         params, helptext = get_full_help(get_help_fname(help_dir, tool_name),
                                          putative=get_complete_args(tool))
+        # we can't have periods in our filenames!
+        tool_name = tool_name.replace('.', '_')
+        # we only need the param_range and help_range keys for each parameter
         params = [get_ranges(p) for p in params]
+        # only save out one JSON if that's all we need
         if len('\n'.join(helptext)) < split_char:
             fname = outdir.joinpath('{}.json'.format(tool_name)).as_posix()
             with open(fname, 'w') as dest:
                 json.dump(dict(helptext=helptext, params=params), dest)
             continue
 
-        # if len(helptext) is far over `split_char`, split!
+        # if len(helptext) is larger than `split_char`, split it into chunks!
         split_jsons = split_help(params, helptext, split_char)
+
+        # save out each parameter list / helptext chunk separately
         for n, part in enumerate(split_jsons):
-            if n > 0:
-                part['previous'] = fname
+            # get previous / next filenames for multi-part helps
+            part['previous'] = fname if n > 0 else ''
             fname = '{}_part{}.json'.format(tool_name, n + 1)
             jsons.append(outdir.joinpath(fname).as_posix())
-            if n < len(split_jsons) - 1:
-                part['next'] = '{}_part{}.json'.format(tool_name, n + 2)
+            part['next'] = '{}_part{}.json'.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
+            # save out chunk to CMD_partXX.json file
             with open(jsons[-1], 'w') as dest:
                 json.dump(part, dest)
+
+    # write `all_programs` file so we know what's in the directory
+    with open(outdir.joinpath('all_programs'), 'w') as dest:
+        json.dump([p.name for p in jsons], dest)
 
     return jsons
 
@@ -413,25 +430,114 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
     for tool in help_dir.glob('*.complete.bash'):
         cmd = tool.name.replace('.complete.bash', '')
         help_fname = get_help_fname(help_dir, cmd)
+        out_fname = outdir.joinpath('{}.json'.format(cmd))
+
+        # get hypothetical parameters (both flag and positional!)
         params = get_full_help(help_fname,
                                putative=get_complete_args(tool))[0]
         params += [{'param': f} for f in get_usage_params(help_fname)]
-        out_fname = outdir.joinpath('{}.json'.format(cmd))
+
+        # construct an empty parser to hold all parameters
         parser = argparse.ArgumentParser(add_help=False)
         for param in params:
+            # ensure argument not already in parser (and not invalid / empty)
             arg = param.get('param')
             previous = [f.option_strings for f in parser._actions] + [['']]
-            # ensure argument not already in parser (and not invalid / empty)
+
             if arg not in list(chain.from_iterable(previous)):
+                # get info about parameter, if we have it
                 kwargs = {'required': True} if arg == '-input' else {}
                 kwargs.update({'dest': '__{}__'.format(arg.strip('-').upper())}
                               if arg.startswith('-') else {})
                 desc = param.get('help', 'NA')
                 if desc != 'NA':
                     desc = ' '.join([f.strip() for f in desc.split('\n')])
+
+                # add parameter to parser
                 parser.add_argument(arg, type=str, help=desc, **kwargs)
+
+        # save out new boutiques descriptor
         bout = bc.CreateDescriptor(parser, execname=cmd)
         bout.save(out_fname)
         descriptors.append(out_fname.as_posix())
 
     return descriptors
+
+
+def fix_boutify_help(boutified, descdir, outdir):
+    """
+    Parameters
+    ----------
+    boutified : str
+        Path to file from Firebase with updated help annotations
+    descdir : str
+        Path to directory where JSON files to boutify were kept
+    outdir : str
+        Path to directory with boutiques descriptors whose help should be
+        updated
+    """
+    descdir, outdir = Path(descdir), Path(outdir)
+
+    # load in boutified annotations
+    with open(boutified) as src:
+        annotations = json.load(src)
+
+    # iterate through all annnotations
+    for prefix, update in annotations.items():
+        # load in un-boutified JSON and boutiques descriptor for updating
+        desc_fname = descdir.joinpath('{}.json'.format(prefix))
+        out_fname = outdir.joinpath('{}.json'.format(
+            PARTJSON.sub('', prefix).replace('_py', '.py'))
+        )
+        # if we don't have both then skip this annotation, I guess
+        if not desc_fname.exists() or not out_fname.exists():
+            continue
+        with desc_fname.open() as boutified_help:
+            info = json.load(boutified_help)
+        with out_fname.open() as boutiques_descriptor:
+            descriptor = json.load(boutiques_descriptor)
+
+        # pull relevant info from annotation, helptext, and boutiques desc
+        update = update.get('annot')
+        if update is None:
+            continue
+        helptext = '\n'.join(info['helptext'])
+        flags = [t.get('command-line-flag') for t in descriptor['inputs']]
+
+        # go through parameters and update help in boutiques descriptor
+        remove_inputs = []
+        for n, param in enumerate(info['params']):
+            # if there is NO help_range provided in the annotation then this
+            # means we mis-classified the parameter and it should be removed
+            help_ranges = update.get('h{}'.format(n))
+            if help_ranges is None:
+                remove_inputs += [n]
+                continue
+
+            # get the parameter name and boutified parameter description/help
+            # clean up help by:
+            #   1. stripping whitespace from highlight chunks
+            #   2. joining higlights chunks with a space
+            #   3. splitting joined text into lines
+            #   4. condensing consecutive whitespace in each line
+            #   5. stripping whitespace from each line
+            #   6. rejoining lines with a space
+            param_name = helptext[slice(*param['param_range'])]
+            param_desc = ' '.join([helptext[start:end].strip() for start, end
+                                   in help_ranges]).splitlines()
+            param_desc = ' '.join([WHISPACE.sub(' ', f).strip()
+                                   for f in param_desc])
+
+            # reassign parameter description to the relevant boutiques input
+            descriptor_index = flags.index(param_name)
+            descriptor['inputs'][descriptor_index]['description'] = param_desc
+
+        # remove all the "bad" parameters from both the inputs and command line
+        for idx in sorted(remove_inputs, reverse=True):
+            removed = descriptor['inputs'].pop(idx)
+            new = re.sub(removed['id'] + ' ', '', descriptor['command-line'])
+            descriptor['command-line'] = new
+
+        # write out updated descriptor information
+        with out_fname.open('w') as dest:
+            json.dump(descriptor, dest, indent=4, sort_keys=True)
