@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import re
 import boutiques.creator as bc
+import numpy as np
 
 ALPHANUM = re.compile("[\W_]+")
 CLEANARG = re.compile("[^0-9_a-zA-Z\-]")
@@ -234,10 +235,12 @@ def get_full_help(fname, putative=None):
     -------
     params : list of dict
         Where each entry has keys ['param', 'line_start', 'length',
-        'description'] detailing the parameter name ('param'), the first line
-        of its description in `helptext` ('line_start'), the putative length of
-        its description in line numbers, and an attempt at parsing that
-        description from `helptext` ('description')
+        'help', 'param_range', 'help_range'] detailing the parameter name
+        ('param'), the first line of its description in `helptext`
+        ('line_start'), the putative length of its description in line numbers,
+        an attempt at parsing that description from `helptext` ('help'), the
+        character slice for the parameter string ('param_range'), and the
+        character slice for the putative help string ('help_range')
     helptext : str
         Full helptext of tool in `fname`
     """
@@ -265,7 +268,7 @@ def get_full_help(fname, putative=None):
     return params, helptext
 
 
-def gen_help_jsons(help_dir, outdir='to_boutify'):
+def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
     """
     Generates individual JSON files for each AFNI command in `help_dir`
 
@@ -280,12 +283,20 @@ def gen_help_jsons(help_dir, outdir='to_boutify'):
         Path to directory with AFNI help files
     outdir : str
         Path to where output JSON files should be saved
+    split_char : int, optional
+        Approximate number of characters at which to split help text
 
     Returns
     -------
     jsons : list of str
         Paths to saved JSON files
     """
+
+    def get_ranges(param):
+        """ Selects only 'range' keys from `param` """
+        return dict(param_range=param['param_range'],
+                    help_range=param['help_range'])
+
     outdir = gen_outdir(outdir)
     help_dir = Path(help_dir).resolve()
 
@@ -295,11 +306,87 @@ def gen_help_jsons(help_dir, outdir='to_boutify'):
         tool_name = tool.name.replace('.complete.bash', '')
         params, helptext = get_full_help(get_help_fname(help_dir, tool_name),
                                          putative=get_complete_args(tool))
-        jsons.append(outdir.joinpath('{}.json'.format(tool_name)).as_posix())
-        with open(jsons[-1], 'w') as dest:  # save to ugly json
-            json.dump(dict(helptext=helptext, params=params), dest)
+        params = [get_ranges(p) for p in params]
+        if len('\n'.join(helptext)) < split_char:
+            fname = outdir.joinpath('{}.json'.format(tool_name)).as_posix()
+            with open(fname, 'w') as dest:
+                json.dump(dict(helptext=helptext, params=params), dest)
+            continue
+
+        # if len(helptext) is far over `split_char`, split!
+        split_jsons = split_help(params, helptext, split_char)
+        for n, part in enumerate(split_jsons):
+            if n > 0:
+                part['previous'] = fname
+            fname = '{}_part{}.json'.format(tool_name, n + 1)
+            jsons.append(outdir.joinpath(fname).as_posix())
+            if n < len(split_jsons) - 1:
+                part['next'] = '{}_part{}.json'.format(tool_name, n + 2)
+            with open(jsons[-1], 'w') as dest:
+                json.dump(part, dest)
 
     return jsons
+
+
+def split_help(params, helptext, split_char=5000, pad=1000):
+    """
+    Splits `params` and `helptext` into chunks of approximately `split_char`
+
+    Parameters
+    ----------
+    params : list of dict
+        Where each entry has keys ['param', 'line_start', 'length',
+        'help', 'param_range', 'help_range'] detailing the parameter name
+        ('param'), the first line of its description in `helptext`
+        ('line_start'), the putative length of its description in line numbers,
+        an attempt at parsing that description from `helptext` ('help'), the
+        character slice for the parameter string ('param_range'), and the
+        character slice for the putative help string ('help_range')
+    helptext : list of str
+        Full helptext of tool in `fname`, broken at lines
+    split_char : int, optional
+        Approximate size of character chunks to split helptext into
+    pad : int, optional
+        Padding around `split_char`
+
+    Returns
+    -------
+    split : list of dict
+        List of split-ified `params` and `helptext` such that each `helptext`
+        is approximately `split_char` in length
+    """
+    def fix_param(param, subtract):
+        """ Reset parameter ranges in `param` based on `subtract` """
+        param['param_range'] = [pp - subtract for pp in param['param_range']]
+        param['help_range'] = [pp - subtract for pp in param['help_range']]
+        return param
+
+    params = [f.copy() for f in params]
+    helptext = '\n'.join(helptext)
+    helplen = len(helptext) + 1
+
+    # find where to split parameters based on length of helptext
+    curr_char = last_char = 0
+    param_split = []
+    for n, p in enumerate(params):
+        curr_char = p['help_range'][-1] - last_char
+        if curr_char > split_char:
+            param_split += [n]
+            curr_char = 0
+            last_char = p['help_range'][-1]
+    param_split = np.split(params, param_split)
+
+    # clip helptext based on splits and reset param ranges so characters align
+    split = [0] + [f[0]['param_range'][0] for f in param_split[1:]] + [helplen]
+    save_as_jsons = []
+    for n, (start, end) in enumerate(zip(split, split[1:])):
+        if start > pad:
+            start -= pad
+        curr_help = helptext[start:end + pad].splitlines()
+        curr_params = [fix_param(p, start) for p in param_split[n]]
+        save_as_jsons.append(dict(helptext=curr_help, params=curr_params))
+
+    return save_as_jsons
 
 
 def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
