@@ -111,24 +111,27 @@ def get_usage_params(fname):
     """
     usage_text = get_usage_string(Path(fname))
     if usage_text:
-        text_with_bracket_args = re.sub('\[[^\[\]]*\]', '', usage_text)
-        text_without_bracket_args = text_with_bracket_args.split(':')[1]
-        text_with_spaces = re.sub(
-            '\s+',
-            ' ',
-            text_without_bracket_args).strip()
-        args = []
-        ignore = False
-        for a in text_with_spaces.split(' ')[1:]:
-            if a.startswith('~'):
-                continue
-            if a.startswith('-'):
-                ignore = True
-                continue
-            if ignore:
-                ignore = False
-                continue
-            args += [a]
+        try:
+            text_with_bracket_args = re.sub('\[[^\[\]]*\]', '', usage_text)
+            text_without_bracket_args = text_with_bracket_args.split(':')[1]
+            text_with_spaces = re.sub(
+                '\s+',
+                ' ',
+                text_without_bracket_args).strip()
+            args = []
+            ignore = False
+            for a in text_with_spaces.split(' ')[1:]:
+                if a.startswith('~'):
+                    continue
+                if a.startswith('-'):
+                    ignore = True
+                    continue
+                if ignore:
+                    ignore = False
+                    continue
+                args += [a]
+        except IndexError:
+            args = []
     else:
         args = []
     return args
@@ -447,10 +450,11 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
             arg = param.get('param')
             previous = [f.option_strings for f in parser._actions] + [['']]
 
+            # ensure argument not already in parser (and not invalid / empty)
             if arg not in list(chain.from_iterable(previous)):
                 # get info about parameter, if we have it
                 kwargs = {'required': True} if arg == '-input' else {}
-                kwargs.update({'dest': '__{}__'.format(arg.strip('-').upper())}
+                kwargs.update({'dest': '{}'.format(arg.strip('-').upper())}
                               if arg.startswith('-') else {})
                 desc = param.get('help', 'NA')
                 if desc != 'NA':
