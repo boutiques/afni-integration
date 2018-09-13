@@ -207,9 +207,6 @@ def _get_basic_help(fname, putative=None):
             for n, f in enumerate(helptext):
                 starts = [p.get('line_start') for p in params]
                 if f.strip().startswith(miss) and n not in starts:
-                    if IGNOREOR.match(helptext[n - 1]) is not None:
-                        print('Ignoring {}'.format(f))
-                        continue
                     begin = currchar + f.find(miss)
                     params += [dict(param=miss, line_start=n, length=None,
                                     param_range=[begin, begin + len(miss)])]
@@ -274,7 +271,8 @@ def get_full_help(fname, putative=None):
     return params, helptext
 
 
-def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
+def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000,
+                   verbose=True):
     """
     Generates individual JSON files for each AFNI command in `help_dir`
 
@@ -291,6 +289,8 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
         Path to where output JSON files should be saved
     split_char : int, optional
         Approximate number of characters at which to split help text
+    verbose : bool, optional
+        Whether to print status messages. Default: True
 
     Returns
     -------
@@ -299,7 +299,7 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
     """
 
     def get_ranges(param):
-        """ Selects only 'range' keys from `param` """
+        """ Selects only 'help_range' and 'param_range' keys from `param` """
         return dict(param_range=param['param_range'],
                     help_range=param['help_range'])
 
@@ -310,6 +310,8 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
     # iterate through tools and get help information
     for tool in help_dir.glob('*.complete.bash'):
         tool_name = tool.name.replace('.complete.bash', '')
+        if verbose:
+            print('Generating JSON for {}.'.format(tool_name))
         # get parameter information + helptext
         params, helptext = get_full_help(get_help_fname(help_dir, tool_name),
                                          putative=get_complete_args(tool))
@@ -319,8 +321,8 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
         params = [get_ranges(p) for p in params]
         # only save out one JSON if that's all we need
         if len('\n'.join(helptext)) < split_char:
-            fname = outdir.joinpath('{}.json'.format(tool_name)).as_posix()
-            with open(fname, 'w') as dest:
+            fname = outdir.joinpath('{}.json'.format(tool_name))
+            with fname.open('w') as dest:
                 json.dump(dict(helptext=helptext, params=params), dest)
             continue
 
@@ -328,18 +330,19 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
         split_jsons = split_help(params, helptext, split_char)
 
         # save out each parameter list / helptext chunk separately
+        temp = '{}_part{}.json'
         for n, part in enumerate(split_jsons):
             # get previous / next filenames for multi-part helps
             part['previous'] = fname if n > 0 else ''
-            fname = '{}_part{}.json'.format(tool_name, n + 1)
-            jsons.append(outdir.joinpath(fname).as_posix())
-            part['next'] = '{}_part{}.json'.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
+            fname = temp.format(tool_name, n + 1)
+            jsons.append(outdir.joinpath(fname))
+            part['next'] = temp.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
             # save out chunk to CMD_partXX.json file
-            with open(jsons[-1], 'w') as dest:
+            with jsons[-1].open('w') as dest:
                 json.dump(part, dest)
 
     # write `all_programs` file so we know what's in the directory
-    with open(outdir.joinpath('all_programs'), 'w') as dest:
+    with outdir.joinpath('all_programs').open('w') as dest:
         json.dump([p.name for p in jsons], dest)
 
     return jsons
