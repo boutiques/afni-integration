@@ -7,11 +7,15 @@ import json
 from pathlib import Path
 import re
 import boutiques.creator as bc
+import numpy as np
 
 ALPHANUM = re.compile("[\W_]+")
 CLEANARG = re.compile("[^0-9_a-zA-Z\-]")
 FINDARGS = re.compile("ARGS=\((.*) ?\)")
 FINDHELP = re.compile("\s*(-[\s\w]*)[=:}][\s\S]")
+IGNOREOR = re.compile("^\s*\*\s*OR\s*\*")
+PARTJSON = re.compile("(_part\d+)$")
+WHISPACE = re.compile('\s+')
 
 
 def gen_outdir(outdir):
@@ -82,7 +86,7 @@ def get_usage_string(fname):
     usage : str
         Line detailing usage for command in `fname`
     """
-    text_list = fname.read_text(errors = 'ignore').splitlines()
+    text_list = fname.read_text(errors='ignore').splitlines()
     usage_text = [val for val in text_list if
                   val.lower().strip().startswith('usage')]
     if usage_text:
@@ -206,6 +210,9 @@ def _get_basic_help(fname, putative=None):
             for n, f in enumerate(helptext):
                 starts = [p.get('line_start') for p in params]
                 if f.strip().startswith(miss) and n not in starts:
+                    if IGNOREOR.match(helptext[n - 1]) is not None:
+                        print('Ignoring {}'.format(f))
+                        continue
                     begin = currchar + f.find(miss)
                     params += [dict(param=miss, line_start=n, length=None,
                                     param_range=[begin, begin + len(miss)])]
@@ -237,10 +244,12 @@ def get_full_help(fname, putative=None):
     -------
     params : list of dict
         Where each entry has keys ['param', 'line_start', 'length',
-        'description'] detailing the parameter name ('param'), the first line
-        of its description in `helptext` ('line_start'), the putative length of
-        its description in line numbers, and an attempt at parsing that
-        description from `helptext` ('description')
+        'help', 'param_range', 'help_range'] detailing the parameter name
+        ('param'), the first line of its description in `helptext`
+        ('line_start'), the putative length of its description in line numbers,
+        an attempt at parsing that description from `helptext` ('help'), the
+        character slice for the parameter string ('param_range'), and the
+        character slice for the putative help string ('help_range')
     helptext : str
         Full helptext of tool in `fname`
     """
@@ -268,7 +277,7 @@ def get_full_help(fname, putative=None):
     return params, helptext
 
 
-def gen_help_jsons(help_dir, outdir='to_boutify'):
+def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000):
     """
     Generates individual JSON files for each AFNI command in `help_dir`
 
@@ -283,12 +292,20 @@ def gen_help_jsons(help_dir, outdir='to_boutify'):
         Path to directory with AFNI help files
     outdir : str
         Path to where output JSON files should be saved
+    split_char : int, optional
+        Approximate number of characters at which to split help text
 
     Returns
     -------
     jsons : list of str
         Paths to saved JSON files
     """
+
+    def get_ranges(param):
+        """ Selects only 'range' keys from `param` """
+        return dict(param_range=param['param_range'],
+                    help_range=param['help_range'])
+
     outdir = gen_outdir(outdir)
     help_dir = Path(help_dir).resolve()
 
@@ -296,13 +313,100 @@ def gen_help_jsons(help_dir, outdir='to_boutify'):
     # iterate through tools and get help information
     for tool in help_dir.glob('*.complete.bash'):
         tool_name = tool.name.replace('.complete.bash', '')
+        # get parameter information + helptext
         params, helptext = get_full_help(get_help_fname(help_dir, tool_name),
                                          putative=get_complete_args(tool))
-        jsons.append(outdir.joinpath('{}.json'.format(tool_name)).as_posix())
-        with open(jsons[-1], 'w') as dest:  # save to ugly json
-            json.dump(dict(helptext=helptext, params=params), dest)
+        # we can't have periods in our filenames!
+        tool_name = tool_name.replace('.', '_')
+        # we only need the param_range and help_range keys for each parameter
+        params = [get_ranges(p) for p in params]
+        # only save out one JSON if that's all we need
+        if len('\n'.join(helptext)) < split_char:
+            fname = outdir.joinpath('{}.json'.format(tool_name)).as_posix()
+            with open(fname, 'w') as dest:
+                json.dump(dict(helptext=helptext, params=params), dest)
+            continue
+
+        # if len(helptext) is larger than `split_char`, split it into chunks!
+        split_jsons = split_help(params, helptext, split_char)
+
+        # save out each parameter list / helptext chunk separately
+        for n, part in enumerate(split_jsons):
+            # get previous / next filenames for multi-part helps
+            part['previous'] = fname if n > 0 else ''
+            fname = '{}_part{}.json'.format(tool_name, n + 1)
+            jsons.append(outdir.joinpath(fname).as_posix())
+            part['next'] = '{}_part{}.json'.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
+            # save out chunk to CMD_partXX.json file
+            with open(jsons[-1], 'w') as dest:
+                json.dump(part, dest)
+
+    # write `all_programs` file so we know what's in the directory
+    with open(outdir.joinpath('all_programs'), 'w') as dest:
+        json.dump([p.name for p in jsons], dest)
 
     return jsons
+
+
+def split_help(params, helptext, split_char=5000, pad=1000):
+    """
+    Splits `params` and `helptext` into chunks of approximately `split_char`
+
+    Parameters
+    ----------
+    params : list of dict
+        Where each entry has keys ['param', 'line_start', 'length',
+        'help', 'param_range', 'help_range'] detailing the parameter name
+        ('param'), the first line of its description in `helptext`
+        ('line_start'), the putative length of its description in line numbers,
+        an attempt at parsing that description from `helptext` ('help'), the
+        character slice for the parameter string ('param_range'), and the
+        character slice for the putative help string ('help_range')
+    helptext : list of str
+        Full helptext of tool in `fname`, broken at lines
+    split_char : int, optional
+        Approximate size of character chunks to split helptext into
+    pad : int, optional
+        Padding around `split_char`
+
+    Returns
+    -------
+    split : list of dict
+        List of split-ified `params` and `helptext` such that each `helptext`
+        is approximately `split_char` in length
+    """
+    def fix_param(param, subtract):
+        """ Reset parameter ranges in `param` based on `subtract` """
+        param['param_range'] = [pp - subtract for pp in param['param_range']]
+        param['help_range'] = [pp - subtract for pp in param['help_range']]
+        return param
+
+    params = [f.copy() for f in params]
+    helptext = '\n'.join(helptext)
+    helplen = len(helptext) + 1
+
+    # find where to split parameters based on length of helptext
+    curr_char = last_char = 0
+    param_split = []
+    for n, p in enumerate(params):
+        curr_char = p['help_range'][-1] - last_char
+        if curr_char > split_char:
+            param_split += [n]
+            curr_char = 0
+            last_char = p['help_range'][-1]
+    param_split = np.split(params, param_split)
+
+    # clip helptext based on splits and reset param ranges so characters align
+    split = [0] + [f[0]['param_range'][0] for f in param_split[1:]] + [helplen]
+    save_as_jsons = []
+    for n, (start, end) in enumerate(zip(split, split[1:])):
+        if start > pad:
+            start -= pad
+        curr_help = helptext[start:end + pad].splitlines()
+        curr_params = [fix_param(p, start) for p in param_split[n]]
+        save_as_jsons.append(dict(helptext=curr_help, params=curr_params))
+
+    return save_as_jsons
 
 
 def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
@@ -329,25 +433,115 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
     for tool in help_dir.glob('*.complete.bash'):
         cmd = tool.name.replace('.complete.bash', '')
         help_fname = get_help_fname(help_dir, cmd)
+        out_fname = outdir.joinpath('{}.json'.format(cmd))
+
+        # get hypothetical parameters (both flag and positional!)
         params = get_full_help(help_fname,
                                putative=get_complete_args(tool))[0]
         params += [{'param': f} for f in get_usage_params(help_fname)]
-        out_fname = outdir.joinpath('{}.json'.format(cmd))
+
+        # construct an empty parser to hold all parameters
         parser = argparse.ArgumentParser(add_help=False)
         for param in params:
+            # ensure argument not already in parser (and not invalid / empty)
             arg = param.get('param')
             previous = [f.option_strings for f in parser._actions] + [['']]
+
             # ensure argument not already in parser (and not invalid / empty)
-            if arSg not in list(chain.from_iterable(previous)):
+            if arg not in list(chain.from_iterable(previous)):
+                # get info about parameter, if we have it
                 kwargs = {'required': True} if arg == '-input' else {}
                 kwargs.update({'dest': '{}'.format(arg.strip('-').upper())}
                               if arg.startswith('-') else {})
                 desc = param.get('help', 'NA')
                 if desc != 'NA':
                     desc = ' '.join([f.strip() for f in desc.split('\n')])
+
+                # add parameter to parser
                 parser.add_argument(arg, type=str, help=desc, **kwargs)
+
+        # save out new boutiques descriptor
         bout = bc.CreateDescriptor(parser, execname=cmd)
         bout.save(out_fname)
         descriptors.append(out_fname.as_posix())
 
     return descriptors
+
+
+def fix_boutify_help(boutified, descdir, outdir):
+    """
+    Parameters
+    ----------
+    boutified : str
+        Path to file from Firebase with updated help annotations
+    descdir : str
+        Path to directory where JSON files to boutify were kept
+    outdir : str
+        Path to directory with boutiques descriptors whose help should be
+        updated
+    """
+    descdir, outdir = Path(descdir), Path(outdir)
+
+    # load in boutified annotations
+    with open(boutified) as src:
+        annotations = json.load(src)
+
+    # iterate through all annnotations
+    for prefix, update in annotations.items():
+        # load in un-boutified JSON and boutiques descriptor for updating
+        desc_fname = descdir.joinpath('{}.json'.format(prefix))
+        out_fname = outdir.joinpath('{}.json'.format(
+            PARTJSON.sub('', prefix).replace('_py', '.py'))
+        )
+        # if we don't have both then skip this annotation, I guess
+        if not desc_fname.exists() or not out_fname.exists():
+            continue
+        with desc_fname.open() as boutified_help:
+            info = json.load(boutified_help)
+        with out_fname.open() as boutiques_descriptor:
+            descriptor = json.load(boutiques_descriptor)
+
+        # pull relevant info from annotation, helptext, and boutiques desc
+        update = update.get('annot')
+        if update is None:
+            continue
+        helptext = '\n'.join(info['helptext'])
+        flags = [t.get('command-line-flag') for t in descriptor['inputs']]
+
+        # go through parameters and update help in boutiques descriptor
+        remove_inputs = []
+        for n, param in enumerate(info['params']):
+            # if there is NO help_range provided in the annotation then this
+            # means we mis-classified the parameter and it should be removed
+            help_ranges = update.get('h{}'.format(n))
+            if help_ranges is None:
+                remove_inputs += [n]
+                continue
+
+            # get the parameter name and boutified parameter description/help
+            # clean up help by:
+            #   1. stripping whitespace from highlight chunks
+            #   2. joining higlights chunks with a space
+            #   3. splitting joined text into lines
+            #   4. condensing consecutive whitespace in each line
+            #   5. stripping whitespace from each line
+            #   6. rejoining lines with a space
+            param_name = helptext[slice(*param['param_range'])]
+            param_desc = ' '.join([helptext[start:end].strip() for start, end
+                                   in help_ranges]).splitlines()
+            param_desc = ' '.join([WHISPACE.sub(' ', f).strip()
+                                   for f in param_desc])
+
+            # reassign parameter description to the relevant boutiques input
+            descriptor_index = flags.index(param_name)
+            descriptor['inputs'][descriptor_index]['description'] = param_desc
+
+        # remove all the "bad" parameters from both the inputs and command line
+        for idx in sorted(remove_inputs, reverse=True):
+            removed = descriptor['inputs'].pop(idx)
+            new = re.sub(removed['id'] + ' ', '', descriptor['command-line'])
+            descriptor['command-line'] = new
+
+        # write out updated descriptor information
+        with out_fname.open('w') as dest:
+            json.dump(descriptor, dest, indent=4, sort_keys=True)
