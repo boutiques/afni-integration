@@ -16,6 +16,12 @@ FINDHELP = re.compile("\s*(-[\s\w]*)[=:}][\s\S]")
 IGNOREOR = re.compile("^\s*\*\s*OR\s*\*")
 PARTJSON = re.compile("(_part\d+)$")
 WHISPACE = re.compile('\s+')
+NONALPHA = {
+    '.': '__PERIOD__',
+    '@': '__AT__',
+    '+': '__PLUS__',
+    '-': '__HYPHEN__',
+}
 
 
 def gen_outdir(outdir):
@@ -218,6 +224,14 @@ def _get_basic_help(fname, putative=None):
     # sort by line start in preparation for calculating lengths of descriptions
     params = sorted(params, key=lambda x: x.get('line_start'))
 
+    # get amount of whitespace in front of each param and keep most consistent
+    for n, f in enumerate(params):
+        curr_line = helptext[f['line_start']]
+        lead = re.match('^\s*-', curr_line)
+        if lead is not None:
+            params[n]['leading_ws'] = lead.end() - 1
+    leading_ws = [p['leading_ws'] for p in params]
+
     # update potential lengths of help text
     for n, f in enumerate(params[:-1]):
         params[n]['length'] = (params[n + 1].get('line_start') -
@@ -274,8 +288,8 @@ def get_full_help(fname, putative=None):
     return params, helptext
 
 
-def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000,
-                   verbose=True):
+def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=5000,
+                   overlap=0.3, verbose=True):
     """
     Generates individual JSON files for each AFNI command in `help_dir`
 
@@ -315,13 +329,18 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000,
         tool_name = tool.name.replace('.complete.bash', '')
         if verbose:
             print('Generating JSON for {}.'.format(tool_name))
-        # get parameter information + helptext
+
+        # get best guess on parameter information + helptext
         params, helptext = get_full_help(get_help_fname(help_dir, tool_name),
                                          putative=get_complete_args(tool))
-        # we can't have periods in our filenames!
-        tool_name = tool_name.replace('.', '_')
+
+        # we can't have non-(alphanum characters / underscores) in filenames!
+        for non_alpha, dunder_alpha in NONALPHA.items():
+            tool_name = tool_name.replace(non_alpha, dunder_alpha)
+
         # we only need the param_range and help_range keys for each parameter
         params = [get_ranges(p) for p in params]
+
         # only save out one JSON if that's all we need
         if len('\n'.join(helptext)) < split_char:
             fname = outdir.joinpath('{}.json'.format(tool_name))
@@ -330,16 +349,17 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000,
             continue
 
         # if len(helptext) is larger than `split_char`, split it into chunks!
-        split_jsons = split_help(params, helptext, split_char)
-
-        # save out each parameter list / helptext chunk separately
-        temp = '{}_part{}.json'
+        # and save out each parameter list / helptext chunk, separately
+        split_jsons = split_help(params, helptext,
+                                 split_char=split_char,
+                                 overlap=overlap)
+        template = '{}_part{}.json'
         for n, part in enumerate(split_jsons):
             # get previous / next filenames for multi-part helps
             part['previous'] = fname if n > 0 else ''
-            fname = temp.format(tool_name, n + 1)
+            part['next'] = template.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
+            fname = template.format(tool_name, n + 1)
             jsons.append(outdir.joinpath(fname))
-            part['next'] = temp.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
             # save out chunk to CMD_partXX.json file
             with jsons[-1].open('w') as dest:
                 json.dump(part, dest)
@@ -351,7 +371,7 @@ def gen_help_jsons(help_dir, outdir='to_boutify', split_char=5000,
     return jsons
 
 
-def split_help(params, helptext, split_char=5000, pad=1000):
+def split_help(params, helptext, split_char=5000, overlap=0.3):
     """
     Splits `params` and `helptext` into chunks of approximately `split_char`
 
@@ -369,8 +389,8 @@ def split_help(params, helptext, split_char=5000, pad=1000):
         Full helptext of tool in `fname`, broken at lines
     split_char : int, optional
         Approximate size of character chunks to split helptext into
-    pad : int, optional
-        Padding around `split_char`
+    overlap : [0, 1] float, optional
+        Percent overlap between chunks of helptext
 
     Returns
     -------
@@ -380,33 +400,24 @@ def split_help(params, helptext, split_char=5000, pad=1000):
     """
     def fix_param(param, subtract):
         """ Reset parameter ranges in `param` based on `subtract` """
-        param['param_range'] = [pp - subtract for pp in param['param_range']]
-        param['help_range'] = [pp - subtract for pp in param['help_range']]
-        return param
+        return dict(param_range=[pp - subtract for pp in param['param_range']],
+                    help_range=[pp - subtract for pp in param['help_range']])
 
     params = [f.copy() for f in params]
     helptext = '\n'.join(helptext)
     helplen = len(helptext) + 1
 
     # find where to split parameters based on length of helptext
-    curr_char = last_char = 0
-    param_split = []
-    for n, p in enumerate(params):
-        curr_char = p['help_range'][-1] - last_char
-        if curr_char > split_char:
-            param_split += [n]
-            curr_char = 0
-            last_char = p['help_range'][-1]
-    param_split = np.split(params, param_split)
-
-    # clip helptext based on splits and reset param ranges so characters align
-    split = [0] + [f[0]['param_range'][0] for f in param_split[1:]] + [helplen]
+    chunks = range(int(split_char * (1 - overlap)), helplen, split_char)
+    chunks = [(0, 5000)] + list(zip(chunks, chunks[1:])) + [(chunks[-1], helplen)]  # noqa
     save_as_jsons = []
-    for n, (start, end) in enumerate(zip(split, split[1:])):
-        if start > pad:
-            start -= pad
-        curr_help = helptext[start:end + pad].splitlines()
-        curr_params = [fix_param(p, start) for p in param_split[n]]
+    for start, end in chunks:
+        curr_params = [p for p in params if (p['param_range'][0] > start and
+                                             p['param_range'][0] < end)]
+        if len(curr_params) > 0:
+            end = curr_params[-1]['help_range'][-1]
+        curr_help = helptext[start:end].splitlines()
+        curr_params = [fix_param(p, start) for p in curr_params]
         save_as_jsons.append(dict(helptext=curr_help, params=curr_params))
 
     return save_as_jsons
