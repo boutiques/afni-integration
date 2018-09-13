@@ -15,7 +15,8 @@ FINDARGS = re.compile("ARGS=\((.*) ?\)")
 FINDHELP = re.compile("\s*(-[\s\w]*)[=:}][\s\S]")
 IGNOREOR = re.compile("^\s*\*\s*OR\s*\*")
 PARTJSON = re.compile("(_part\d+)$")
-WHISPACE = re.compile('\s+')
+WHISPACE = re.compile("\s+")
+ENDSLASH = re.compile(".*\s*\\\$")
 NONALPHA = {
     '.': '__PERIOD__',
     '@': '__AT__',
@@ -198,7 +199,7 @@ def _get_basic_help(fname, putative=None):
             currchar += len(f) + 1
             continue
         param = FINDHELP.findall(f)[0].strip().split(' ')[0]
-        if ALPHANUM.sub('', param) == '':
+        if ALPHANUM.sub('', param) == '' or ENDSLASH.match(f) is not None:
             currchar += len(f) + 1
             continue
         begin = currchar + f.find(param)
@@ -224,13 +225,19 @@ def _get_basic_help(fname, putative=None):
     # sort by line start in preparation for calculating lengths of descriptions
     params = sorted(params, key=lambda x: x.get('line_start'))
 
-    # get amount of whitespace in front of each param and keep most consistent
+    # get amount of whitespace in front of each param
     for n, f in enumerate(params):
         curr_line = helptext[f['line_start']]
         lead = re.match('^\s*-', curr_line)
         if lead is not None:
-            params[n]['leading_ws'] = lead.end() - 1
-    leading_ws = [p['leading_ws'] for p in params]
+            params[n]['lead_ws'] = lead.end() - 1
+    lead_ws = [p.get('lead_ws', 0) for p in params]
+
+    # the likelihood of only a few parameters having a given amount of leading
+    # whitespace is _very_ low, so let's drop those parameters
+    ws, wsi, wsc = np.unique(lead_ws, return_inverse=True, return_counts=True)
+    keep_params = [f in np.where(wsc > 2)[0] for f in wsi]
+    params = [param for param, keep in zip(params, keep_params) if keep]
 
     # update potential lengths of help text
     for n, f in enumerate(params[:-1]):
@@ -288,7 +295,7 @@ def get_full_help(fname, putative=None):
     return params, helptext
 
 
-def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=5000,
+def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=np.inf,
                    overlap=0.3, verbose=True):
     """
     Generates individual JSON files for each AFNI command in `help_dir`
@@ -343,8 +350,8 @@ def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=5000,
 
         # only save out one JSON if that's all we need
         if len('\n'.join(helptext)) < split_char:
-            fname = outdir.joinpath('{}.json'.format(tool_name))
-            with fname.open('w') as dest:
+            jsons.append(outdir.joinpath('{}.json'.format(tool_name)))
+            with jsons[-1].open('w') as dest:
                 json.dump(dict(helptext=helptext, params=params), dest)
             continue
 
@@ -354,9 +361,10 @@ def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=5000,
                                  split_char=split_char,
                                  overlap=overlap)
         template = '{}_part{}.json'
+        fname = ''
         for n, part in enumerate(split_jsons):
             # get previous / next filenames for multi-part helps
-            part['previous'] = fname if n > 0 else ''
+            part['previous'] = fname
             part['next'] = template.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
             fname = template.format(tool_name, n + 1)
             jsons.append(outdir.joinpath(fname))
