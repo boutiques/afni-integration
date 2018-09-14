@@ -139,7 +139,7 @@ def _get_usage_params(fname):
     return args
 
 
-def get_help_fname(help_dir, cmd):
+def get_help_file(help_dir, cmd):
     """
     Gets most recently generated helptext for AFNI `cmd` in `help_dir`
 
@@ -295,10 +295,10 @@ def parse_help(fname, putative=None):
     -------
     params : list of dict
         Where each entry has keys of interest including:
-        'param' : str, putative parameter name
-        'param_range' : list of int, character range for 'param' in `helptext`
-        'help' : str, putative description of 'param'
-        'help_range' : list of int, character range for 'help' in `helptext`
+          'param' : str, putative parameter name
+          'param_range' : list of int, character range of 'param' in `helptext`
+          'help' : str, putative description of 'param'
+          'help_range' : list of int, character range of 'help' in `helptext`
     helptext : list of str
         Full helptext of command from `fname` split into lines
     """
@@ -386,7 +386,7 @@ def gen_boutify_jsons(help_dir, outdir='boutify_afni', verbose=True):
             print('Generating JSON for {}.'.format(tool_name))
 
         # get best guess on parameter information + helptext
-        params, helptext = parse_help(get_help_fname(help_dir, tool_name),
+        params, helptext = parse_help(get_help_file(help_dir, tool_name),
                                       putative=_get_parsed_args(tool))
 
         # we can't have non-(alphanum characters / underscores) in filenames!
@@ -437,7 +437,7 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques', verbose=True):
         tool_name = tool.name.replace('.complete.bash', '')
         if verbose:
             print('Generating JSON for {}.'.format(tool_name))
-        help_fname = get_help_fname(help_dir, tool_name)
+        help_fname = get_help_file(help_dir, tool_name)
         out_fname = outdir.joinpath('{}.json'.format(tool_name))
 
         # get hypothetical parameters (both flag and positional!)
