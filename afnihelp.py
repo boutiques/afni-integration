@@ -13,6 +13,8 @@ ALPHANUM = re.compile("[\W_]+")
 CLEANARG = re.compile("[^0-9_a-zA-Z\-]")
 FINDARGS = re.compile("ARGS=\((.*) ?\)")
 FINDHELP = re.compile("\s*(-[\s\w]*)[=:}][\s\S]")
+FINDHELP = re.compile("\s*[\[]?(-[\s\w]*)[\]]?[\s\w]*[=:}][\s\S]")
+FINDHELP = re.compile("\s*[\[]?(-[\s\w]*)[\s\w]*[\]=:}][\s\S]")
 IGNOREOR = re.compile("^\s*\*\s*OR\s*\*")
 PARTJSON = re.compile("(_part\d+)$")
 WHISPACE = re.compile("\s+")
@@ -322,8 +324,9 @@ def get_full_help(fname, putative=None):
         # iterate through description and remove reference to parameter
         for n, f in enumerate(lines):
             stripped = f.lstrip()
-            if stripped.startswith(param['param']):
-                match = FINDHELP.match(stripped)
+            # this is a better indicator of parameter existence
+            match = FINDHELP.match(stripped)
+            if match is not None or stripped.startswith(param['param']):
                 end = match.end() if match is not None else len(param['param'])
                 lines[n] = stripped[end:]
                 break
