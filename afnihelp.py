@@ -25,7 +25,7 @@ NONALPHA = {
 }
 
 
-def gen_outdir(outdir):
+def _gen_outdir(outdir):
     """
     Coerces `outdir` to `pathlib.Path` and creates it, if it doesn't exist
 
@@ -76,7 +76,7 @@ def get_complete_args(fname):
     return args
 
 
-def get_usage_string(fname):
+def _get_usage_string(fname):
     """
     Attempt to read usage string for a given AFNI command in `fname`
 
@@ -116,7 +116,7 @@ def get_usage_params(fname):
     positional : list of str
         List of putative positional arguments for command in `fname`
     """
-    usage_text = get_usage_string(Path(fname))
+    usage_text = _get_usage_string(Path(fname))
     if usage_text:
         try:
             text_with_bracket_args = re.sub('\[[^\[\]]*\]', '', usage_text)
@@ -169,6 +169,31 @@ def get_help_fname(help_dir, cmd):
                                 .format(cmd, help_dir.as_posix()))
 
 
+def get_args_fname(help_dir, cmd):
+    """
+    Gets most recently parsed parameters from AFNI `cmd` in `help_dir`
+
+    Parameters
+    ----------
+    help_dir : str
+        Path to directory with AFNI help files
+    cmd : str
+        AFNI command to grab help file for
+
+    Returns
+    -------
+    help_fname : str
+        Path to XXXX.complete.bash parameter file
+    """
+    help_dir = Path(help_dir).resolve()
+    help_fnames = sorted(help_dir.glob(cmd + '.complete.bash'))
+    try:
+        return help_fnames[0]
+    except IndexError:
+        raise FileNotFoundError('Cannot find any valid help files for {} in {}'
+                                .format(cmd, help_dir.as_posix()))
+
+
 def _get_basic_help(fname, putative=None):
     """
     Gets command arguments and line number in help text for command in `fname`
@@ -192,14 +217,15 @@ def _get_basic_help(fname, putative=None):
     """
     helptext = Path(fname).read_text(errors='ignore').splitlines()
     params = []
-    # grab parameters and line starts
     currchar = 0
     for n, f in enumerate(helptext):
-        if FINDHELP.match(f) is None:
+        # if there's no parameter or the line ends in a slash, skip
+        if FINDHELP.match(f) is None or ENDSLASH.match(f) is not None:
             currchar += len(f) + 1
             continue
+        # grab parameter and assert it isn't non-alphanumeric
         param = FINDHELP.findall(f)[0].strip().split(' ')[0]
-        if ALPHANUM.sub('', param) == '' or ENDSLASH.match(f) is not None:
+        if ALPHANUM.sub('', param) == '':
             currchar += len(f) + 1
             continue
         begin = currchar + f.find(param)
@@ -207,25 +233,38 @@ def _get_basic_help(fname, putative=None):
                         param_range=[begin, begin + len(param)])]
         currchar += len(f) + 1
 
-    # compare to list of putative arguments
+    # compare to list of putative parameters
     if putative is not None:
+        # get missing parameters and remove non-alphanumeric ones
         missing = list(set(putative) - set([p.get('param') for p in params]))
-        for miss in missing:
-            if ALPHANUM.sub('', miss) == '':
-                continue
-            currchar = 0
-            for n, f in enumerate(helptext):
-                starts = [p.get('line_start') for p in params]
-                if f.strip().startswith(miss) and n not in starts:
-                    begin = currchar + f.find(miss)
-                    params += [dict(param=miss, line_start=n, length=None,
-                                    param_range=[begin, begin + len(miss)])]
-                currchar += len(f) + 1
+        missing = [m for m in missing if ALPHANUM.sub('', m) != '']
+        # get lines on which parameters already appear (never two per line)
+        starts = [p.get('line_start') for p in params]
+        currchar = 0
+        for n, f in enumerate(helptext):
+            # skip lines that already have a parameter or end in a slash
+            if n not in starts and ENDSLASH.match(f) is None:
+                for miss in missing:
+                    fs = f.lstrip()
+                    if fs.startswith(miss):
+                        # skip if non-acceptable character after parameter
+                        nextchar = re.match(miss, fs).end()
+                        if nextchar < len(fs):
+                            if fs[nextchar] not in [' ', '}', ':', '=']:
+                                continue
+                        # otherwise, add to list of parameters
+                        begin = currchar + f.find(miss)
+                        params += [
+                            dict(param=miss, line_start=n, length=None,
+                                 param_range=[begin, begin + len(miss)])
+                        ]
+                        break  # out of `for miss in missing`
+            currchar += len(f) + 1  # account for newline character
 
     # sort by line start in preparation for calculating lengths of descriptions
     params = sorted(params, key=lambda x: x.get('line_start'))
 
-    # get amount of whitespace in front of each param
+    # get amount of whitespace in front of each parameter
     for n, f in enumerate(params):
         curr_line = helptext[f['line_start']]
         lead = re.match('^\s*-', curr_line)
@@ -233,13 +272,13 @@ def _get_basic_help(fname, putative=None):
             params[n]['lead_ws'] = lead.end() - 1
     lead_ws = [p.get('lead_ws', 0) for p in params]
 
-    # the likelihood of only a few parameters having a given amount of leading
-    # whitespace is _very_ low, so let's drop those parameters
+    # the likelihood of only a singly parameters having a given amount of
+    # leading whitespace is _very_ low, so let's drop those parameters
     ws, wsi, wsc = np.unique(lead_ws, return_inverse=True, return_counts=True)
-    keep_params = [f in np.where(wsc > 2)[0] for f in wsi]
+    keep_params = [f in np.where(wsc > 1)[0] for f in wsi]
     params = [param for param, keep in zip(params, keep_params) if keep]
 
-    # update potential lengths of help text
+    # update putative lengths of help text
     for n, f in enumerate(params[:-1]):
         params[n]['length'] = (params[n + 1].get('line_start') -
                                f.get('line_start'))
@@ -275,16 +314,20 @@ def get_full_help(fname, putative=None):
     fullhelp = '\n'.join(helptext)
     # iterate through parameters and get approximate description for each
     for param in params:
+        # grab relevant lines of help text
         ls, ln = param.get('line_start'), param.get('length')
         if ln is None:
             ln = len(helptext) + 1 - ls
         lines = helptext[ls:ls + ln]
+        # iterate through description and remove reference to parameter
         for n, f in enumerate(lines):
             stripped = f.lstrip()
-            match = FINDHELP.match(stripped)
-            if match is not None:
-                lines[n] = stripped[match.end():]
+            if stripped.startswith(param['param']):
+                match = FINDHELP.match(stripped)
+                end = match.end() if match is not None else len(param['param'])
+                lines[n] = stripped[end:]
                 break
+        # assign parameter description and get character ranges of description
         param_descrip = '\n'.join(lines).rstrip()
         param['help'] = param_descrip
         ind = fullhelp.find(param_descrip)
@@ -296,7 +339,7 @@ def get_full_help(fname, putative=None):
 
 
 def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=np.inf,
-                   overlap=0.3, verbose=True):
+                   overlap=0, verbose=True):
     """
     Generates individual JSON files for each AFNI command in `help_dir`
 
@@ -327,7 +370,7 @@ def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=np.inf,
         return dict(param_range=param['param_range'],
                     help_range=param['help_range'])
 
-    outdir = gen_outdir(outdir)
+    outdir = _gen_outdir(outdir)
     help_dir = Path(help_dir).resolve()
 
     jsons = []
@@ -357,16 +400,11 @@ def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=np.inf,
 
         # if len(helptext) is larger than `split_char`, split it into chunks!
         # and save out each parameter list / helptext chunk, separately
-        split_jsons = split_help(params, helptext,
-                                 split_char=split_char,
-                                 overlap=overlap)
-        template = '{}_part{}.json'
-        fname = ''
+        split_jsons = _split_help(params, helptext,
+                                  split_char=split_char,
+                                  overlap=overlap)
         for n, part in enumerate(split_jsons):
-            # get previous / next filenames for multi-part helps
-            part['previous'] = fname
-            part['next'] = template.format(tool_name, n + 2) if n < len(split_jsons) -1 else ''  # noqa
-            fname = template.format(tool_name, n + 1)
+            fname = '{}_part{}.json'.format(tool_name, n + 1)
             jsons.append(outdir.joinpath(fname))
             # save out chunk to CMD_partXX.json file
             with jsons[-1].open('w') as dest:
@@ -379,7 +417,7 @@ def gen_help_jsons(help_dir, outdir='boutify_afni', split_char=np.inf,
     return jsons
 
 
-def split_help(params, helptext, split_char=5000, overlap=0.3):
+def _split_help(params, helptext, split_char=5000, overlap=0.3):
     """
     Splits `params` and `helptext` into chunks of approximately `split_char`
 
@@ -448,7 +486,7 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
     descriptors : list
         List of paths to generated boutiques descriptor JSON files
     """
-    outdir = gen_outdir(outdir)
+    outdir = _gen_outdir(outdir)
     help_dir = Path(help_dir).resolve()
 
     descriptors = []
