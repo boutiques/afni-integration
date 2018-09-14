@@ -10,14 +10,7 @@ import boutiques.creator as bc
 import numpy as np
 
 ALPHANUM = re.compile("[\W_]+")
-CLEANARG = re.compile("[^0-9_a-zA-Z\-]")
-FINDARGS = re.compile("ARGS=\((.*) ?\)")
-FINDHELP = re.compile("\s*(-[\s\w]*)[=:}][\s\S]")
-FINDHELP = re.compile("\s*[\[]?(-[\s\w]*)[\]]?[\s\w]*[=:}][\s\S]")
 FINDHELP = re.compile("\s*[\[]?(-[\s\w]*)[\s\w]*[\]=:}][\s\S]")
-IGNOREOR = re.compile("^\s*\*\s*OR\s*\*")
-PARTJSON = re.compile("(_part\d+)$")
-WHISPACE = re.compile("\s+")
 ENDSLASH = re.compile(".*\s*\\\$")
 NONALPHA = {
     '.': '__PERIOD__',
@@ -68,13 +61,13 @@ def get_complete_args(fname):
     if not fpath.exists():
         raise FileNotFoundError('{} does not seem to exist?'.format(fname))
 
-    args = FINDARGS.findall(fpath.read_text(errors='ignore'))
+    args = re.findall("ARGS=\((.*) ?\)", fpath.read_text(errors='ignore'))
     try:
         args = args[0].strip().replace('\'', '').split(' ')
     except IndexError:
         raise IndexError('Unable to find arguments for {}'.format(fname))
 
-    args = list(set([CLEANARG.sub('', a) for a in args]))
+    args = list(set([re.sub("[^0-9_a-zA-Z\-]", '', a) for a in args]))
     return args
 
 
@@ -554,7 +547,7 @@ def fix_boutify_help(boutified, descdir, outdir):
         # load in un-boutified JSON and boutiques descriptor for updating
         desc_fname = descdir.joinpath('{}.json'.format(prefix))
         out_fname = outdir.joinpath('{}.json'.format(
-            PARTJSON.sub('', prefix).replace('_py', '.py'))
+            re.sub("(_part\d+)$", '', prefix).replace('_py', '.py'))
         )
         # if we don't have both then skip this annotation, I guess
         if not desc_fname.exists() or not out_fname.exists():
@@ -592,7 +585,7 @@ def fix_boutify_help(boutified, descdir, outdir):
             param_name = helptext[slice(*param['param_range'])]
             param_desc = ' '.join([helptext[start:end].strip() for start, end
                                    in help_ranges]).splitlines()
-            param_desc = ' '.join([WHISPACE.sub(' ', f).strip()
+            param_desc = ' '.join([re.sub("\s+", ' ', f).strip()
                                    for f in param_desc])
 
             # reassign parameter description to the relevant boutiques input
