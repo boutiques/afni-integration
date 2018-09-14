@@ -1,0 +1,34 @@
+{
+ "helptext": [
+  "Installs the demo archive for Paul Taylor's tractography tools",
+  "After the archive is downloaded and unpacked, see its README.txt",
+  "for details.",
+  "Options:",
+  "[-wget]: Use wget to download archive. Script chooses by default",
+  "         with preference for curl",
+  "[-curl]: Use curl to download archive. Script chooses by default",
+  "         with preference for curl"
+ ],
+ "params": [
+  {
+   "param_range": [
+    151,
+    156
+   ],
+   "help_range": [
+    157,
+    248
+   ]
+  },
+  {
+   "param_range": [
+    250,
+    255
+   ],
+   "help_range": [
+    256,
+    347
+   ]
+  }
+ ]
+}

@@ -1,0 +1,144 @@
+{
+ "helptext": [
+  "",
+  "   Usage: niccc [-dup] [-nodata] streamspec",
+  "",
+  "A program for conducting certain NIML tests ",
+  "on input from streamspec and write the results to stderr",
+  "",
+  "Example:",
+  "    niccc file:Something.niml ",
+  "",
+  "Mandatory arguments:",
+  "   streamspec: A string defining a NIML stream.",
+  "",
+  "Options:",
+  "   -dup: Duplicate the element before showing it.",
+  "         This is to test NI_duplicate function.",
+  "   -nodata: Show header parts only in output",
+  "   -attribute ATTR: Dump the value of attribute ATTR",
+  "   -match MATCH: If MATCH is exact, then attribute name",
+  "                 is matched exactly. If MATCH is partial,",
+  "                 then a match of all the characters in ATTR",
+  "                 is enough. For example, an ATTR of COEF would",
+  "                 match any of COEF COEF.1 COEF.2, etc.",
+  "            Default is -match exact",
+  "   -f: streamspec is a filename.",
+  "   -s: streamspec is an element string like: ",
+  "            '<T font=9 coords=\"2.3 23 2\"/>'",
+  "   -stdout: write elements to stdout, instead of stderr",
+  "   -#: put the # at the beginning of lines with no data",
+  "   -quiet: quiet stderr messages, and don't echo attribute",
+  "           name with -attribute option",
+  "   -find_nel_with_attr ATTR ATTRVAL: Only output elements ",
+  "               that have an attribute ATTR of value ATTRVAL.",
+  "               a status of 1 is returned if no match is found.",
+  "   -skip_nel_with_attr ATTR ATTRVAL: Do not output elements ",
+  "               that have an attribute ATTR of value ATTRVAL.",
+  "   niccc returns a status of 0 if it the stream opened.",
+  "         and there were no interruptions.",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    272,
+    276
+   ],
+   "help_range": [
+    278,
+    366
+   ]
+  },
+  {
+   "param_range": [
+    370,
+    377
+   ],
+   "help_range": [
+    379,
+    411
+   ]
+  },
+  {
+   "param_range": [
+    415,
+    425
+   ],
+   "help_range": [
+    432,
+    464
+   ]
+  },
+  {
+   "param_range": [
+    468,
+    474
+   ],
+   "help_range": [
+    482,
+    792
+   ]
+  },
+  {
+   "param_range": [
+    796,
+    798
+   ],
+   "help_range": [
+    800,
+    825
+   ]
+  },
+  {
+   "param_range": [
+    829,
+    831
+   ],
+   "help_range": [
+    833,
+    915
+   ]
+  },
+  {
+   "param_range": [
+    919,
+    926
+   ],
+   "help_range": [
+    928,
+    1027
+   ]
+  },
+  {
+   "param_range": [
+    1031,
+    1037
+   ],
+   "help_range": [
+    1039,
+    1125
+   ]
+  },
+  {
+   "param_range": [
+    1129,
+    1148
+   ],
+   "help_range": [
+    1163,
+    1308
+   ]
+  },
+  {
+   "param_range": [
+    1312,
+    1331
+   ],
+   "help_range": [
+    1346,
+    1528
+   ]
+  }
+ ]
+}

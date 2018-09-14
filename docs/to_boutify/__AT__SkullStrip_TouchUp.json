@@ -1,0 +1,94 @@
+{
+ "helptext": [
+  "",
+  "   ----------------------------------------------------------------------------",
+  "   @SkullStrip_TouchUp - helper program to touch up failed skull stripping",
+  "",
+  "      By default, resample to 2mm voxel dimensions to speed up editing.",
+  "      Drives afni to the draw data set panel for manual editing.",
+  "      Then re-resamples back to the original voxel dimensions.",
+  "      You can quit and continue where you left off later.",
+  "      Creates a folder PREFIX_SS_touch_up.",
+  "",
+  "   -----------------------------------------------------------------------------",
+  "   options:",
+  "",
+  "      -prefix PREFIX    : output file and folder name",
+  "      -brain DSET       : skull stripped data set to touch up",
+  "      -head DSET        : whole head anatomical data set",
+  "      -mask_out         : output a binary mask in addition to actual data",
+  "      -orig_dim         : edit in the original image dimensions",
+  "      -help             : show this help",
+  "",
+  "   -----------------------------------------------------------------------------",
+  "   examples:",
+  "",
+  "   @SkullStrip_TouchUp -prefix disco -brain disco_brain+orig -head disco_anat+orig",
+  "",
+  "   -----------------------------------------------------------------------------",
+  "   Justin Rajendra 07/05/2017",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    559,
+    566
+   ],
+   "help_range": [
+    579,
+    606
+   ]
+  },
+  {
+   "param_range": [
+    613,
+    619
+   ],
+   "help_range": [
+    633,
+    668
+   ]
+  },
+  {
+   "param_range": [
+    675,
+    680
+   ],
+   "help_range": [
+    695,
+    725
+   ]
+  },
+  {
+   "param_range": [
+    732,
+    741
+   ],
+   "help_range": [
+    752,
+    799
+   ]
+  },
+  {
+   "param_range": [
+    806,
+    815
+   ],
+   "help_range": [
+    826,
+    863
+   ]
+  },
+  {
+   "param_range": [
+    870,
+    875
+   ],
+   "help_range": [
+    890,
+    1195
+   ]
+  }
+ ]
+}

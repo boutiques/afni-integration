@@ -1,0 +1,220 @@
+{
+ "helptext": [
+  "",
+  "=============================================================================",
+  "afni_system_check.py    - perform various system checks",
+  "",
+  "This program is intended to be helpful for figuring out AFNI installation",
+  "issues.",
+  "",
+  "examples",
+  "",
+  "   1.  afni_system_check.py -check_all",
+  "   2a. afni_system_check.py -find_prog python",
+  "   2b. afni_system_check.py -find_prog python -exact yes",
+  "",
+  "-----------------------------------------------------------------------------",
+  "terminal options:",
+  "",
+  "   -help                : show this help",
+  "   -help_dot_files      : show help on shell setup files",
+  "   -help_rc_files       : SAME",
+  "   -hist                : show program history",
+  "   -show_valid_opts     : show valid options for program",
+  "   -todo                : show current todo list",
+  "   -ver                 : show current version",
+  "",
+  "   NOTE: either a terminal or an action option is required",
+  "",
+  "action options:",
+  "",
+  "   -check_all           : perform all system checks",
+  "                          - see section, \"details displayed via -check_all\"",
+  "   -dot_file_list       : list all found dot files (startup files)",
+  "   -dot_file_show       : display contents of all found dot files",
+  "   -dot_file_pack NAME  : create a NAME.tgz packge containing dot files",
+  "   -find_prog PROG      : search PATH for PROG",
+  "                          - default is *PROG*, case-insensitive",
+  "                          - see also -casematch, -exact",
+  "",
+  "other options:",
+  "",
+  "   -casematch yes/no    : match case in -find_prog",
+  "   -data_root DDIR      : search for class data under DDIR",
+  "   -exact yes/no        : search for PROG without wildcards in -find_prog",
+  "",
+  "-----------------------------------------------------------------------------",
+  "details displayed via -check_all (just run to see):",
+  "",
+  "   general information:",
+  "      - CPU, operating system and version, # CPUs, login shell",
+  "",
+  "   AFNI and related tests:",
+  "      - which afni, python, R and tcsh, along with versions",
+  "      - check for multiple afni packages in PATH",
+  "      - check that various AFNI programs run",
+  "",
+  "   python libs:",
+  "      - check that various python libraries are found and loaded",
+  "",
+  "   path vars:",
+  "      - show some environment variables related to the PATH",
+  "",
+  "-----------------------------------------------------------------------------",
+  "R Reynolds    July, 2013",
+  "=============================================================================",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    472,
+    477
+   ],
+   "help_range": [
+    495,
+    509
+   ]
+  },
+  {
+   "param_range": [
+    513,
+    528
+   ],
+   "help_range": [
+    536,
+    566
+   ]
+  },
+  {
+   "param_range": [
+    570,
+    584
+   ],
+   "help_range": [
+    593,
+    597
+   ]
+  },
+  {
+   "param_range": [
+    601,
+    606
+   ],
+   "help_range": [
+    624,
+    644
+   ]
+  },
+  {
+   "param_range": [
+    648,
+    664
+   ],
+   "help_range": [
+    671,
+    701
+   ]
+  },
+  {
+   "param_range": [
+    705,
+    710
+   ],
+   "help_range": [
+    728,
+    750
+   ]
+  },
+  {
+   "param_range": [
+    754,
+    758
+   ],
+   "help_range": [
+    777,
+    874
+   ]
+  },
+  {
+   "param_range": [
+    879,
+    889
+   ],
+   "help_range": [
+    902,
+    1003
+   ]
+  },
+  {
+   "param_range": [
+    1007,
+    1021
+   ],
+   "help_range": [
+    1030,
+    1070
+   ]
+  },
+  {
+   "param_range": [
+    1074,
+    1088
+   ],
+   "help_range": [
+    1097,
+    1136
+   ]
+  },
+  {
+   "param_range": [
+    1140,
+    1154
+   ],
+   "help_range": [
+    1163,
+    1208
+   ]
+  },
+  {
+   "param_range": [
+    1212,
+    1222
+   ],
+   "help_range": [
+    1235,
+    1391
+   ]
+  },
+  {
+   "param_range": [
+    1396,
+    1406
+   ],
+   "help_range": [
+    1406,
+    1443
+   ]
+  },
+  {
+   "param_range": [
+    1447,
+    1457
+   ],
+   "help_range": [
+    1470,
+    1502
+   ]
+  },
+  {
+   "param_range": [
+    1506,
+    1512
+   ],
+   "help_range": [
+    1512,
+    2316
+   ]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+{
+ "helptext": [
+  "Loading required package: fitdistrplus",
+  "Loading required package: MASS",
+  "Warning messages:",
+  "1: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :",
+  "  there is no package called \u2018fitdistrplus\u2019",
+  "2: In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :",
+  "  there is no package called \u2018MASS\u2019",
+  "",
+  "oo Warning: ",
+  "   Failed to load R_io.so with this error message:",
+  "",
+  "Error in dyn.load(ll) : ",
+  "  unable to load shared object '/Users/rossmarkello/abin/R_io.so':",
+  "  dlopen(/Users/rossmarkello/abin/R_io.so, 6): Library not loaded: /Library/Frameworks/R.framework/Versions/2.15/Resources/lib/libR.dylib",
+  "  Referenced from: /Users/rossmarkello/abin/R_io.so",
+  "  Reason: image not found",
+  "Calls: source ... withVisible -> eval -> eval -> set_R_io -> dyn.load",
+  "Execution halted"
+ ],
+ "params": []
+}

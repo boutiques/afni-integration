@@ -1,0 +1,163 @@
+{
+ "helptext": [
+  "Error:  Cannot open parameter file:  -help",
+  "Usage:  mpeg_encode [options] param_file",
+  "Options:",
+  "\t-stat stat_file:  append stats to stat_file",
+  "\t-quiet n:  don't report remaining time for at least n seconds",
+  "\t-realquiet:  output nothing at all if successful",
+  "\t-no_frame_summary:  suppress frame summary lines",
+  "\t-float_dct:  use more accurate floating point DCT",
+  "\t-gop gop_num:  encode only the numbered GOP",
+  "\t-combine_gops:  combine GOP files instead of encode",
+  "\t-frames first_frame last_frame:  encode only the specified frames",
+  "\t-combine_frames:  combine frame files instead of encode",
+  "\t-nice:  run slave processes nicely",
+  "\t-max_machines num_machines:  use at most num_machines machines",
+  "\t-snr:  print signal-to-noise ratio",
+  "\t-bit_rate_info rate_file:  put bit rate in specified file",
+  "\t-mv_histogram:  show histograms of motion vectors"
+ ],
+ "params": [
+  {
+   "param_range": [
+    94,
+    99
+   ],
+   "help_range": [
+    112,
+    137
+   ]
+  },
+  {
+   "param_range": [
+    139,
+    145
+   ],
+   "help_range": [
+    150,
+    200
+   ]
+  },
+  {
+   "param_range": [
+    202,
+    212
+   ],
+   "help_range": [
+    215,
+    250
+   ]
+  },
+  {
+   "param_range": [
+    252,
+    269
+   ],
+   "help_range": [
+    272,
+    300
+   ]
+  },
+  {
+   "param_range": [
+    302,
+    312
+   ],
+   "help_range": [
+    315,
+    351
+   ]
+  },
+  {
+   "param_range": [
+    353,
+    357
+   ],
+   "help_range": [
+    368,
+    396
+   ]
+  },
+  {
+   "param_range": [
+    398,
+    411
+   ],
+   "help_range": [
+    414,
+    449
+   ]
+  },
+  {
+   "param_range": [
+    451,
+    458
+   ],
+   "help_range": [
+    484,
+    516
+   ]
+  },
+  {
+   "param_range": [
+    518,
+    533
+   ],
+   "help_range": [
+    536,
+    573
+   ]
+  },
+  {
+   "param_range": [
+    575,
+    580
+   ],
+   "help_range": [
+    583,
+    609
+   ]
+  },
+  {
+   "param_range": [
+    611,
+    624
+   ],
+   "help_range": [
+    640,
+    673
+   ]
+  },
+  {
+   "param_range": [
+    675,
+    679
+   ],
+   "help_range": [
+    682,
+    709
+   ]
+  },
+  {
+   "param_range": [
+    711,
+    725
+   ],
+   "help_range": [
+    738,
+    768
+   ]
+  },
+  {
+   "param_range": [
+    770,
+    783
+   ],
+   "help_range": [
+    786,
+    819
+   ]
+  }
+ ]
+}

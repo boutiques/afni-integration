@@ -1,0 +1,76 @@
+{
+ "helptext": [
+  "Usage: 3dErrtsCormat [options] dset",
+  "",
+  "Computes the correlation (not covariance) matrix corresponding",
+  "to the residual (or error) time series in 'dset', which will",
+  "usually be the '-errts' output from 3dDeconvolve.  The output",
+  "is a 1D file of the Toeplitz entries (to stdout).",
+  "",
+  "Options:",
+  "  -concat rname  = as in 3dDeconvolve",
+  "  -input  dset   = alternate way of telling what dataset to read",
+  "  -mask   mset   = mask dataset",
+  "  -maxlag mm     = set maximum lag",
+  "  -polort pp     = set polort level (default=0)",
+  "",
+  "-- RWCox -- June 2008 -- for my own pleasant purposes",
+  "-- Also see program 3dLocalCormat to do this on each voxel,",
+  "   and optionally estimate the ARMA(1,1) model parameters.",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    285,
+    292
+   ],
+   "help_range": [
+    302,
+    320
+   ]
+  },
+  {
+   "param_range": [
+    323,
+    329
+   ],
+   "help_range": [
+    340,
+    385
+   ]
+  },
+  {
+   "param_range": [
+    388,
+    393
+   ],
+   "help_range": [
+    405,
+    417
+   ]
+  },
+  {
+   "param_range": [
+    420,
+    427
+   ],
+   "help_range": [
+    437,
+    452
+   ]
+  },
+  {
+   "param_range": [
+    455,
+    462
+   ],
+   "help_range": [
+    472,
+    741
+   ]
+  }
+ ]
+}

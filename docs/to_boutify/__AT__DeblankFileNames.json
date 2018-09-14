@@ -1,0 +1,95 @@
+{
+ "helptext": [
+  "",
+  "A script to remove blanks and other annoying characters from filenames.",
+  " in the current directory.",
+  "The default set of characters to replace is ' []()'",
+  "Spaces are replaced with _. ",
+  "If resultant name exists, more _ are used until new name",
+  "is found.",
+  "",
+  "   @DeblankFileNames [-move] [FILES]",
+  "",
+  "OPTIONS",
+  "   -dry_run: Just show what would be done. Don't rename files.",
+  "             This is the default option",
+  "   -move: Actually rename the files (opposite of -dry_run)",
+  "   -nobrac: Do not replace () and [] in filenames, just spaces",
+  "   -demo_set: Create a toy directory with bad names for testing.",
+  "   -echo: Turn on script echo",
+  "   -help: This message",
+  "   FILES: Specify files to fix as opposed to letting it fix all",
+  "          the names in the current directory.",
+  "",
+  "Examples:",
+  "   1- @DeblankFileNames ",
+  "",
+  "   2- @DeblankFileNames -move ",
+  "",
+  "   3- Run the command below and follow its suggestions",
+  "      @DeblankFileNames -demo_set",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    298,
+    306
+   ],
+   "help_range": [
+    308,
+    397
+   ]
+  },
+  {
+   "param_range": [
+    401,
+    406
+   ],
+   "help_range": [
+    408,
+    456
+   ]
+  },
+  {
+   "param_range": [
+    460,
+    467
+   ],
+   "help_range": [
+    469,
+    519
+   ]
+  },
+  {
+   "param_range": [
+    523,
+    532
+   ],
+   "help_range": [
+    534,
+    584
+   ]
+  },
+  {
+   "param_range": [
+    588,
+    593
+   ],
+   "help_range": [
+    595,
+    614
+   ]
+  },
+  {
+   "param_range": [
+    618,
+    623
+   ],
+   "help_range": [
+    625,
+    905
+   ]
+  }
+ ]
+}

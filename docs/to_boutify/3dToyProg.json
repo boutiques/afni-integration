@@ -1,0 +1,200 @@
+{
+ "helptext": [
+  "Usage: 3dToyProg [-prefix PREF] [-mask MSET] [-datum DATUM] ",
+  "                 [-h|-help] <-input ISET>",
+  "   A program to illustrate dataset creation, and manipulation in C using",
+  "   AFNI's API. Comments in the code (should) explain it all.",
+  "",
+  " -input ISET: reference dataset ",
+  " -prefix PREF: Prefix of output datasets. ",
+  " -mask MSET: Restrict analysis to non-zero voxels in MSET",
+  " -datum DATUM: Output datum type for one of the datasets.",
+  "               Choose from 'float' or 'short'. Default is",
+  "               'float'",
+  " -h: Mini help, at time, same as -help in many cases.",
+  " -help: The entire help output",
+  " -HELP: Extreme help, same as -help in majority of cases.",
+  " -h_view: Open help in text editor. AFNI will try to find a GUI editor",
+  " -hview : on your machine. You can control which it should use by",
+  "          setting environment variable AFNI_GUI_EDITOR.",
+  " -h_web: Open help in web browser. AFNI will try to find a browser.",
+  " -hweb : on your machine. You can control which it should use by",
+  "         setting environment variable AFNI_GUI_EDITOR. ",
+  " -h_find WORD: Look for lines in this programs's -help output that match",
+  "               (approximately) WORD.",
+  " -h_raw: Help string unedited",
+  " -h_spx: Help string in sphinx loveliness, but do not try to autoformat",
+  " -h_aspx: Help string in sphinx with autoformatting of options, etc.",
+  " -all_opts: Try to identify all options for the program from the",
+  "            output of its -help option. Some options might be missed",
+  "            and others misidentified. Use this output for hints only.",
+  " ",
+  "",
+  "",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    239,
+    245
+   ],
+   "help_range": [
+    252,
+    269
+   ]
+  },
+  {
+   "param_range": [
+    272,
+    279
+   ],
+   "help_range": [
+    286,
+    312
+   ]
+  },
+  {
+   "param_range": [
+    315,
+    320
+   ],
+   "help_range": [
+    327,
+    371
+   ]
+  },
+  {
+   "param_range": [
+    373,
+    379
+   ],
+   "help_range": [
+    387,
+    510
+   ]
+  },
+  {
+   "param_range": [
+    512,
+    514
+   ],
+   "help_range": [
+    516,
+    564
+   ]
+  },
+  {
+   "param_range": [
+    566,
+    571
+   ],
+   "help_range": [
+    573,
+    595
+   ]
+  },
+  {
+   "param_range": [
+    597,
+    602
+   ],
+   "help_range": [
+    604,
+    653
+   ]
+  },
+  {
+   "param_range": [
+    655,
+    662
+   ],
+   "help_range": [
+    664,
+    724
+   ]
+  },
+  {
+   "param_range": [
+    726,
+    732
+   ],
+   "help_range": [
+    735,
+    846
+   ]
+  },
+  {
+   "param_range": [
+    848,
+    854
+   ],
+   "help_range": [
+    856,
+    914
+   ]
+  },
+  {
+   "param_range": [
+    916,
+    921
+   ],
+   "help_range": [
+    924,
+    1034
+   ]
+  },
+  {
+   "param_range": [
+    1037,
+    1044
+   ],
+   "help_range": [
+    1051,
+    1145
+   ]
+  },
+  {
+   "param_range": [
+    1147,
+    1153
+   ],
+   "help_range": [
+    1155,
+    1175
+   ]
+  },
+  {
+   "param_range": [
+    1177,
+    1183
+   ],
+   "help_range": [
+    1185,
+    1247
+   ]
+  },
+  {
+   "param_range": [
+    1249,
+    1256
+   ],
+   "help_range": [
+    1258,
+    1316
+   ]
+  },
+  {
+   "param_range": [
+    1318,
+    1327
+   ],
+   "help_range": [
+    1329,
+    1591
+   ]
+  }
+ ]
+}

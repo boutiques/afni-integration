@@ -1,0 +1,14 @@
+{
+ "helptext": [
+  "",
+  "Usage: 3dEntropy [-zskip] dataset ...",
+  "",
+  " * Datasets must be stored as 16 bit shorts.",
+  " * -zskip option means to skip 0 values in the computation.",
+  " * This program is not very useful :) :(",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": []
+}

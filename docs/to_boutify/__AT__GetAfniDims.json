@@ -1,0 +1,8 @@
+{
+ "helptext": [
+  "@GetAfniDims dset",
+  "Return the dimensions of dset",
+  ""
+ ],
+ "params": []
+}

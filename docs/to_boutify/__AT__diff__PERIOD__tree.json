@@ -1,0 +1,191 @@
+{
+ "helptext": [
+  "",
+  "   ----------------------------------------------------------------------",
+  "   @diff.tree - show file differences between 2 directories",
+  "",
+  "      Given: 2 directory names",
+  "",
+  "      If desired, list files that do not exist in one of the directories.",
+  "      For the files that exist in both directories, list those that differ.",
+  "      If desired, show the actual differences.",
+  "",
+  "      This is similar to @diff.files, which only looks at files in a",
+  "      specified list.",
+  "",
+  "   ----------------------------------------------------------------------",
+  "   usage: @diff.tree [OPTIONS] new_dir old_dir\"",
+  "",
+  "   ----------------------------------------------------------------------",
+  "   options:",
+  "",
+  "      -diff_opts 'OPTS'      : apply OPTS as options in diff commands",
+  "      -ignore_append i1 ...  : append to ignore_list (list in quotes)",
+  "      -ia                    : short for -ignore_append",
+  "      -ignore_list i1 ...    : create new ignore_list (list in quotes)",
+  "      -il                    : short for -ignore_list",
+  "      -ignore_missing        : only compare overlapping files",
+  "                               If different files, fail.",
+  "      -no_diffs              : only compare existence of files",
+  "      -quiet                 : only list files with diffs",
+  "      -save                  : save actual file differences (txt and pdf)",
+  "      -show                  : show actual file differences",
+  "      -skip_data             : skip binary diff of select data files",
+  "                               (.BRIK, .dcm, .BRIK.gz)",
+  "      -verb LEVEL            : set verbosity level (0,1,2)",
+  "                               (default 1)",
+  "      -xxdiff                : use xxdiff to show diffs",
+  "      -X                     : implies -xxdiff -ignore_missing",
+  "",
+  "",
+  "   ----------------------------------------------------------------------",
+  "   examples:",
+  "",
+  "   ----------------------------------------------------------------------",
+  "   R Reynolds    written ages ago, but added 10 Jun, 2015",
+  "   ----------------------------------------",
+  "    "
+ ],
+ "params": [
+  {
+   "param_range": [
+    674,
+    684
+   ],
+   "help_range": [
+    684,
+    737
+   ]
+  },
+  {
+   "param_range": [
+    744,
+    758
+   ],
+   "help_range": [
+    758,
+    807
+   ]
+  },
+  {
+   "param_range": [
+    814,
+    817
+   ],
+   "help_range": [
+    839,
+    863
+   ]
+  },
+  {
+   "param_range": [
+    870,
+    882
+   ],
+   "help_range": [
+    882,
+    934
+   ]
+  },
+  {
+   "param_range": [
+    941,
+    944
+   ],
+   "help_range": [
+    966,
+    988
+   ]
+  },
+  {
+   "param_range": [
+    995,
+    1010
+   ],
+   "help_range": [
+    1020,
+    1107
+   ]
+  },
+  {
+   "param_range": [
+    1114,
+    1123
+   ],
+   "help_range": [
+    1139,
+    1170
+   ]
+  },
+  {
+   "param_range": [
+    1177,
+    1183
+   ],
+   "help_range": [
+    1202,
+    1228
+   ]
+  },
+  {
+   "param_range": [
+    1235,
+    1240
+   ],
+   "help_range": [
+    1260,
+    1302
+   ]
+  },
+  {
+   "param_range": [
+    1309,
+    1314
+   ],
+   "help_range": [
+    1334,
+    1362
+   ]
+  },
+  {
+   "param_range": [
+    1369,
+    1379
+   ],
+   "help_range": [
+    1394,
+    1486
+   ]
+  },
+  {
+   "param_range": [
+    1493,
+    1498
+   ],
+   "help_range": [
+    1518,
+    1588
+   ]
+  },
+  {
+   "param_range": [
+    1595,
+    1602
+   ],
+   "help_range": [
+    1620,
+    1644
+   ]
+  },
+  {
+   "param_range": [
+    1651,
+    1653
+   ],
+   "help_range": [
+    1676,
+    1973
+   ]
+  }
+ ]
+}

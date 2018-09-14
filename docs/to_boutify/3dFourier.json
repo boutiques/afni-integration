@@ -1,0 +1,81 @@
+{
+ "helptext": [
+  "3dFourier ",
+  "(c) 1999 Medical College of Wisconsin",
+  "by T. Ross and K. Heimerl",
+  "Version 0.8 last modified 8-17-99",
+  "",
+  "Usage: 3dFourier [options] dataset",
+  "",
+  "* Program to lowpass and/or highpass each voxel time series in a",
+  "  dataset, via the FFT.",
+  "* Also see program 3dBandpass for something similar.",
+  "",
+  "The parameters and options are:",
+  "\tdataset\t\tan afni compatible 3d+time dataset to be operated upon",
+  "\t-prefix name\toutput name for new 3d+time dataset [default = fourier]",
+  "\t-lowpass f \tlow pass filter with a cutoff of f Hz",
+  "\t-highpass f\thigh pass filter with a cutoff of f Hz",
+  "\t-ignore n\tignore the first n images [default = 1]",
+  "\t-retrend\tAny mean and linear trend are removed before filtering.",
+  "\t\t\tThis will restore the trend after filtering.",
+  "",
+  "Note that by combining the lowpass and highpass options, one can construct",
+  "bandpass and notch filters",
+  "",
+  "INPUT DATASET NAMES",
+  "-------------------",
+  "This program accepts datasets that are modified on input according to the",
+  "following schemes:",
+  "  'r1+orig[3..5]'                                    {sub-brick selector}",
+  "  'r1+orig<100..200>'                                {sub-range selector}",
+  "  'r1+orig[3..5]<100..200>'                          {both selectors}",
+  "  '3dcalc( -a r1+orig -b r2+orig -expr 0.5*(a+b) )'  {calculation}",
+  "For the gruesome details, see the output of 'afni -help'.",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    387,
+    394
+   ],
+   "help_range": [
+    394,
+    455
+   ]
+  },
+  {
+   "param_range": [
+    457,
+    465
+   ],
+   "help_range": [
+    465,
+    506
+   ]
+  },
+  {
+   "param_range": [
+    508,
+    517
+   ],
+   "help_range": [
+    517,
+    558
+   ]
+  },
+  {
+   "param_range": [
+    560,
+    567
+   ],
+   "help_range": [
+    567,
+    1370
+   ]
+  }
+ ]
+}

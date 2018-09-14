@@ -1,0 +1,197 @@
+{
+ "helptext": [
+  "Compression will be faster with 'pigz' installed http://macappstore.org/pigz/",
+  "Chris Rorden's dcm2niiX version v1.0.20180403 GCC4.2.1 (64-bit MacOS)",
+  "usage: dcm2niix_afni [options] <in_folder>",
+  " Options :",
+  "  -1..-9 : gz compression level (1=fastest..9=smallest, default 6)",
+  "  -b : BIDS sidecar (y/n/o [o=only: no NIfTI], default y)",
+  "   -ba : anonymize BIDS (y/n, default y)",
+  "  -c : comment stored as NIfTI aux_file (up to 24 characters)",
+  "  -f : filename (%a=antenna  (coil) number, %c=comments, %d=description, %e=echo number, %f=folder name, %i=ID of patient, %j=seriesInstanceUID, %k=studyInstanceUID, %m=manufacturer, %n=name of patient, %p=protocol, %s=series number, %t=time, %u=acquisition number, %v=vendor, %x=study ID; %z=sequence name; default '%f_%p_%t_%s')",
+  "  -g : generate defaults file (y/n/o [o=only: reset and write defaults], default n)",
+  "  -h : show help",
+  "  -i : ignore derived, localizer and 2D images (y/n, default n)",
+  "  -m : merge 2D slices from same series regardless of study time, echo, coil, orientation, etc. (y/n, default n)",
+  "  -n : only convert this series number - can be used up to 16 times (default convert all)",
+  "  -o : output directory (omit to save to input folder)",
+  "  -p : Philips precise float (not display) scaling (y/n, default y)",
+  "  -s : single file mode, do not convert other images in folder (y/n, default n)",
+  "  -t : text notes includes private patient details (y/n, default n)",
+  "  -u : up-to-date check",
+  "  -v : verbose (n/y or 0/1/2 [no, yes, logorrheic], default 0)",
+  "  -x : crop (y/n, default n)",
+  "  -z : gz compress images (y/i/n/3, default n) [y=pigz, i=internal, n=no, 3=no,3D]",
+  " Defaults file : /Users/rossmarkello/.dcm2nii.ini",
+  " Examples :",
+  "  dcm2niix_afni /Users/chris/dir",
+  "  dcm2niix_afni -c \"my comment\" /Users/chris/dir",
+  "  dcm2niix_afni -o /users/cr/outdir/ -z y ~/dicomdir",
+  "  dcm2niix_afni -f %p_%s -b y -ba n ~/dicomdir",
+  "  dcm2niix_afni -f mystudy%s ~/dicomdir",
+  "  dcm2niix_afni -o \"~/dir with spaces/dir\" ~/dicomdir",
+  "Example output filename: '/myFolder_MPRAGE_19770703150928_1.nii'"
+ ],
+ "params": [
+  {
+   "param_range": [
+    271,
+    273
+   ],
+   "help_range": [
+    276,
+    367
+   ]
+  },
+  {
+   "param_range": [
+    370,
+    372
+   ],
+   "help_range": [
+    375,
+    429
+   ]
+  },
+  {
+   "param_range": [
+    432,
+    434
+   ],
+   "help_range": [
+    437,
+    760
+   ]
+  },
+  {
+   "param_range": [
+    763,
+    765
+   ],
+   "help_range": [
+    768,
+    844
+   ]
+  },
+  {
+   "param_range": [
+    847,
+    849
+   ],
+   "help_range": [
+    852,
+    861
+   ]
+  },
+  {
+   "param_range": [
+    864,
+    866
+   ],
+   "help_range": [
+    869,
+    925
+   ]
+  },
+  {
+   "param_range": [
+    928,
+    930
+   ],
+   "help_range": [
+    933,
+    1038
+   ]
+  },
+  {
+   "param_range": [
+    1041,
+    1043
+   ],
+   "help_range": [
+    1046,
+    1128
+   ]
+  },
+  {
+   "param_range": [
+    1131,
+    1133
+   ],
+   "help_range": [
+    1136,
+    1183
+   ]
+  },
+  {
+   "param_range": [
+    1186,
+    1188
+   ],
+   "help_range": [
+    1191,
+    1251
+   ]
+  },
+  {
+   "param_range": [
+    1254,
+    1256
+   ],
+   "help_range": [
+    1259,
+    1331
+   ]
+  },
+  {
+   "param_range": [
+    1334,
+    1336
+   ],
+   "help_range": [
+    1339,
+    1399
+   ]
+  },
+  {
+   "param_range": [
+    1402,
+    1404
+   ],
+   "help_range": [
+    1407,
+    1423
+   ]
+  },
+  {
+   "param_range": [
+    1426,
+    1428
+   ],
+   "help_range": [
+    1431,
+    1486
+   ]
+  },
+  {
+   "param_range": [
+    1489,
+    1491
+   ],
+   "help_range": [
+    1494,
+    1515
+   ]
+  },
+  {
+   "param_range": [
+    1518,
+    1520
+   ],
+   "help_range": [
+    1523,
+    2001
+   ]
+  }
+ ]
+}

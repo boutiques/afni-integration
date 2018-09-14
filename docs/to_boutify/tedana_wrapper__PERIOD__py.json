@@ -1,0 +1,192 @@
+{
+ "helptext": [
+  "usage: /Users/rossmarkello/abin/tedana_wrapper.py [-h] -input DSETS",
+  "                                                  [DSETS ...] -TE ms [ms ...]",
+  "                                                  -mask MASK [-help]",
+  "                                                  [-results_dir DIR]",
+  "                                                  [-prefix PREFIX] [-save_all]",
+  "                                                  [-prep_only]",
+  "                                                  [-tedana_prog TEDANA_PROG]",
+  "                                                  [-tedana_is_exec]",
+  "                                                  [-ted_label LABEL]",
+  "                                                  [-tedana_opts 'OPTS']",
+  "",
+  "------------------------------------------",
+  "Overview ~1~",
+  "",
+  "    Internal wrapper to run tedana.py.",
+  "    Usually only run from within afni_proc.py.",
+  "",
+  "Caveats ~1~",
+  "",
+  "    Nearly all of the tedana.py options will be the defaults unless the user",
+  "    specifies them with the -tedana_prog argument. See the help from tedana.py",
+  "    for valid options.",
+  "",
+  "Example ~1~",
+  "",
+  "    tedana_wrapper.py -TE 11 22.72 34.44 \\",
+  "    -mask masked_bandit+tlrc \\",
+  "    -input echo_01+tlrc echo_02+tlrc echo_03+tlrc \\",
+  "    -tedana_opts \"--initcost=tanh --conv=2.5e-5 --kdaw=10\"",
+  "",
+  "------------------------------------------",
+  "",
+  "Options ~1~",
+  "",
+  "Required arguments:",
+  "  -input DSETS [DSETS ...]",
+  "                        4D dataset for each echo.",
+  "  -TE ms [ms ...]       Echo time (ms) for each echo.",
+  "  -mask MASK            Mask in same space/grid as the input datasets.",
+  "",
+  "tedana arguments:",
+  "  -prep_only            Do not run tedana.py, stop at 3dZcat.",
+  "  -tedana_prog TEDANA_PROG",
+  "                        Path and name of the version of tedana.py that will be",
+  "                        run.Default is meica.libs/tedana.py in the afni",
+  "                        binaries directory.",
+  "  -tedana_is_exec       Run 'tedana.py' rather than 'python tedana.py'.",
+  "  -ted_label LABEL      Suffix for output folder. Adds suffix like TED.LABEL",
+  "                        (NOT A PATH)",
+  "  -tedana_opts 'OPTS'   Additional options to pass to tedana.py. (In quotes)",
+  "                        Example: '--initcost=tanh --conv=2.5e-5'",
+  "",
+  "Optional arguments:",
+  "  -h, --help            show this help message and exit",
+  "  -help                 Show this help.",
+  "  -results_dir DIR      Folder to be created for all outputs. Default",
+  "                        [./Bunnymen].",
+  "  -prefix PREFIX        Prefix for dataset names. Default [Bunnymen].",
+  "  -save_all             Save intermediate datasets. Default is to save only",
+  "                        the 3dZcat stacked dataset (and tedana stuff)",
+  "",
+  "------------------------------------------",
+  "Justin Rajendra circa 02/2018",
+  "I hope this will be useful for someone...",
+  "Keep on keeping on!",
+  "------------------------------------------"
+ ],
+ "params": [
+  {
+   "param_range": [
+    266,
+    278
+   ],
+   "help_range": [
+    0,
+    0
+   ]
+  },
+  {
+   "param_range": [
+    335,
+    342
+   ],
+   "help_range": [
+    351,
+    362
+   ]
+  },
+  {
+   "param_range": [
+    414,
+    424
+   ],
+   "help_range": [
+    0,
+    0
+   ]
+  },
+  {
+   "param_range": [
+    477,
+    489
+   ],
+   "help_range": [
+    0,
+    0
+   ]
+  },
+  {
+   "param_range": [
+    554,
+    569
+   ],
+   "help_range": [
+    0,
+    0
+   ]
+  },
+  {
+   "param_range": [
+    622,
+    632
+   ],
+   "help_range": [
+    639,
+    1325
+   ]
+  },
+  {
+   "param_range": [
+    1328,
+    1334
+   ],
+   "help_range": [
+    1334,
+    1402
+   ]
+  },
+  {
+   "param_range": [
+    1405,
+    1408
+   ],
+   "help_range": [
+    1408,
+    1456
+   ]
+  },
+  {
+   "param_range": [
+    1459,
+    1464
+   ],
+   "help_range": [
+    1464,
+    2016
+   ]
+  },
+  {
+   "param_range": [
+    2019,
+    2031
+   ],
+   "help_range": [
+    2031,
+    2235
+   ]
+  },
+  {
+   "param_range": [
+    2238,
+    2243
+   ],
+   "help_range": [
+    2243,
+    2453
+   ]
+  },
+  {
+   "param_range": [
+    2456,
+    2465
+   ],
+   "help_range": [
+    2465,
+    2778
+   ]
+  }
+ ]
+}

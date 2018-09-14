@@ -1,0 +1,48 @@
+{
+ "helptext": [
+  "",
+  "Mostly replaced by prompt_popup for more customization.",
+  "Usage: prompt_user <-pause MESSAGE> ",
+  "  -pause MESSAGE: Pops a window prompting the user with MESSAGE.",
+  "                  Program does not return until user responds.",
+  "                  note: if MESSAGE is '-', it is read from stdin",
+  "  -timeout TT: Timeout in seconds of prompt message. Default answer",
+  "               is returned if TT seconds elapse without user",
+  "               input.",
+  "  -to TT: Same as -timeout TT",
+  "",
+  "       Ziad S. Saad SSCC/NIMH/NIH saadz@mail.nih.gov     "
+ ],
+ "params": [
+  {
+   "param_range": [
+    96,
+    102
+   ],
+   "help_range": [
+    112,
+    286
+   ]
+  },
+  {
+   "param_range": [
+    289,
+    297
+   ],
+   "help_range": [
+    302,
+    437
+   ]
+  },
+  {
+   "param_range": [
+    440,
+    443
+   ],
+   "help_range": [
+    448,
+    521
+   ]
+  }
+ ]
+}

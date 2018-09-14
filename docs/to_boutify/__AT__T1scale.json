@@ -1,0 +1,209 @@
+{
+ "helptext": [
+  "",
+  "Usage: @T1scale <-T1 T1vol> <-PD PDvol> ",
+  "",
+  "Fix bias field shading in T1 by scaling it with PD image.",
+  "You can also get a decent result even without the PD volume.",
+  "",
+  "   -T1 T1vol: The T1 volume",
+  "   -PD PDvol: The PD volume (aligned to T1)",
+  "   -odir ODIR: Directory where output gets dumped. ",
+  "              Default is T1scale/ ",
+  "              ODIR will contain multiple volumes with the one",
+  "              of most interest being T1.uni+orig",
+  "",
+  "         Script will reuse existing  volumes",
+  "",
+  "   -align: Align PD volume to T1. Script assumes volumes are in",
+  "           close alignment. With this option, output PD+orig volume",
+  "           will be in alignment with T1+orig.",
+  "        Without this option, PDvol is assumed in alignment with T1vol",
+  "   -mask MVOL: Create mask for the output",
+  "         If not specified, the script will generate one with",
+  "         3dAutomask on fattened PDvol.",
+  "   -head_mask: Create mask using 3dSkullStrip's -head option.",
+  "   -unmasked_uni: Do not apply masking to uniformized volume (default)",
+  "                  You can mask the output after you decide which mask",
+  "                  is best. Here is an example with smask:\\n",
+  "                  3dcalc -a T1.uni+orig. -b smask+orig. \\",
+  "                         -expr 'step(b)*a' -prefix T1.uni.m",
+  "   -masked_uni: Apply masking to uniformized volume",
+  "",
+  "   -echo: Set echo",
+  "   -help: this message",
+  "",
+  "Global Help Options:",
+  "--------------------",
+  "",
+  "   -h_web: Open webpage with help for this program",
+  "   -hweb: Same as -h_web",
+  "   -h_view: Open -help output in a GUI editor",
+  "   -hview: Same as -hview",
+  "   -all_opts: List all of the options for this script",
+  "   -h_find WORD: Search for lines containing WORD in -help",
+  "                 output. Seach is approximate."
+ ],
+ "params": [
+  {
+   "param_range": [
+    166,
+    169
+   ],
+   "help_range": [
+    177,
+    190
+   ]
+  },
+  {
+   "param_range": [
+    194,
+    197
+   ],
+   "help_range": [
+    205,
+    234
+   ]
+  },
+  {
+   "param_range": [
+    238,
+    243
+   ],
+   "help_range": [
+    250,
+    478
+   ]
+  },
+  {
+   "param_range": [
+    483,
+    489
+   ],
+   "help_range": [
+    491,
+    727
+   ]
+  },
+  {
+   "param_range": [
+    731,
+    736
+   ],
+   "help_range": [
+    743,
+    869
+   ]
+  },
+  {
+   "param_range": [
+    873,
+    883
+   ],
+   "help_range": [
+    885,
+    931
+   ]
+  },
+  {
+   "param_range": [
+    935,
+    948
+   ],
+   "help_range": [
+    950,
+    1250
+   ]
+  },
+  {
+   "param_range": [
+    1254,
+    1265
+   ],
+   "help_range": [
+    1267,
+    1302
+   ]
+  },
+  {
+   "param_range": [
+    1307,
+    1312
+   ],
+   "help_range": [
+    1314,
+    1322
+   ]
+  },
+  {
+   "param_range": [
+    1326,
+    1331
+   ],
+   "help_range": [
+    1333,
+    1388
+   ]
+  },
+  {
+   "param_range": [
+    1393,
+    1399
+   ],
+   "help_range": [
+    1401,
+    1440
+   ]
+  },
+  {
+   "param_range": [
+    1444,
+    1449
+   ],
+   "help_range": [
+    1451,
+    1465
+   ]
+  },
+  {
+   "param_range": [
+    1469,
+    1476
+   ],
+   "help_range": [
+    1478,
+    1511
+   ]
+  },
+  {
+   "param_range": [
+    1515,
+    1521
+   ],
+   "help_range": [
+    1523,
+    1537
+   ]
+  },
+  {
+   "param_range": [
+    1541,
+    1550
+   ],
+   "help_range": [
+    1552,
+    1591
+   ]
+  },
+  {
+   "param_range": [
+    1595,
+    1602
+   ],
+   "help_range": [
+    1609,
+    1697
+   ]
+  }
+ ]
+}

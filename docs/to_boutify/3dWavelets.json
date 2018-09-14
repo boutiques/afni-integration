@@ -1,0 +1,284 @@
+{
+ "helptext": [
+  "++ 3dWavelets: AFNI version=AFNI_18.1.18 (May 25 2018) [64-bit]",
+  "++ Authored by: B. Douglas Ward",
+  "\u001b[7m*+ WARNING:\u001b[0m This program (3dWavelets) is old, obsolete, and not maintained!",
+  "Program to perform wavelet analysis of an FMRI 3d+time dataset.        ",
+  "                                                                       ",
+  "Usage:                                                                 ",
+  "3dWavelets                                                             ",
+  "-type wname          wname = name of wavelet to use for the analysis   ",
+  "                     At present, there are only two choices for wname: ",
+  "                        Haar  -->  Haar wavelets                       ",
+  "                        Daub  -->  Daubechies wavelets                 ",
+  "-input fname         fname = filename of 3d+time input dataset         ",
+  "[-input1D dname]     dname = filename of single (fMRI) .1D time series ",
+  "[-mask mname]        mname = filename of 3d mask dataset               ",
+  "[-nfirst fnum]       fnum = number of first dataset image to use in    ",
+  "                       the wavelet analysis. (default = 0)             ",
+  "[-nlast  lnum]       lnum = number of last dataset image to use in     ",
+  "                       the wavelet analysis. (default = last)          ",
+  "[-fdisp fval]        Write (to screen) results for those voxels        ",
+  "                       whose F-statistic is >= fval                    ",
+  "                                                                       ",
+  "Filter options:                                                        ",
+  "                                                                       ",
+  "[-filt_stop band mintr maxtr] Specify wavelet coefs. to set to zero    ",
+  "[-filt_base band mintr maxtr] Specify wavelet coefs. for baseline model",
+  "[-filt_sgnl band mintr maxtr] Specify wavelet coefs. for signal model  ",
+  "     where  band  = frequency band                                     ",
+  "            mintr = min. value for time window (in TR)                 ",
+  "            maxtr = max. value for time window (in TR)                 ",
+  "                                                                       ",
+  "Output options:                                                        ",
+  "                                                                       ",
+  "[-datum DTYPE]      Coerce the output data to be stored as type DTYPE, ",
+  "                       which may be short or float. (default = short)  ",
+  "                                                                       ",
+  "[-coefts cprefix]   cprefix = prefix of 3d+time output dataset which   ",
+  "                       will contain the forward wavelet transform      ",
+  "                       coefficients                                    ",
+  "                                                                       ",
+  "[-fitts  fprefix]   fprefix = prefix of 3d+time output dataset which   ",
+  "                       will contain the full model time series fit     ",
+  "                       to the input data                               ",
+  "                                                                       ",
+  "[-sgnlts sprefix]   sprefix = prefix of 3d+time output dataset which   ",
+  "                       will contain the signal model time series fit   ",
+  "                       to the input data                               ",
+  "                                                                       ",
+  "[-errts  eprefix]   eprefix = prefix of 3d+time output dataset which   ",
+  "                       will contain the residual error time series     ",
+  "                       from the full model fit to the input data       ",
+  "                                                                       ",
+  "The following options control the contents of the bucket dataset:      ",
+  "                                                                       ",
+  "[-fout]            Flag to output the F-statistics                     ",
+  "[-rout]            Flag to output the R^2 statistics                   ",
+  "[-cout]            Flag to output the full model wavelet coefficients  ",
+  "[-vout]            Flag to output the sample variance (MSE) map        ",
+  "                                                                       ",
+  "[-stat_first]      Flag to specify that the full model statistics will ",
+  "                     appear prior to the wavelet coefficients in the   ",
+  "                     bucket dataset output                             ",
+  "                                                                       ",
+  "[-bucket bprefix]  bprefix = prefix of AFNI 'bucket' dataset containing",
+  "                     parameters of interest, such as the F-statistic   ",
+  "                     for significance of the wavelet signal model.     ",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    468,
+    473
+   ],
+   "help_range": [
+    497,
+    738
+   ]
+  },
+  {
+   "param_range": [
+    756,
+    762
+   ],
+   "help_range": [
+    785,
+    818
+   ]
+  },
+  {
+   "param_range": [
+    829,
+    837
+   ],
+   "help_range": [
+    849,
+    898
+   ]
+  },
+  {
+   "param_range": [
+    901,
+    906
+   ],
+   "help_range": [
+    921,
+    956
+   ]
+  },
+  {
+   "param_range": [
+    973,
+    980
+   ],
+   "help_range": [
+    993,
+    1102
+   ]
+  },
+  {
+   "param_range": [
+    1117,
+    1123
+   ],
+   "help_range": [
+    1137,
+    1249
+   ]
+  },
+  {
+   "param_range": [
+    1261,
+    1267
+   ],
+   "help_range": [
+    1281,
+    1491
+   ]
+  },
+  {
+   "param_range": [
+    1621,
+    1631
+   ],
+   "help_range": [
+    1650,
+    1687
+   ]
+  },
+  {
+   "param_range": [
+    1693,
+    1703
+   ],
+   "help_range": [
+    1722,
+    1763
+   ]
+  },
+  {
+   "param_range": [
+    1765,
+    1775
+   ],
+   "help_range": [
+    1794,
+    2139
+   ]
+  },
+  {
+   "param_range": [
+    2269,
+    2275
+   ],
+   "help_range": [
+    2288,
+    2409
+   ]
+  },
+  {
+   "param_range": [
+    2485,
+    2492
+   ],
+   "help_range": [
+    2504,
+    2663
+   ]
+  },
+  {
+   "param_range": [
+    2773,
+    2779
+   ],
+   "help_range": [
+    2792,
+    2956
+   ]
+  },
+  {
+   "param_range": [
+    3061,
+    3068
+   ],
+   "help_range": [
+    3080,
+    3244
+   ]
+  },
+  {
+   "param_range": [
+    3349,
+    3355
+   ],
+   "help_range": [
+    3368,
+    3701
+   ]
+  },
+  {
+   "param_range": [
+    3781,
+    3786
+   ],
+   "help_range": [
+    3799,
+    3830
+   ]
+  },
+  {
+   "param_range": [
+    3853,
+    3858
+   ],
+   "help_range": [
+    3871,
+    3904
+   ]
+  },
+  {
+   "param_range": [
+    3925,
+    3930
+   ],
+   "help_range": [
+    3943,
+    3993
+   ]
+  },
+  {
+   "param_range": [
+    3997,
+    4002
+   ],
+   "help_range": [
+    4015,
+    4059
+   ]
+  },
+  {
+   "param_range": [
+    4141,
+    4152
+   ],
+   "help_range": [
+    4159,
+    4326
+   ]
+  },
+  {
+   "param_range": [
+    4429,
+    4436
+   ],
+   "help_range": [
+    4447,
+    4710
+   ]
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "helptext": [
+  "Usage: imrotate [-linear | -Fourier] dx dy phi input_image output_image",
+  "Shifts and rotates an image:",
+  "  dx pixels rightwards (not necessarily an integer)",
+  "  dy pixels downwards",
+  "  phi degrees clockwise",
+  "  -linear means to use bilinear interpolation (default is bicubic)",
+  "  -Fourier means to use Fourier interpolaion",
+  "Values outside the input_image are taken to be zero."
+ ],
+ "params": [
+  {
+   "param_range": [
+    201,
+    208
+   ],
+   "help_range": [
+    208,
+    265
+   ]
+  },
+  {
+   "param_range": [
+    268,
+    276
+   ],
+   "help_range": [
+    276,
+    363
+   ]
+  }
+ ]
+}

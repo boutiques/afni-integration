@@ -1,0 +1,8 @@
+{
+ "helptext": [
+  "Usage: imand [-thresh #] input_images ... output_image",
+  "* Only pixels nonzero in all input images",
+  "* (and above the threshold, if given) will be output."
+ ],
+ "params": []
+}

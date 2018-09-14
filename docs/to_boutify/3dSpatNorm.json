@@ -1,0 +1,110 @@
+{
+ "helptext": [
+  "Usage: 3dSpatNorm [options] dataset",
+  "",
+  "Options:",
+  "  -prefix ppp = Write output dataset using 'ppp' for the prefix.",
+  "  -orig_space = Write output dataset using the same grid as dataset.",
+  "  -verb       = Write out progress reports",
+  "  -monkey : Monkey business",
+  "  -marmost: Marmoset head",
+  "  -rat: Rat head",
+  "  -human: Bone head (default)",
+  "  -bottom_cuts CUTFLAGS = Make approximate cuts at the bottom to shave",
+  "                          non brain areas. CUTFLAGS is a string of ",
+  "                          characters indicating which sides to cut.",
+  "                          An 'A' cuts along the anterior side",
+  "                          'P' for posterior, and 'R', 'L' for right, and",
+  "                          left, respectively.",
+  "                          To cut all four, use: -bottom_cuts APLR",
+  "                    Note: -bottom_cuts only works for Human heads.",
+  "--------------------------------------------------------------------",
+  "* This program is obsolete, and should not be used by most people. *",
+  "--------------------------------------------------------------------",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    48,
+    55
+   ],
+   "help_range": [
+    62,
+    110
+   ]
+  },
+  {
+   "param_range": [
+    113,
+    124
+   ],
+   "help_range": [
+    127,
+    179
+   ]
+  },
+  {
+   "param_range": [
+    182,
+    187
+   ],
+   "help_range": [
+    196,
+    222
+   ]
+  },
+  {
+   "param_range": [
+    225,
+    232
+   ],
+   "help_range": [
+    235,
+    250
+   ]
+  },
+  {
+   "param_range": [
+    253,
+    261
+   ],
+   "help_range": [
+    263,
+    276
+   ]
+  },
+  {
+   "param_range": [
+    279,
+    283
+   ],
+   "help_range": [
+    285,
+    293
+   ]
+  },
+  {
+   "param_range": [
+    296,
+    302
+   ],
+   "help_range": [
+    304,
+    323
+   ]
+  },
+  {
+   "param_range": [
+    326,
+    338
+   ],
+   "help_range": [
+    350,
+    1118
+   ]
+  }
+ ]
+}

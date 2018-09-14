@@ -1,0 +1,286 @@
+{
+ "helptext": [
+  "++ 3dExtrema: AFNI version=AFNI_18.1.18 (May 25 2018) [64-bit]",
+  "++ Authored by: B. Douglas Ward",
+  "This program finds local extrema (minima or maxima) of the input       ",
+  "dataset values for each sub-brick of the input dataset.  The extrema   ",
+  "may be determined either for each volume, or for each individual slice.",
+  "Only those voxels whose corresponding intensity value is greater than  ",
+  "the user specified data threshold will be considered.                  ",
+  "",
+  "Usage: 3dExtrema  options  datasets                                  ",
+  "where the options are:                                                 ",
+  "-prefix pname    = Use 'pname' for the output dataset prefix name.     ",
+  "  OR                 [default = NONE; only screen output]              ",
+  "-output pname                                                          ",
+  "                                                                       ",
+  "-session dir     = Use 'dir' for the output dataset session directory. ",
+  "                     [default='./'=current working directory]          ",
+  "                                                                       ",
+  "-quiet           = Flag to suppress screen output                      ",
+  "                                                                       ",
+  "-mask_file mname = Use mask statistic from file mname.                 ",
+  "                   Note: If file mname contains more than 1 sub-brick, ",
+  "                   the mask sub-brick must be specified!               ",
+  "-mask_thr m        Only voxels whose mask statistic is >= m            ",
+  "                   in absolute value will be considered.               ",
+  "                   A default value of 1 is assumed.                    ",
+  "                                                                       ",
+  "-data_thr d        Only voxels whose value (intensity) is greater      ",
+  "                   than d in absolute value will be considered.        ",
+  "                                                                       ",
+  "-nbest N           Only print the first N extrema.",
+  "                                                                       ",
+  "-sep_dist d        Min. separation distance [mm] for distinct extrema  ",
+  "                                                                       ",
+  "Choose type of extrema (one and only one choice):                      ",
+  "-minima            Find local minima.                                  ",
+  "-maxima [default]  Find local maxima.                                  ",
+  "                                                                       ",
+  "Choose form of binary relation (one and only one choice):              ",
+  "-strict [default]  >  for maxima,  <  for minima                       ",
+  "-partial           >= for maxima,  <= for minima                       ",
+  "                                                                       ",
+  "Choose boundary criteria (one and only one choice):                    ",
+  "-interior [default]Extrema must be interior points (not on boundary)   ",
+  "-closure           Extrema may be boundary points                      ",
+  "                                                                       ",
+  "Choose domain for finding extrema (one and only one choice):           ",
+  "-slice [default]   Each slice is considered separately                 ",
+  "-volume            The volume is considered as a whole                 ",
+  "                                                                       ",
+  "Choose option for merging of extrema (one and only one choice):        ",
+  "-remove [default]  Remove all but strongest of neighboring extrema     ",
+  "-average           Replace neighboring extrema by average              ",
+  "-weight            Replace neighboring extrema by weighted average     ",
+  "                                                                       ",
+  "Command line arguments after the above are taken to be input datasets. ",
+  "",
+  " Examples: ",
+  "  Compute maximum value in amygdala region of Talairach-transformed dataset",
+  "    3dExtrema -volume -closure -sep_dist 512 \\ ",
+  "      -mask_file 'TT_Daemon::amygdala' func_slim+tlrc'[0]'",
+  "  Show minimum voxel values not on edge of mask, where the mask >= 0.95",
+  "    3dExtrema -minima -volume -mask_file 'statmask+orig' \\ ",
+  "      -mask_thr 0.95 func_slim+tlrc'[0]'",
+  "  Get the maximum 3 values across the given ROI.",
+  "    3dExtrema -volume -closure -mask_file MY_ROI+tlrc \\",
+  "              -nbest 3 func_slim+tlrc'[0]'",
+  "",
+  "",
+  "INPUT DATASET NAMES",
+  "-------------------",
+  "This program accepts datasets that are modified on input according to the",
+  "following schemes:",
+  "  'r1+orig[3..5]'                                    {sub-brick selector}",
+  "  'r1+orig<100..200>'                                {sub-range selector}",
+  "  'r1+orig[3..5]<100..200>'                          {both selectors}",
+  "  '3dcalc( -a r1+orig -b r2+orig -expr 0.5*(a+b) )'  {calculation}",
+  "For the gruesome details, see the output of 'afni -help'.",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    598,
+    605
+   ],
+   "help_range": [
+    617,
+    727
+   ]
+  },
+  {
+   "param_range": [
+    742,
+    749
+   ],
+   "help_range": [
+    605,
+    611
+   ]
+  },
+  {
+   "param_range": [
+    886,
+    894
+   ],
+   "help_range": [
+    905,
+    1019
+   ]
+  },
+  {
+   "param_range": [
+    1102,
+    1108
+   ],
+   "help_range": [
+    1121,
+    1151
+   ]
+  },
+  {
+   "param_range": [
+    1246,
+    1256
+   ],
+   "help_range": [
+    1265,
+    1446
+   ]
+  },
+  {
+   "param_range": [
+    1462,
+    1471
+   ],
+   "help_range": [
+    1471,
+    1657
+   ]
+  },
+  {
+   "param_range": [
+    1750,
+    1759
+   ],
+   "help_range": [
+    1759,
+    1885
+   ]
+  },
+  {
+   "param_range": [
+    1966,
+    1972
+   ],
+   "help_range": [
+    1972,
+    2016
+   ]
+  },
+  {
+   "param_range": [
+    2089,
+    2098
+   ],
+   "help_range": [
+    2098,
+    2282
+   ]
+  },
+  {
+   "param_range": [
+    2305,
+    2312
+   ],
+   "help_range": [
+    2312,
+    2342
+   ]
+  },
+  {
+   "param_range": [
+    2377,
+    2384
+   ],
+   "help_range": [
+    2384,
+    2578
+   ]
+  },
+  {
+   "param_range": [
+    2593,
+    2600
+   ],
+   "help_range": [
+    2600,
+    2641
+   ]
+  },
+  {
+   "param_range": [
+    2665,
+    2673
+   ],
+   "help_range": [
+    2673,
+    2860
+   ]
+  },
+  {
+   "param_range": [
+    2881,
+    2890
+   ],
+   "help_range": [
+    2890,
+    2949
+   ]
+  },
+  {
+   "param_range": [
+    2953,
+    2961
+   ],
+   "help_range": [
+    2961,
+    3157
+   ]
+  },
+  {
+   "param_range": [
+    3169,
+    3175
+   ],
+   "help_range": [
+    3175,
+    3223
+   ]
+  },
+  {
+   "param_range": [
+    3241,
+    3248
+   ],
+   "help_range": [
+    3248,
+    3448
+   ]
+  },
+  {
+   "param_range": [
+    3457,
+    3464
+   ],
+   "help_range": [
+    3464,
+    3523
+   ]
+  },
+  {
+   "param_range": [
+    3529,
+    3537
+   ],
+   "help_range": [
+    3537,
+    3586
+   ]
+  },
+  {
+   "param_range": [
+    3601,
+    3608
+   ],
+   "help_range": [
+    3608,
+    4878
+   ]
+  }
+ ]
+}

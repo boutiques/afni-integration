@@ -1,0 +1,50 @@
+{
+ "helptext": [
+  "Usage: 3dAFNItoNIML [options] dset",
+  " Dumps AFNI dataset header information to stdout in NIML format.",
+  " Mostly for debugging and testing purposes!",
+  "",
+  " OPTIONS:",
+  "  -data          == Also put the data into the output (will be huge).",
+  "  -ascii         == Format in ASCII, not binary (even huger).",
+  "  -tcp:host:port == Instead of stdout, send the dataset to a socket.",
+  "                    (implies '-data' as well)",
+  "",
+  "-- RWCox - Mar 2005",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    157,
+    162
+   ],
+   "help_range": [
+    173,
+    224
+   ]
+  },
+  {
+   "param_range": [
+    227,
+    233
+   ],
+   "help_range": [
+    243,
+    286
+   ]
+  },
+  {
+   "param_range": [
+    289,
+    293
+   ],
+   "help_range": [
+    294,
+    489
+   ]
+  }
+ ]
+}

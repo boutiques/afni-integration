@@ -1,0 +1,244 @@
+{
+ "helptext": [
+  "",
+  "Usage: @ScaleVolume <-input DSET> <-prefix PREFIX>",
+  "                     [-perc_clip P0 P1] [-val_clip V0 V1]",
+  "                     [-scale_by_mean] [-scale_by_median]",
+  "                     [-norm] [-mask MSET]",
+  "",
+  "-input DSET: Dset to scale",
+  "-prefix PREFIX: Prefix of output",
+  "-mask MSET: Restrict to non-zero values of MSET",
+  "Method 1: (default)",
+  "Scale a volume so that its values range between V0 and V1",
+  "-val_clip V0 V1: Min and Max of output dset",
+  "                 Default V0 = 0 and V1 = 255",
+  "-perc_clip P0 P1: Set lowest P0 percentile to Min ",
+  "                  and highest P1 percentile to Max",
+  "                  Default P0 = 2 and P1 = 98",
+  "Output sub-brick labels are prefixed with SV.",
+  "",
+  "At the moment, Method 1 only operates on volumes with one sub-brick",
+  "",
+  "Method 2:",
+  "-scale_by_mean: Divide each sub-brick by mean of non-zero voxels",
+  "Output sub-brick labels are prefixed with mea.",
+  "-scale_by_median: Divide each sub-brick by median of non-zero voxels",
+  "Output sub-brick labels are prefixed with med.",
+  "",
+  "Method 3:",
+  "-norm: For each time series T, Tnorm= (T-mean(T))/stdev(T)",
+  "Output sub-brick labels are prefixed with tz.",
+  "",
+  "Method 4:",
+  "-feat_norm: For each sub-brick B, Bnorm= (B-min(B))/(max(B)-min(B))*99+1",
+  "Output sub-brick labels are prefixed with r.",
+  "",
+  "Method 5:",
+  "-feat_znorm: For each sub-brick B, Bnorm= (B-mean(B))/stdev(B)",
+  "Output sub-brick labels are prefixed with z.",
+  "",
+  "Global Help Options:",
+  "--------------------",
+  "",
+  "   -h_web: Open webpage with help for this program",
+  "   -hweb: Same as -h_web",
+  "   -h_view: Open -help output in a GUI editor",
+  "   -hview: Same as -hview",
+  "   -all_opts: List all of the options for this script",
+  "   -h_find WORD: Search for lines containing WORD in -help",
+  "                 output. Seach is approximate."
+ ],
+ "params": [
+  {
+   "param_range": [
+    74,
+    84
+   ],
+   "help_range": [
+    92,
+    109
+   ]
+  },
+  {
+   "param_range": [
+    132,
+    146
+   ],
+   "help_range": [
+    148,
+    166
+   ]
+  },
+  {
+   "param_range": [
+    189,
+    194
+   ],
+   "help_range": [
+    196,
+    208
+   ]
+  },
+  {
+   "param_range": [
+    210,
+    216
+   ],
+   "help_range": [
+    223,
+    236
+   ]
+  },
+  {
+   "param_range": [
+    237,
+    244
+   ],
+   "help_range": [
+    253,
+    269
+   ]
+  },
+  {
+   "param_range": [
+    270,
+    275
+   ],
+   "help_range": [
+    282,
+    395
+   ]
+  },
+  {
+   "param_range": [
+    396,
+    405
+   ],
+   "help_range": [
+    413,
+    484
+   ]
+  },
+  {
+   "param_range": [
+    485,
+    495
+   ],
+   "help_range": [
+    503,
+    757
+   ]
+  },
+  {
+   "param_range": [
+    758,
+    772
+   ],
+   "help_range": [
+    774,
+    869
+   ]
+  },
+  {
+   "param_range": [
+    870,
+    886
+   ],
+   "help_range": [
+    888,
+    996
+   ]
+  },
+  {
+   "param_range": [
+    997,
+    1002
+   ],
+   "help_range": [
+    1004,
+    1112
+   ]
+  },
+  {
+   "param_range": [
+    1113,
+    1123
+   ],
+   "help_range": [
+    1125,
+    1241
+   ]
+  },
+  {
+   "param_range": [
+    1242,
+    1253
+   ],
+   "help_range": [
+    1255,
+    1392
+   ]
+  },
+  {
+   "param_range": [
+    1397,
+    1403
+   ],
+   "help_range": [
+    1405,
+    1444
+   ]
+  },
+  {
+   "param_range": [
+    1448,
+    1453
+   ],
+   "help_range": [
+    1455,
+    1469
+   ]
+  },
+  {
+   "param_range": [
+    1473,
+    1480
+   ],
+   "help_range": [
+    1482,
+    1515
+   ]
+  },
+  {
+   "param_range": [
+    1519,
+    1525
+   ],
+   "help_range": [
+    1527,
+    1541
+   ]
+  },
+  {
+   "param_range": [
+    1545,
+    1554
+   ],
+   "help_range": [
+    1556,
+    1595
+   ]
+  },
+  {
+   "param_range": [
+    1599,
+    1606
+   ],
+   "help_range": [
+    1613,
+    1701
+   ]
+  }
+ ]
+}

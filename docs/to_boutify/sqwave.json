@@ -1,0 +1,7 @@
+{
+ "helptext": [
+  "Usage: sqwave [-on #] [-off #] [-length #] [-cycles #]",
+  "      [-init #] [-onkill #] [-offkill #] [-initkill #] [-name name]"
+ ],
+ "params": []
+}

@@ -1,0 +1,51 @@
+{
+ "helptext": [
+  "\u001b[7m*+ WARNING:\u001b[0m This program (3dAFNIto3D) is old, not maintained, and probably useless!",
+  "Usage: 3dAFNIto3D [options] dataset",
+  "Reads in an AFNI dataset, and writes it out as a 3D file.",
+  "",
+  "OPTIONS:",
+  " -prefix ppp  = Write result into file ppp.3D;",
+  "                  default prefix is same as AFNI dataset's.",
+  " -bin         = Write data in binary format, not text.",
+  " -txt         = Write data in text format, not binary.",
+  "",
+  "NOTES:",
+  "* At present, all bricks are written out in float format.",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    197,
+    204
+   ],
+   "help_range": [
+    212,
+    302
+   ]
+  },
+  {
+   "param_range": [
+    304,
+    308
+   ],
+   "help_range": [
+    319,
+    357
+   ]
+  },
+  {
+   "param_range": [
+    359,
+    363
+   ],
+   "help_range": [
+    374,
+    545
+   ]
+  }
+ ]
+}

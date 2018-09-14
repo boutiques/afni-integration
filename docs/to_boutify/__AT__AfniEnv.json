@@ -1,0 +1,134 @@
+{
+ "helptext": [
+  "",
+  "Script to set an AFNI environment variable in your afni resource file ",
+  "",
+  "Usage: @AfniEnv <-set NAME VALUE> [<-unset NAME>]",
+  "",
+  "   -set  NAME VALUE: Set environment variable NAME  to value VALUE",
+  "   -get  NAME: Get the value (same as apsearch -Vname option)",
+  "   -unset NAME : The opposite of -set",
+  "   -help: this message",
+  "",
+  "Note that this script only modifies the contents of your .afnirc",
+  "   file which is determined to be: /Users/rossmarkello/.afnirc",
+  "",
+  "See also:",
+  "   apsearch -afni_rc_file",
+  "   apsearch -view_readme env",
+  "",
+  "Global Help Options:",
+  "--------------------",
+  "",
+  "   -h_web: Open webpage with help for this program",
+  "   -hweb: Same as -h_web",
+  "   -h_view: Open -help output in a GUI editor",
+  "   -hview: Same as -hview",
+  "   -all_opts: List all of the options for this script",
+  "   -h_find WORD: Search for lines containing WORD in -help",
+  "                 output. Seach is approximate.",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    127,
+    131
+   ],
+   "help_range": [
+    145,
+    190
+   ]
+  },
+  {
+   "param_range": [
+    194,
+    198
+   ],
+   "help_range": [
+    206,
+    252
+   ]
+  },
+  {
+   "param_range": [
+    256,
+    262
+   ],
+   "help_range": [
+    270,
+    290
+   ]
+  },
+  {
+   "param_range": [
+    294,
+    299
+   ],
+   "help_range": [
+    301,
+    551
+   ]
+  },
+  {
+   "param_range": [
+    556,
+    562
+   ],
+   "help_range": [
+    564,
+    603
+   ]
+  },
+  {
+   "param_range": [
+    607,
+    612
+   ],
+   "help_range": [
+    614,
+    628
+   ]
+  },
+  {
+   "param_range": [
+    632,
+    639
+   ],
+   "help_range": [
+    641,
+    674
+   ]
+  },
+  {
+   "param_range": [
+    678,
+    684
+   ],
+   "help_range": [
+    686,
+    700
+   ]
+  },
+  {
+   "param_range": [
+    704,
+    713
+   ],
+   "help_range": [
+    715,
+    754
+   ]
+  },
+  {
+   "param_range": [
+    758,
+    765
+   ],
+   "help_range": [
+    772,
+    860
+   ]
+  }
+ ]
+}

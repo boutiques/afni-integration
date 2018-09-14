@@ -1,0 +1,8 @@
+{
+ "helptext": [
+  "Reads from stdin; lines with http://... hyperlinks",
+  "get converted into HTML <a href=...> hyperlinks.",
+  "Purpose: formatting AFNI '-help' files for the Web."
+ ],
+ "params": []
+}

@@ -1,0 +1,16 @@
+{
+ "helptext": [
+  "",
+  "oo Warning: ",
+  "   Failed to load R_io.so with this error message:",
+  "",
+  "Error in dyn.load(ll) : ",
+  "  unable to load shared object '/Users/rossmarkello/abin/R_io.so':",
+  "  dlopen(/Users/rossmarkello/abin/R_io.so, 6): Library not loaded: /Library/Frameworks/R.framework/Versions/2.15/Resources/lib/libR.dylib",
+  "  Referenced from: /Users/rossmarkello/abin/R_io.so",
+  "  Reason: image not found",
+  "Calls: source ... withVisible -> eval -> eval -> set_R_io -> dyn.load",
+  "Execution halted"
+ ],
+ "params": []
+}

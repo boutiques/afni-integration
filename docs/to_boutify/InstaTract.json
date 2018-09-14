@@ -1,0 +1,15 @@
+{
+ "helptext": [
+  "++ InstaTract: AFNI version=AFNI_18.1.18 (May 25 2018) [64-bit]",
+  "++ Authored by: LEGROSCHAT",
+  "A promise of a program",
+  "",
+  "",
+  "  Example:",
+  "     Run the following two commands, preferably from different shells.",
+  "     suma -niml &",
+  "     InstaTract -grid SOMEVOLUME &",
+  ""
+ ],
+ "params": []
+}

@@ -1,0 +1,90 @@
+{
+ "helptext": [
+  "",
+  "Usage: 3dLocalACF [options] inputdataset",
+  "",
+  "Options:",
+  "--------",
+  " -prefix   ppp",
+  " -input    inputdataset",
+  " -nbhd     nnn",
+  " -mask     maskdataset",
+  " -automask",
+  "",
+  "Notes:",
+  "------",
+  "* This program estimates the spatial AutoCorrelation Function (ACF)",
+  "  locally in a neighborhood around each voxel, unlike '3FWHMx -acf',",
+  "  which produces an average over the whole volume.",
+  "",
+  "* The input dataset must be a time series dataset, and must have",
+  "  been detrended, despiked, etc. already.  The 'errts' output from",
+  "  afni_proc.py is recommended!",
+  "",
+  "* A brain mask is highly recommended as well.",
+  "",
+  "* I typically use 'SPHERE(25)' for the neighborhood.  YMMV.",
+  "",
+  "* This program is very slow.",
+  "   This copy of it uses multiple threads (OpenMP), so it is",
+  "   somewhat tolerable to use.",
+  "",
+  "***** This program is experimental *****",
+  "",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    62,
+    69
+   ],
+   "help_range": [
+    69,
+    75
+   ]
+  },
+  {
+   "param_range": [
+    77,
+    83
+   ],
+   "help_range": [
+    83,
+    99
+   ]
+  },
+  {
+   "param_range": [
+    101,
+    106
+   ],
+   "help_range": [
+    106,
+    114
+   ]
+  },
+  {
+   "param_range": [
+    116,
+    121
+   ],
+   "help_range": [
+    121,
+    137
+   ]
+  },
+  {
+   "param_range": [
+    139,
+    148
+   ],
+   "help_range": [
+    148,
+    853
+   ]
+  }
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "helptext": [
+  "Traceback (most recent call last):",
+  "  File \"/Users/rossmarkello/abin/@djunct_calc_mont_dims.py\", line 3, in <module>",
+  "    import numpy as np",
+  "ImportError: No module named numpy"
+ ],
+ "params": []
+}

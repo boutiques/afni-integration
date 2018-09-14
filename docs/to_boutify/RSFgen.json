@@ -1,0 +1,178 @@
+{
+ "helptext": [
+  "++ RSFgen: AFNI version=AFNI_18.1.18 (May 25 2018) [64-bit]",
+  "++ Authored by: B. Douglas Ward",
+  "Sample program to generate random stimulus functions.                  ",
+  "                                                                       ",
+  "Usage:                                                                 ",
+  "RSFgen                                                          ",
+  "-nt n            n = length of time series                             ",
+  "-num_stimts p    p = number of input stimuli (experimental conditions) ",
+  "[-nblock i k]    k = block length for stimulus i  (1<=i<=p)            ",
+  "                     (default: k = 1)                                  ",
+  "[-seed s]        s = random number seed                                ",
+  "[-quiet]         flag to suppress screen output                        ",
+  "[-one_file]      place stimulus functions into a single .1D file       ",
+  "[-one_col]       write stimulus functions as a single column of decimal",
+  "                   integers (default: multiple columns of binary nos.) ",
+  "[-prefix pname]  pname = prefix for p output .1D stimulus functions    ",
+  "                   e.g., pname1.1D, pname2.1D, ..., pnamep.1D          ",
+  "                                                                       ",
+  "The following Random Permutation, Markov Chain, and Input Table options",
+  "are mutually exclusive.                                                ",
+  "                                                                       ",
+  "Random Permutation options:                                            ",
+  "-nreps i r       r = number of repetitions for stimulus i  (1<=i<=p)   ",
+  "[-pseed s]       s = stim label permutation random number seed         ",
+  "                                     p                                 ",
+  "                 Note: Require n >= Sum (r[i] * k[i])                  ",
+  "                                    i=1                                ",
+  "                                                                       ",
+  "Markov Chain options:                                                  ",
+  "-markov mfile    mfile = file containing the transition prob. matrix   ",
+  "[-pzero z]       probability of a zero (i.e., null) state              ",
+  "                     (default: z = 0)                                  ",
+  "                                                                       ",
+  "Input Table row permutation options:                                   ",
+  "[-table dfile]   dfile = filename of column or table of numbers        ",
+  "                 Note: dfile may have a column selector attached       ",
+  "                 Note: With this option, all other input options,      ",
+  "                       except -seed and -prefix, are ignored           ",
+  "                                                                       ",
+  "                                                                       ",
+  "Warning: This program will overwrite pre-existing .1D files            ",
+  "                                                                       "
+ ],
+ "params": [
+  {
+   "param_range": [
+    373,
+    376
+   ],
+   "help_range": [
+    394,
+    415
+   ]
+  },
+  {
+   "param_range": [
+    445,
+    456
+   ],
+   "help_range": [
+    466,
+    515
+   ]
+  },
+  {
+   "param_range": [
+    518,
+    525
+   ],
+   "help_range": [
+    534,
+    626
+   ]
+  },
+  {
+   "param_range": [
+    662,
+    667
+   ],
+   "help_range": [
+    678,
+    700
+   ]
+  },
+  {
+   "param_range": [
+    734,
+    740
+   ],
+   "help_range": [
+    750,
+    780
+   ]
+  },
+  {
+   "param_range": [
+    806,
+    815
+   ],
+   "help_range": [
+    822,
+    869
+   ]
+  },
+  {
+   "param_range": [
+    878,
+    886
+   ],
+   "help_range": [
+    894,
+    1019
+   ]
+  },
+  {
+   "param_range": [
+    1022,
+    1029
+   ],
+   "help_range": [
+    1038,
+    1480
+   ]
+  },
+  {
+   "param_range": [
+    1525,
+    1531
+   ],
+   "help_range": [
+    1546,
+    1593
+   ]
+  },
+  {
+   "param_range": [
+    1598,
+    1604
+   ],
+   "help_range": [
+    1614,
+    1978
+   ]
+  },
+  {
+   "param_range": [
+    2029,
+    2036
+   ],
+   "help_range": [
+    2054,
+    2097
+   ]
+  },
+  {
+   "param_range": [
+    2102,
+    2108
+   ],
+   "help_range": [
+    2118,
+    2353
+   ]
+  },
+  {
+   "param_range": [
+    2390,
+    2396
+   ],
+   "help_range": [
+    2406,
+    2880
+   ]
+  }
+ ]
+}

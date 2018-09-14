@@ -1,0 +1,154 @@
+{
+ "helptext": [
+  "++ 3dIntracranial: AFNI version=AFNI_18.1.18 (May 25 2018) [64-bit]",
+  "++ Authored by: B. D. Ward",
+  "\u001b[7m*+ WARNING:\u001b[0m This program (3dIntracranial) is old, obsolete, and not maintained!",
+  "++ 3dSkullStrip is almost always superior to 3dIntracranial :)",
+  "3dIntracranial - performs automatic segmentation of intracranial region.",
+  "                                                                        ",
+  "   This program will strip the scalp and other non-brain tissue from a  ",
+  "   high-resolution T1 weighted anatomical dataset.                      ",
+  "                                                                        ",
+  "** Nota Bene: the newer program 3dSkullStrip should also be considered  ",
+  "**            for this functionality -- it usually works better.        ",
+  "                                                                        ",
+  "----------------------------------------------------------------------- ",
+  "                                                                        ",
+  "Usage:                                                                  ",
+  "-----                                                                   ",
+  "                                                                        ",
+  "3dIntracranial                                                          ",
+  "   -anat filename   => Filename of anat dataset to be segmented         ",
+  "                                                                        ",
+  "   [-min_val   a]   => Minimum voxel intensity limit                    ",
+  "                         Default: Internal PDF estimate for lower bound ",
+  "                                                                        ",
+  "   [-max_val   b]   => Maximum voxel intensity limit                    ",
+  "                         Default: Internal PDF estimate for upper bound ",
+  "                                                                        ",
+  "   [-min_conn  m]   => Minimum voxel connectivity to enter              ",
+  "                         Default: m=4                                   ",
+  "                                                                        ",
+  "   [-max_conn  n]   => Maximum voxel connectivity to leave              ",
+  "                         Default: n=2                                   ",
+  "                                                                        ",
+  "   [-nosmooth]      => Suppress spatial smoothing of segmentation mask  ",
+  "                                                                        ",
+  "   [-mask]          => Generate functional image mask (complement)      ",
+  "                         Default: Generate anatomical image            ",
+  "                                                                        ",
+  "   [-quiet]         => Suppress output to screen                        ",
+  "                                                                        ",
+  "   -prefix pname    => Prefix name for file to contain segmented image  ",
+  "                                                                        ",
+  "   ** NOTE **: The newer program 3dSkullStrip will probably give        ",
+  "               better segmentation results than 3dIntracranial!         ",
+  "----------------------------------------------------------------------- ",
+  "                                                                        ",
+  "Examples:                                                               ",
+  "--------                                                                ",
+  "                                                                        ",
+  "   3dIntracranial -anat elvis+orig -prefix elvis_strip                 ",
+  "                                                                        ",
+  "   3dIntracranial -min_val 30 -max_val 350 -anat elvis+orig -prefix strip",
+  "                                                                        ",
+  "   3dIntracranial -nosmooth -quiet -anat elvis+orig -prefix elvis_strip ",
+  "                                                                        ",
+  "----------------------------------------------------------------------- ",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    1271,
+    1276
+   ],
+   "help_range": [
+    1289,
+    1331
+   ]
+  },
+  {
+   "param_range": [
+    1418,
+    1426
+   ],
+   "help_range": [
+    1434,
+    1558
+   ]
+  },
+  {
+   "param_range": [
+    1637,
+    1645
+   ],
+   "help_range": [
+    1653,
+    1777
+   ]
+  },
+  {
+   "param_range": [
+    1856,
+    1865
+   ],
+   "help_range": [
+    1872,
+    1962
+   ]
+  },
+  {
+   "param_range": [
+    2075,
+    2084
+   ],
+   "help_range": [
+    2091,
+    2181
+   ]
+  },
+  {
+   "param_range": [
+    2294,
+    2303
+   ],
+   "help_range": [
+    2310,
+    2360
+   ]
+  },
+  {
+   "param_range": [
+    2440,
+    2445
+   ],
+   "help_range": [
+    2456,
+    2568
+   ]
+  },
+  {
+   "param_range": [
+    2658,
+    2664
+   ],
+   "help_range": [
+    2674,
+    2702
+   ]
+  },
+  {
+   "param_range": [
+    2803,
+    2810
+   ],
+   "help_range": [
+    2821,
+    4034
+   ]
+  }
+ ]
+}

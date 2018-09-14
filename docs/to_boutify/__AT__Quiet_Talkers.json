@@ -1,0 +1,245 @@
+{
+ "helptext": [
+  "",
+  "A script to find and kill AFNI processes",
+  "ps is used to lookfor processes running certain AFNI programs",
+  "(default list: afni 3dGroupInCorr plugout_drive suma DriveSuma 3dSkullStrip SurfSmooth)",
+  "with certain command line options",
+  "",
+  "   @Quiet_Talkers [-sudo] [-prog PROG]",
+  "                 [-npb_val NV] [-npb_range NV0 NV1]",
+  "                 [-pif KEY_STRING] [-no_npb]",
+  "                 [-list] [-quiet]",
+  "",
+  "OPTIONS",
+  " -sudo: Invoke higher powers to kill processes that you do not own",
+  " -prog PROG: Instead of the default program list, only kill PROG",
+  "             You can use multiple -prog options",
+  " -npb_val NV: Kill those programs using NIML port block NV",
+  " -npb_range NV0 NV1: Kill those using NIML port blocks between ",
+  "                     NV0 and NV1",
+  " -pif KEY_STRING: Kill those programs that have a string matching",
+  "                  KEY_STRING in their commandline.",
+  "                  Most AFNI programs allow for a -pif KEY_STRING",
+  "                  option that does nothing but serve a process",
+  "                  identification purpose",
+  " -no_npb: Kill any program in the list regardless of -npb options",
+  "          or -pif",
+  " -list: Just list process numbers, don't run kill command",
+  " -quiet: Do it quietly",
+  "",
+  "Global Help Options:",
+  "--------------------",
+  "",
+  "   -h_web: Open webpage with help for this program",
+  "   -hweb: Same as -h_web",
+  "   -h_view: Open -help output in a GUI editor",
+  "   -hview: Same as -hview",
+  "   -all_opts: List all of the options for this script",
+  "   -h_find WORD: Search for lines containing WORD in -help",
+  "                 output. Seach is approximate.",
+  "",
+  "Examples:",
+  "   To kill all programs in list that used the -npb option",
+  "   @Quiet_Talkers",
+  "",
+  "   To kill all those with either -npb 3 or 6",
+  "   @Quiet_Talkers -npb_val 3 -npb_val 6",
+  "",
+  "   To kill all those with -npb values in the range 5..9",
+  "   @Quiet_Talkers -npb_range 5 9",
+  "",
+  "   To restrict the search to certain programs only:",
+  "   @Quiet_Talkers -prog suma -prog afni -npb_range 5 9",
+  "",
+  "General purpose destruction:",
+  "You can also kill process that have a certain string in the",
+  "command line. Usually such commands are flagged with the ",
+  "hidden AFNI option -pif.",
+  "Example:",
+  "   suma -pif SOME_KEY_STRING &",
+  "   @Quiet_Talkers -prog suma -pif SOME_KEY_STRING",
+  "",
+  "Note that with -pif, the npb options are disabled.",
+  "",
+  "Say you want to kill any 'afni'",
+  "   @Quiet_Talkers -prog afni -pif ' '",
+  " or ",
+  "   @Quiet_Talkers -prog afni -no_npb",
+  "",
+  "Ziad S. Saad   saadz@mail.nih.gov",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    284,
+    292
+   ],
+   "help_range": [
+    297,
+    317
+   ]
+  },
+  {
+   "param_range": [
+    336,
+    340
+   ],
+   "help_range": [
+    353,
+    362
+   ]
+  },
+  {
+   "param_range": [
+    381,
+    386
+   ],
+   "help_range": [
+    388,
+    405
+   ]
+  },
+  {
+   "param_range": [
+    407,
+    412
+   ],
+   "help_range": [
+    414,
+    472
+   ]
+  },
+  {
+   "param_range": [
+    474,
+    479
+   ],
+   "help_range": [
+    486,
+    585
+   ]
+  },
+  {
+   "param_range": [
+    587,
+    595
+   ],
+   "help_range": [
+    600,
+    644
+   ]
+  },
+  {
+   "param_range": [
+    646,
+    656
+   ],
+   "help_range": [
+    666,
+    741
+   ]
+  },
+  {
+   "param_range": [
+    743,
+    747
+   ],
+   "help_range": [
+    760,
+    1027
+   ]
+  },
+  {
+   "param_range": [
+    1029,
+    1036
+   ],
+   "help_range": [
+    1038,
+    1111
+   ]
+  },
+  {
+   "param_range": [
+    1113,
+    1118
+   ],
+   "help_range": [
+    1120,
+    1169
+   ]
+  },
+  {
+   "param_range": [
+    1171,
+    1177
+   ],
+   "help_range": [
+    1179,
+    1235
+   ]
+  },
+  {
+   "param_range": [
+    1240,
+    1246
+   ],
+   "help_range": [
+    1248,
+    1287
+   ]
+  },
+  {
+   "param_range": [
+    1291,
+    1296
+   ],
+   "help_range": [
+    1298,
+    1312
+   ]
+  },
+  {
+   "param_range": [
+    1316,
+    1323
+   ],
+   "help_range": [
+    1325,
+    1358
+   ]
+  },
+  {
+   "param_range": [
+    1362,
+    1368
+   ],
+   "help_range": [
+    1370,
+    1384
+   ]
+  },
+  {
+   "param_range": [
+    1388,
+    1397
+   ],
+   "help_range": [
+    1399,
+    1438
+   ]
+  },
+  {
+   "param_range": [
+    1442,
+    1449
+   ],
+   "help_range": [
+    1456,
+    2378
+   ]
+  }
+ ]
+}

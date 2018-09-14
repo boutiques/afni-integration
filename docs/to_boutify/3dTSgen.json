@@ -1,0 +1,190 @@
+{
+ "helptext": [
+  "++ 3dTSgen: AFNI version=AFNI_18.1.18 (May 25 2018) [64-bit]",
+  "++ Authored by: B. Douglas Ward",
+  "This program generates an AFNI 3d+time data set.  The time series for ",
+  "each voxel is generated according to a user specified signal + noise  ",
+  "model.                                                              ",
+  "",
+  "Usage:                                                                ",
+  "3dTSgen                                                               ",
+  "-input fname       fname = filename of prototype 3d + time data file  ",
+  "[-inTR]            set the TR of the created timeseries to be the TR  ",
+  "                     of the prototype dataset                         ",
+  "                     [The default is to compute with TR = 1.]         ",
+  "                     [The model functions are called for a  ]         ",
+  "                     [time grid of 0, TR, 2*TR, 3*TR, ....  ]         ",
+  "-signal slabel     slabel = name of (non-linear) signal model         ",
+  "-noise  nlabel     nlabel = name of (linear) noise model              ",
+  "-sconstr k c d     constraints for kth signal parameter:              ",
+  "                      c <= gs[k] <= d                                 ",
+  "-nconstr k c d     constraints for kth noise parameter:               ",
+  "                      c+b[k] <= gn[k] <= d+b[k]                       ",
+  "-sigma  s          s = std. dev. of additive Gaussian noise           ",
+  "[-voxel num]       screen output for voxel #num                       ",
+  "-output fname      fname = filename of output 3d + time data file     ",
+  "                                                                      ",
+  "                                                                      ",
+  "The following commands generate individual AFNI 1 sub-brick datasets: ",
+  "                                                                      ",
+  "[-scoef k fname]   write kth signal parameter gs[k];                  ",
+  "                     output 'fim' is written to prefix filename fname ",
+  "[-ncoef k fname]   write kth noise parameter gn[k];                   ",
+  "                     output 'fim' is written to prefix filename fname ",
+  "                                                                      ",
+  "                                                                      ",
+  "The following commands generate one AFNI 'bucket' type dataset:       ",
+  "                                                                      ",
+  "[-bucket n prefixname]   create one AFNI 'bucket' dataset containing  ",
+  "                           n sub-bricks; n=0 creates default output;  ",
+  "                           output 'bucket' is written to prefixname   ",
+  "The mth sub-brick will contain:                                       ",
+  "[-brick m scoef k label]   kth signal parameter regression coefficient",
+  "[-brick m ncoef k label]   kth noise parameter regression coefficient ",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    447,
+    453
+   ],
+   "help_range": [
+    474,
+    515
+   ]
+  },
+  {
+   "param_range": [
+    519,
+    524
+   ],
+   "help_range": [
+    537,
+    863
+   ]
+  },
+  {
+   "param_range": [
+    873,
+    880
+   ],
+   "help_range": [
+    901,
+    934
+   ]
+  },
+  {
+   "param_range": [
+    944,
+    950
+   ],
+   "help_range": [
+    972,
+    1000
+   ]
+  },
+  {
+   "param_range": [
+    1015,
+    1023
+   ],
+   "help_range": [
+    1085,
+    1123
+   ]
+  },
+  {
+   "param_range": [
+    1157,
+    1165
+   ],
+   "help_range": [
+    1227,
+    1275
+   ]
+  },
+  {
+   "param_range": [
+    1299,
+    1305
+   ],
+   "help_range": [
+    1322,
+    1358
+   ]
+  },
+  {
+   "param_range": [
+    1371,
+    1377
+   ],
+   "help_range": [
+    1389,
+    1417
+   ]
+  },
+  {
+   "param_range": [
+    1441,
+    1448
+   ],
+   "help_range": [
+    1468,
+    1723
+   ]
+  },
+  {
+   "param_range": [
+    1797,
+    1803
+   ],
+   "help_range": [
+    1815,
+    1936
+   ]
+  },
+  {
+   "param_range": [
+    1939,
+    1945
+   ],
+   "help_range": [
+    1957,
+    2285
+   ]
+  },
+  {
+   "param_range": [
+    2365,
+    2372
+   ],
+   "help_range": [
+    2389,
+    2608
+   ]
+  },
+  {
+   "param_range": [
+    2649,
+    2655
+   ],
+   "help_range": [
+    2675,
+    2718
+   ]
+  },
+  {
+   "param_range": [
+    2720,
+    2726
+   ],
+   "help_range": [
+    2746,
+    2856
+   ]
+  }
+ ]
+}

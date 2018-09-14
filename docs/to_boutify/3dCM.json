@@ -1,0 +1,94 @@
+{
+ "helptext": [
+  "Usage: 3dCM [options] dset",
+  "Output = center of mass of dataset, to stdout.",
+  "    Note: by default, the output is (x,y,z) values in DICOM",
+  "          coordinates.  But as of Dec, 2016, there are now",
+  "          command line switches for other options (see -local*",
+  "          below).",
+  "",
+  "  -mask mset   Means to use the dataset 'mset' as a mask:",
+  "                 Only voxels with nonzero values in 'mset'",
+  "                 will be averaged from 'dataset'.  Note",
+  "                 that the mask dataset and the input dataset",
+  "                 must have the same number of voxels.",
+  "  -automask    Generate the mask automatically.",
+  "  -set x y z   After computing the CM of the dataset, set the",
+  "                 origin fields in the header so that the CM",
+  "                 will be at (x,y,z) in DICOM coords.",
+  "  -local_ijk   Output values as (i,j,k) in local orienation.",
+  "  -roi_vals v0 v1 v2 ... : Compute center of mass for each blob",
+  "                           with voxel value of v0, v1, v2, etc.",
+  "                           This option is handy for getting ROI ",
+  "                           centers of mass.",
+  "  -all_rois     Don't bother listing the values of ROIs you want",
+  "                the program will find all of them and produce a ",
+  "                full list.",
+  "  NOTE: Masking options are ignored with -roi_vals and -all_rois",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    277,
+    282
+   ],
+   "help_range": [
+    282,
+    562
+   ]
+  },
+  {
+   "param_range": [
+    565,
+    574
+   ],
+   "help_range": [
+    574,
+    610
+   ]
+  },
+  {
+   "param_range": [
+    613,
+    617
+   ],
+   "help_range": [
+    617,
+    785
+   ]
+  },
+  {
+   "param_range": [
+    788,
+    798
+   ],
+   "help_range": [
+    798,
+    846
+   ]
+  },
+  {
+   "param_range": [
+    849,
+    858
+   ],
+   "help_range": [
+    858,
+    1083
+   ]
+  },
+  {
+   "param_range": [
+    1086,
+    1095
+   ],
+   "help_range": [
+    1095,
+    1372
+   ]
+  }
+ ]
+}

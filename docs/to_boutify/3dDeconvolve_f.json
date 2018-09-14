@@ -1,0 +1,17 @@
+{
+ "helptext": [
+  "**",
+  "** 3dDeconvolve_f is now disabled by default.",
+  "** It is dangerous, due to roundoff problems.",
+  "** Please use 3dDeconvolve from now on!",
+  "**",
+  "** HOWEVER, if you insist on using 3dDeconvolve_f, then:",
+  "**        + Use '-OK' as the first command line option.",
+  "**        + Check the matrix condition number;",
+  "**            if it is greater than 100, BEWARE!",
+  "**",
+  "** RWCox - July 2004",
+  "**"
+ ],
+ "params": []
+}

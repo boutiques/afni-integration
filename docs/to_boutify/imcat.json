@@ -1,0 +1,715 @@
+{
+ "helptext": [
+  "Usage: imcat [options] fname1 fname2 etc.",
+  "Puts a set images into an image matrix (IM) ",
+  " montage of NX by NY images.",
+  " The minimum set of input is N images (N >= 1).",
+  " If need be, the default is to reuse images until the desired",
+  " NX by NY size is achieved. ",
+  " See options -zero_wrap and -image_wrap for more detail.",
+  " ",
+  "OPTIONS:",
+  " ++ Options for editing, coloring input images:",
+  "  -scale_image SCALE_IMG: Multiply each image IM(i,j) in output",
+  "                          image matrix IM by the color or intensity",
+  "                          of the pixel (i,j) in SCALE_IMG.",
+  "  -scale_pixels SCALE_PIX: Multiply each pixel (i,j) in output image",
+  "                          by the color or intensity",
+  "                          of the pixel (i,j) in SCALE_IMG.",
+  "                          SCALE_IMG is automatically resized to the",
+  "                          resolution of the output image.",
+  "  -scale_intensity: Instead of multiplying by the color of ",
+  "                          pixel (i,j), use its intensity ",
+  "                          (average color)",
+  "  -gscale FAC: Apply FAC in addition to scaling of -scale_* options",
+  "  -rgb_out: Force output to be in rgb, even if input is bytes.",
+  "            This option is turned on automatically in certain cases.",
+  "  -res_in RX RY: Set resolution of all input images to RX by RY pixels.",
+  "                 Default is to make all input have the same",
+  "                 resolution as the first image.",
+  "  -respad_in RPX RPY: Like -res_in, but resample to the max while respecting",
+  "                      the aspect ratio, and then pad to achieve desired ",
+  "                      pixel count.",
+  "  -pad_val VAL: Set the padding value, should it be needed by -respad_in",
+  "                to VAL. VAL is typecast to byte, default is 0, max is 255.",
+  "  -crop L R T B: Crop images by L (Left), R (Right), T (Top), B (Bottom)",
+  "                 pixels. Cutting is performed after any resolution change, ",
+  "                 if any, is to be done.",
+  "  -autocrop_ctol CTOL: A line is eliminated if none of its R G B values ",
+  "                       differ by more than CTOL% from those of the corner",
+  "                       pixel.",
+  "  -autocrop_atol ATOL: A line is eliminated if none of its R G B values ",
+  "                       differ by more than ATOL% from those of line",
+  "                       average.",
+  "  -autocrop: This option is the same as using both of -autocrop_atol 20 ",
+  "             and -autocrop_ctol 20",
+  "  NOTE: Do not mix -autocrop* options with -crop",
+  "        Cropping is determined from the 1st input image and applied to ",
+  "        to all remaining ones.",
+  " ++ Options for output:",
+  "  -zero_wrap: If number of images is not enough to fill matrix",
+  "              solid black images are used.",
+  "  -white_wrap: If number of images is not enough to fill matrix",
+  "              solid white images are used.",
+  "  -gray_wrap GRAY: If number of images is not enough to fill matrix",
+  "              solid gray images are used. GRAY must be between 0 and 1.0",
+  "  -image_wrap: If number of images is not enough to fill matrix",
+  "               images on command line are reused (default)",
+  "  -rand_wrap: When reusing images to fill matrix, randomize the order",
+  "              in refill section only.",
+  "  -prefix ppp = Prefix the output files with string 'ppp'",
+  "          Note: If the prefix ends with .1D, then a 1D file containing",
+  "                the average of RGB values. You can view the output with",
+  "                1dgrayplot.",
+  "  -matrix NX NY: Specify number of images in each row and column ",
+  "                 of IM at the same time. ",
+  "  -nx NX: Number of images in each row (3 for example below)",
+  "  -ny NY: Number of images in each column (4 for example below)",
+  "      Example: If 12 images appearing on the command line",
+  "               are to be assembled into a 3x4 IM matrix they",
+  "               would appear in this order:",
+  "                 0  1  2",
+  "                 3  4  5",
+  "                 6  7  8",
+  "                 9  10 11",
+  "    NOTE: The program will try to guess if neither NX nor NY ",
+  "          are specified.",
+  "  -matrix_from_scale: Set NX and NY to be the same as the ",
+  "                      SCALE_IMG's dimensions. (needs -scale_image)",
+  "  -gap G:\u001b[7m** ERROR:\u001b[0m Too few options",
+  " Put a line G pixels wide between images.",
+  "  -gap_col R G B: Set color of line to R G B values.",
+  "                  Values range between 0 and 255.",
+  "",
+  "Example 0 (assuming afni is in ~/abin directory):",
+  "   Resizing an image:",
+  "   imcat -prefix big -res_in 1024 1024 \\",
+  "         ~/abin/funstuff/face_zzzsunbrain.jpg ",
+  "   imcat -prefix small -res_in 64 64 \\",
+  "         ~/abin/funstuff/face_zzzsunbrain.jpg ",
+  "   aiv small.ppm big.ppm ",
+  "",
+  "Example 1:",
+  "   Stitching together images:",
+  "    (Can be used to make very high resolution SUMA images.",
+  "     Read about 'Ctrl+r' in SUMA's GUI help.)",
+  "   imcat -prefix cat -matrix 14 12 \\",
+  "         ~/abin/funstuff/face_*.jpg",
+  "   aiv cat.ppm",
+  "",
+  "Example 2:",
+  "   Stitching together 3 images getting rid of annoying white boundary:",
+  "",
+  "   imcat -prefix surfview_pry3b.jpg -ny 1 -autocrop surfview.000[789].jpg",
+  "",
+  "Example 20 (assuming afni is in ~/abin directory):",
+  "   imcat -prefix bigcat.jpg -scale_image ~/abin/afnigui_logo.jpg \\",
+  "         -matrix_from_scale -rand_wrap -rgb_out -respad_in 128 128 \\",
+  "         -pad_val 128 ~/abin/funstuff/face_*.jpg ",
+  "   aiv   bigcat.jpg bigcat.jpg ",
+  "   Crop/Zoom in to see what was done. In practice, you want to use",
+  "   a faster image viewer to examine the result. Zooming on such",
+  "   a large image is not fast in aiv.",
+  "   Be careful with this toy. Images get real big, real quick.",
+  "",
+  "You can look at the output image file with",
+  "  afni -im ppp.ppm  [then open the Sagittal image window]",
+  "",
+  "Usage: imcat [options] fname1 fname2 etc.",
+  "Puts a set images into an image matrix (IM) ",
+  " montage of NX by NY images.",
+  " The minimum set of input is N images (N >= 1).",
+  " If need be, the default is to reuse images until the desired",
+  " NX by NY size is achieved. ",
+  " See options -zero_wrap and -image_wrap for more detail.",
+  " ",
+  "OPTIONS:",
+  " ++ Options for editing, coloring input images:",
+  "  -scale_image SCALE_IMG: Multiply each image IM(i,j) in output",
+  "                          image matrix IM by the color or intensity",
+  "                          of the pixel (i,j) in SCALE_IMG.",
+  "  -scale_pixels SCALE_PIX: Multiply each pixel (i,j) in output image",
+  "                          by the color or intensity",
+  "                          of the pixel (i,j) in SCALE_IMG.",
+  "                          SCALE_IMG is automatically resized to the",
+  "                          resolution of the output image.",
+  "  -scale_intensity: Instead of multiplying by the color of ",
+  "                          pixel (i,j), use its intensity ",
+  "                          (average color)",
+  "  -gscale FAC: Apply FAC in addition to scaling of -scale_* options",
+  "  -rgb_out: Force output to be in rgb, even if input is bytes.",
+  "            This option is turned on automatically in certain cases.",
+  "  -res_in RX RY: Set resolution of all input images to RX by RY pixels.",
+  "                 Default is to make all input have the same",
+  "                 resolution as the first image.",
+  "  -respad_in RPX RPY: Like -res_in, but resample to the max while respecting",
+  "                      the aspect ratio, and then pad to achieve desired ",
+  "                      pixel count.",
+  "  -pad_val VAL: Set the padding value, should it be needed by -respad_in",
+  "                to VAL. VAL is typecast to byte, default is 0, max is 255.",
+  "  -crop L R T B: Crop images by L (Left), R (Right), T (Top), B (Bottom)",
+  "                 pixels. Cutting is performed after any resolution change, ",
+  "                 if any, is to be done.",
+  "  -autocrop_ctol CTOL: A line is eliminated if none of its R G B values ",
+  "                       differ by more than CTOL% from those of the corner",
+  "                       pixel.",
+  "  -autocrop_atol ATOL: A line is eliminated if none of its R G B values ",
+  "                       differ by more than ATOL% from those of line",
+  "                       average.",
+  "  -autocrop: This option is the same as using both of -autocrop_atol 20 ",
+  "             and -autocrop_ctol 20",
+  "  NOTE: Do not mix -autocrop* options with -crop",
+  "        Cropping is determined from the 1st input image and applied to ",
+  "        to all remaining ones.",
+  " ++ Options for output:",
+  "  -zero_wrap: If number of images is not enough to fill matrix",
+  "              solid black images are used.",
+  "  -white_wrap: If number of images is not enough to fill matrix",
+  "              solid white images are used.",
+  "  -gray_wrap GRAY: If number of images is not enough to fill matrix",
+  "              solid gray images are used. GRAY must be between 0 and 1.0",
+  "  -image_wrap: If number of images is not enough to fill matrix",
+  "               images on command line are reused (default)",
+  "  -rand_wrap: When reusing images to fill matrix, randomize the order",
+  "              in refill section only.",
+  "  -prefix ppp = Prefix the output files with string 'ppp'",
+  "          Note: If the prefix ends with .1D, then a 1D file containing",
+  "                the average of RGB values. You can view the output with",
+  "                1dgrayplot.",
+  "  -matrix NX NY: Specify number of images in each row and column ",
+  "                 of IM at the same time. ",
+  "  -nx NX: Number of images in each row (3 for example below)",
+  "  -ny NY: Number of images in each column (4 for example below)",
+  "      Example: If 12 images appearing on the command line",
+  "               are to be assembled into a 3x4 IM matrix they",
+  "               would appear in this order:",
+  "                 0  1  2",
+  "                 3  4  5",
+  "                 6  7  8",
+  "                 9  10 11",
+  "    NOTE: The program will try to guess if neither NX nor NY ",
+  "          are specified.",
+  "  -matrix_from_scale: Set NX and NY to be the same as the ",
+  "                      SCALE_IMG's dimensions. (needs -scale_image)",
+  "  -gap G: Put a line G pixels wide between images.",
+  "  -gap_col R G B: Set color of line to R G B values.",
+  "                  Values range between 0 and 255.",
+  "",
+  "Example 0 (assuming afni is in ~/abin directory):",
+  "   Resizing an image:",
+  "   imcat -prefix big -res_in 1024 1024 \\",
+  "         ~/abin/funstuff/face_zzzsunbrain.jpg ",
+  "   imcat -prefix small -res_in 64 64 \\",
+  "         ~/abin/funstuff/face_zzzsunbrain.jpg ",
+  "   aiv small.ppm big.ppm ",
+  "",
+  "Example 1:",
+  "   Stitching together images:",
+  "    (Can be used to make very high resolution SUMA images.",
+  "     Read about 'Ctrl+r' in SUMA's GUI help.)",
+  "   imcat -prefix cat -matrix 14 12 \\",
+  "         ~/abin/funstuff/face_*.jpg",
+  "   aiv cat.ppm",
+  "",
+  "Example 2:",
+  "   Stitching together 3 images getting rid of annoying white boundary:",
+  "",
+  "   imcat -prefix surfview_pry3b.jpg -ny 1 -autocrop surfview.000[789].jpg",
+  "",
+  "Example 20 (assuming afni is in ~/abin directory):",
+  "   imcat -prefix bigcat.jpg -scale_image ~/abin/afnigui_logo.jpg \\",
+  "         -matrix_from_scale -rand_wrap -rgb_out -respad_in 128 128 \\",
+  "         -pad_val 128 ~/abin/funstuff/face_*.jpg ",
+  "   aiv   bigcat.jpg bigcat.jpg ",
+  "   Crop/Zoom in to see what was done. In practice, you want to use",
+  "   a faster image viewer to examine the result. Zooming on such",
+  "   a large image is not fast in aiv.",
+  "   Be careful with this toy. Images get real big, real quick.",
+  "",
+  "You can look at the output image file with",
+  "  afni -im ppp.ppm  [then open the Sagittal image window]",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    373,
+    385
+   ],
+   "help_range": [
+    397,
+    561
+   ]
+  },
+  {
+   "param_range": [
+    564,
+    577
+   ],
+   "help_range": [
+    589,
+    867
+   ]
+  },
+  {
+   "param_range": [
+    870,
+    886
+   ],
+   "help_range": [
+    888,
+    1027
+   ]
+  },
+  {
+   "param_range": [
+    1030,
+    1037
+   ],
+   "help_range": [
+    1043,
+    1095
+   ]
+  },
+  {
+   "param_range": [
+    1098,
+    1106
+   ],
+   "help_range": [
+    1108,
+    1227
+   ]
+  },
+  {
+   "param_range": [
+    1230,
+    1237
+   ],
+   "help_range": [
+    1245,
+    1407
+   ]
+  },
+  {
+   "param_range": [
+    1410,
+    1420
+   ],
+   "help_range": [
+    1430,
+    1592
+   ]
+  },
+  {
+   "param_range": [
+    1595,
+    1603
+   ],
+   "help_range": [
+    1609,
+    1740
+   ]
+  },
+  {
+   "param_range": [
+    1743,
+    1748
+   ],
+   "help_range": [
+    1758,
+    1929
+   ]
+  },
+  {
+   "param_range": [
+    1932,
+    1946
+   ],
+   "help_range": [
+    1953,
+    2106
+   ]
+  },
+  {
+   "param_range": [
+    2109,
+    2123
+   ],
+   "help_range": [
+    2130,
+    2279
+   ]
+  },
+  {
+   "param_range": [
+    2282,
+    2291
+   ],
+   "help_range": [
+    2293,
+    2563
+   ]
+  },
+  {
+   "param_range": [
+    2566,
+    2576
+   ],
+   "help_range": [
+    2578,
+    2669
+   ]
+  },
+  {
+   "param_range": [
+    2672,
+    2683
+   ],
+   "help_range": [
+    2685,
+    2776
+   ]
+  },
+  {
+   "param_range": [
+    2779,
+    2789
+   ],
+   "help_range": [
+    2796,
+    2917
+   ]
+  },
+  {
+   "param_range": [
+    2920,
+    2931
+   ],
+   "help_range": [
+    2933,
+    3040
+   ]
+  },
+  {
+   "param_range": [
+    3043,
+    3053
+   ],
+   "help_range": [
+    3055,
+    3148
+   ]
+  },
+  {
+   "param_range": [
+    3151,
+    3158
+   ],
+   "help_range": [
+    3165,
+    3377
+   ]
+  },
+  {
+   "param_range": [
+    3380,
+    3387
+   ],
+   "help_range": [
+    3395,
+    3484
+   ]
+  },
+  {
+   "param_range": [
+    3488,
+    3491
+   ],
+   "help_range": [
+    3496,
+    3546
+   ]
+  },
+  {
+   "param_range": [
+    3549,
+    3552
+   ],
+   "help_range": [
+    3557,
+    3960
+   ]
+  },
+  {
+   "param_range": [
+    3963,
+    3981
+   ],
+   "help_range": [
+    3983,
+    4086
+   ]
+  },
+  {
+   "param_range": [
+    4089,
+    4093
+   ],
+   "help_range": [
+    4096,
+    4171
+   ]
+  },
+  {
+   "param_range": [
+    4174,
+    4182
+   ],
+   "help_range": [
+    4190,
+    5914
+   ]
+  },
+  {
+   "param_range": [
+    5917,
+    5929
+   ],
+   "help_range": [
+    397,
+    561
+   ]
+  },
+  {
+   "param_range": [
+    6108,
+    6121
+   ],
+   "help_range": [
+    589,
+    867
+   ]
+  },
+  {
+   "param_range": [
+    6414,
+    6430
+   ],
+   "help_range": [
+    888,
+    1027
+   ]
+  },
+  {
+   "param_range": [
+    6574,
+    6581
+   ],
+   "help_range": [
+    1043,
+    1095
+   ]
+  },
+  {
+   "param_range": [
+    6642,
+    6650
+   ],
+   "help_range": [
+    1108,
+    1227
+   ]
+  },
+  {
+   "param_range": [
+    6774,
+    6781
+   ],
+   "help_range": [
+    1245,
+    1407
+   ]
+  },
+  {
+   "param_range": [
+    6954,
+    6964
+   ],
+   "help_range": [
+    1430,
+    1592
+   ]
+  },
+  {
+   "param_range": [
+    7139,
+    7147
+   ],
+   "help_range": [
+    1609,
+    1740
+   ]
+  },
+  {
+   "param_range": [
+    7287,
+    7292
+   ],
+   "help_range": [
+    1758,
+    1929
+   ]
+  },
+  {
+   "param_range": [
+    7476,
+    7490
+   ],
+   "help_range": [
+    1953,
+    2106
+   ]
+  },
+  {
+   "param_range": [
+    7653,
+    7667
+   ],
+   "help_range": [
+    2130,
+    2279
+   ]
+  },
+  {
+   "param_range": [
+    7826,
+    7835
+   ],
+   "help_range": [
+    2293,
+    2563
+   ]
+  },
+  {
+   "param_range": [
+    8110,
+    8120
+   ],
+   "help_range": [
+    2578,
+    2669
+   ]
+  },
+  {
+   "param_range": [
+    8216,
+    8227
+   ],
+   "help_range": [
+    2685,
+    2776
+   ]
+  },
+  {
+   "param_range": [
+    8323,
+    8333
+   ],
+   "help_range": [
+    2796,
+    2917
+   ]
+  },
+  {
+   "param_range": [
+    8464,
+    8475
+   ],
+   "help_range": [
+    2933,
+    3040
+   ]
+  },
+  {
+   "param_range": [
+    8587,
+    8597
+   ],
+   "help_range": [
+    3055,
+    3148
+   ]
+  },
+  {
+   "param_range": [
+    8695,
+    8702
+   ],
+   "help_range": [
+    3165,
+    3377
+   ]
+  },
+  {
+   "param_range": [
+    8924,
+    8931
+   ],
+   "help_range": [
+    3395,
+    3484
+   ]
+  },
+  {
+   "param_range": [
+    9032,
+    9035
+   ],
+   "help_range": [
+    3496,
+    3546
+   ]
+  },
+  {
+   "param_range": [
+    9093,
+    9096
+   ],
+   "help_range": [
+    3557,
+    3960
+   ]
+  },
+  {
+   "param_range": [
+    9507,
+    9525
+   ],
+   "help_range": [
+    3983,
+    4086
+   ]
+  },
+  {
+   "param_range": [
+    9633,
+    9637
+   ],
+   "help_range": [
+    4131,
+    4171
+   ]
+  },
+  {
+   "param_range": [
+    9684,
+    9692
+   ],
+   "help_range": [
+    4190,
+    5542
+   ]
+  }
+ ]
+}

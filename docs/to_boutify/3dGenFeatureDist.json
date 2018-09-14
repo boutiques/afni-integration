@@ -1,0 +1,217 @@
+{
+ "helptext": [
+  "3dGenFeatureDist produces hives.",
+  "   -classes 'CLASS_STRING': CLASS_STRING is a semicolon delimited",
+  "                         string of class labels. For example",
+  "                         -classes 'CSF; WM; GM'",
+  "",
+  "   -OTHER: Add histograms for an 'OTHER' class that has a uniform pdf.",
+  "",
+  "   -no_OTHER: Opposite of -OTHER.",
+  "",
+  "   -features 'FEATURES_STRING': FEATURES_STRING is a semicolon delimited",
+  "                         string of features. For example",
+  "                         -features 'MEAN.00_mm; median.19_mm; ...'",
+  "",
+  "   -sig 'FEATURE_VOL1 FEATURE_VOL2 ...': Specify volumes that define",
+  "                         the features. Each sub-brick is a feature",
+  "                         and the sub-brick's name is used to name the ",
+  "                         feature. Multiple volumes get catenated.",
+  "                         Each occurence of -sig option must be paired with",
+  "                         a -samp option. Think of each pair of '-sig, -samp'",
+  "                         options as describing data on the same voxel grid; ",
+  "                         Think from the same subject. When specifying ",
+  "                         training data from K subjects, you will end up using",
+  "                         K pairs of '-sig, -samp'.",
+  "                         All volumes from the kth -sig instance should have ",
+  "                         the same voxel grid as each other and as that of",
+  "                         the kth -samp datasets.",
+  "",
+  "   -samp 'SAMPLE_VOX1 SAMPLE_VOX2 ...': Specify which voxels belong to",
+  "                         each class of interest. Each of the volumes",
+  "                         should contain voxel values (keys) that are",
+  "                         defined in -labeltable. You can specify multiple",
+  "                         volumes, they all get catenated. Any volume can",
+  "                         contain voxels from 1 or more classes.",
+  "                         Each occurence of -samp option must be paired with",
+  "                         a -sig option. Think of each pair of '-sig, -samp'",
+  "                         options as describing data on the same voxel grid; ",
+  "                         Think from the same subject. When specifying ",
+  "                         training data from K subjects, you will end up using",
+  "                         K pairs of '-sig, -samp'.",
+  "                         All volumes from the kth -samp instance should have ",
+  "                         the same voxel grid as each other and as that of",
+  "                         the kth -sig datasets.",
+  "",
+  "   -hspec FEATURE MIN MAX NBINS: Set histogram parameters for feature FEATURE",
+  "                              FEATURE: String label of feature",
+  "                              MIN, MAX: Range of histogram",
+  "                              NBINS: Number of bins",
+  "        Use this option to set the histogram parameters for the features for",
+  "        the automatic parameter selection was lousy. You can specify ",
+  "        for multiple features by using multiple -hspec instances. The only",
+  "        condition is that all feature labels (FEATURE) must be part of the ",
+  "        set named in -features.",
+  "",
+  "   -prefix PREF: PREF is the prefix for all output volume that are not ",
+  "              debugging related.",
+  "",
+  "     default: GenFeatDist",
+  "   -ShowTheseHists HISTNAMES: Show histograms specified by HISTNAMES and quit.",
+  "              HISTNAMES can specify just one .niml.hist file or a bunch of ",
+  "              them using a space, or comma separated list. ",
+  "              List multiple names between quotes.",
+  "",
+  "   -overwrite: An option common to almost all AFNI programs. It is ",
+  "            automatically turned on if you provide no PREF.",
+  "",
+  "   -debug: Debugging level",
+  "",
+  "     default: 1",
+  "   -labeltable LT: Specify the label table",
+  "",
+  "     default: 1"
+ ],
+ "params": [
+  {
+   "param_range": [
+    36,
+    44
+   ],
+   "help_range": [
+    44,
+    159
+   ]
+  },
+  {
+   "param_range": [
+    185,
+    193
+   ],
+   "help_range": [
+    193,
+    207
+   ]
+  },
+  {
+   "param_range": [
+    212,
+    218
+   ],
+   "help_range": [
+    220,
+    279
+   ]
+  },
+  {
+   "param_range": [
+    284,
+    293
+   ],
+   "help_range": [
+    295,
+    314
+   ]
+  },
+  {
+   "param_range": [
+    319,
+    328
+   ],
+   "help_range": [
+    328,
+    445
+   ]
+  },
+  {
+   "param_range": [
+    471,
+    480
+   ],
+   "help_range": [
+    480,
+    512
+   ]
+  },
+  {
+   "param_range": [
+    517,
+    521
+   ],
+   "help_range": [
+    521,
+    1415
+   ]
+  },
+  {
+   "param_range": [
+    1420,
+    1425
+   ],
+   "help_range": [
+    1425,
+    2465
+   ]
+  },
+  {
+   "param_range": [
+    2470,
+    2476
+   ],
+   "help_range": [
+    2500,
+    3048
+   ]
+  },
+  {
+   "param_range": [
+    3053,
+    3060
+   ],
+   "help_range": [
+    3067,
+    3181
+   ]
+  },
+  {
+   "param_range": [
+    3185,
+    3200
+   ],
+   "help_range": [
+    3212,
+    3446
+   ]
+  },
+  {
+   "param_range": [
+    3451,
+    3461
+   ],
+   "help_range": [
+    3463,
+    3575
+   ]
+  },
+  {
+   "param_range": [
+    3580,
+    3586
+   ],
+   "help_range": [
+    3588,
+    3620
+   ]
+  },
+  {
+   "param_range": [
+    3624,
+    3635
+   ],
+   "help_range": [
+    3640,
+    3680
+   ]
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "helptext": [
+  "/Users/rossmarkello/abin/@measure_bb_thick: line 3: syntax error near unexpected token `exit'",
+  "/Users/rossmarkello/abin/@measure_bb_thick: line 3: `@global_parse `basename $0` \"$*\" ; if ($status) exit 0'"
+ ],
+ "params": []
+}

@@ -1,0 +1,12 @@
+{
+ "helptext": [
+  "whirlgif Rev 3.04 (c) 1997-1999 by Hans Dinsen-Hansen",
+  "                  (c) 1995-1996 by Kevin Kadow",
+  "                  (c) 1990-1993 by Mark Podlipec",
+  "",
+  "Usage: whirlgif [-o outfile] [-loop [count]] [-time #delay]",
+  " \t-disp [ none | back | prev | not ]",
+  " \t[ -i listfile] file1 [ -time #delay] file2 ..."
+ ],
+ "params": []
+}

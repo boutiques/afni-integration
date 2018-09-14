@@ -1,0 +1,6 @@
+{
+ "helptext": [
+  "Usage: fftest [-q] len num nvec"
+ ],
+ "params": []
+}

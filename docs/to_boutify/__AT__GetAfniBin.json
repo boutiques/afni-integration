@@ -1,0 +1,6 @@
+{
+ "helptext": [
+  "@GetAfniBin  : Returns path where afni executable resides."
+ ],
+ "params": []
+}

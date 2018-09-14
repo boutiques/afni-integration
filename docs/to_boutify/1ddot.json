@@ -1,0 +1,98 @@
+{
+ "helptext": [
+  "Usage: 1ddot [options] 1Dfile 1Dfile ...",
+  "* Prints out correlation matrix of the 1D files and",
+  "  their inverse correlation matrix.",
+  "* Output appears on stdout.",
+  "* Program 1dCorrelate does something similar-ish.",
+  "",
+  "Options:",
+  " -one  =  Make 1st vector be all 1's.",
+  " -dem  =  Remove mean from all vectors (conflicts with '-one')",
+  " -cov  =  Compute with covariance matrix instead of correlation",
+  " -inn  =  Computed with inner product matrix instead",
+  " -rank =  Compute Spearman rank correlation instead",
+  "          (also implies '-terse')",
+  " -terse=  Output only the correlation or covariance matrix",
+  "          and without any of the garnish. ",
+  " -okzero= Do not quit if a vector is all zeros.",
+  "          The correlation matrix will have 0 where NaNs ought to go.",
+  "          Expect rubbish in the inverse matrices if all zero ",
+  "          vectors exist.",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    218,
+    222
+   ],
+   "help_range": [
+    227,
+    254
+   ]
+  },
+  {
+   "param_range": [
+    256,
+    260
+   ],
+   "help_range": [
+    265,
+    317
+   ]
+  },
+  {
+   "param_range": [
+    319,
+    323
+   ],
+   "help_range": [
+    328,
+    381
+   ]
+  },
+  {
+   "param_range": [
+    383,
+    387
+   ],
+   "help_range": [
+    392,
+    434
+   ]
+  },
+  {
+   "param_range": [
+    436,
+    441
+   ],
+   "help_range": [
+    445,
+    520
+   ]
+  },
+  {
+   "param_range": [
+    522,
+    528
+   ],
+   "help_range": [
+    531,
+    621
+   ]
+  },
+  {
+   "param_range": [
+    624,
+    631
+   ],
+   "help_range": [
+    633,
+    893
+   ]
+  }
+ ]
+}

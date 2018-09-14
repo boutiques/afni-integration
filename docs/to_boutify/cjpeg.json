@@ -1,0 +1,285 @@
+{
+ "helptext": [
+  "usage: cjpeg [switches] [inputfile]",
+  "Switches (names may be abbreviated):",
+  "  -quality N[,...]   Compression quality (0..100; 5-95 is useful range)",
+  "  -grayscale     Create monochrome JPEG file",
+  "  -rgb           Create RGB JPEG file",
+  "  -optimize      Optimize Huffman table (smaller file, but slow compression)",
+  "  -progressive   Create progressive JPEG file",
+  "  -scale M/N     Scale image by fraction M/N, eg, 1/2",
+  "  -targa         Input file is Targa format (usually not needed)",
+  "Switches for advanced users:",
+  "  -arithmetic    Use arithmetic coding",
+  "  -block N       DCT block size (1..16; default is 8)",
+  "  -rgb1          Create RGB JPEG file with reversible color transform",
+  "  -bgycc         Create big gamut YCC JPEG file",
+  "  -dct int       Use integer DCT method (default)",
+  "  -dct fast      Use fast integer DCT (less accurate)",
+  "  -dct float     Use floating-point DCT method",
+  "  -nosmooth      Don't use high-quality downsampling",
+  "  -restart N     Set restart interval in rows, or in blocks with B",
+  "  -smooth N      Smooth dithered input (N=1..100 is strength)",
+  "  -maxmemory N   Maximum memory to use (in kbytes)",
+  "  -outfile name  Specify name for output file",
+  "  -verbose  or  -debug   Emit debug output",
+  "Switches for wizards:",
+  "  -baseline      Force baseline quantization tables",
+  "  -qtables file  Use quantization tables given in file",
+  "  -qslots N[,...]    Set component quantization tables",
+  "  -sample HxV[,...]  Set component sampling factors",
+  "  -scans file    Create multi-scan JPEG per script file"
+ ],
+ "params": [
+  {
+   "param_range": [
+    75,
+    83
+   ],
+   "help_range": [
+    83,
+    144
+   ]
+  },
+  {
+   "param_range": [
+    147,
+    157
+   ],
+   "help_range": [
+    157,
+    189
+   ]
+  },
+  {
+   "param_range": [
+    192,
+    196
+   ],
+   "help_range": [
+    196,
+    227
+   ]
+  },
+  {
+   "param_range": [
+    230,
+    239
+   ],
+   "help_range": [
+    239,
+    304
+   ]
+  },
+  {
+   "param_range": [
+    307,
+    319
+   ],
+   "help_range": [
+    319,
+    350
+   ]
+  },
+  {
+   "param_range": [
+    353,
+    359
+   ],
+   "help_range": [
+    359,
+    404
+   ]
+  },
+  {
+   "param_range": [
+    407,
+    413
+   ],
+   "help_range": [
+    413,
+    498
+   ]
+  },
+  {
+   "param_range": [
+    501,
+    512
+   ],
+   "help_range": [
+    512,
+    537
+   ]
+  },
+  {
+   "param_range": [
+    540,
+    546
+   ],
+   "help_range": [
+    546,
+    591
+   ]
+  },
+  {
+   "param_range": [
+    594,
+    599
+   ],
+   "help_range": [
+    599,
+    661
+   ]
+  },
+  {
+   "param_range": [
+    664,
+    670
+   ],
+   "help_range": [
+    670,
+    709
+   ]
+  },
+  {
+   "param_range": [
+    712,
+    716
+   ],
+   "help_range": [
+    716,
+    759
+   ]
+  },
+  {
+   "param_range": [
+    762,
+    766
+   ],
+   "help_range": [
+    766,
+    813
+   ]
+  },
+  {
+   "param_range": [
+    816,
+    820
+   ],
+   "help_range": [
+    820,
+    860
+   ]
+  },
+  {
+   "param_range": [
+    863,
+    872
+   ],
+   "help_range": [
+    872,
+    913
+   ]
+  },
+  {
+   "param_range": [
+    916,
+    924
+   ],
+   "help_range": [
+    924,
+    980
+   ]
+  },
+  {
+   "param_range": [
+    983,
+    990
+   ],
+   "help_range": [
+    990,
+    1042
+   ]
+  },
+  {
+   "param_range": [
+    1045,
+    1055
+   ],
+   "help_range": [
+    1055,
+    1093
+   ]
+  },
+  {
+   "param_range": [
+    1096,
+    1104
+   ],
+   "help_range": [
+    1104,
+    1139
+   ]
+  },
+  {
+   "param_range": [
+    1142,
+    1150
+   ],
+   "help_range": [
+    1150,
+    1204
+   ]
+  },
+  {
+   "param_range": [
+    1207,
+    1216
+   ],
+   "help_range": [
+    1216,
+    1256
+   ]
+  },
+  {
+   "param_range": [
+    1259,
+    1267
+   ],
+   "help_range": [
+    1267,
+    1311
+   ]
+  },
+  {
+   "param_range": [
+    1314,
+    1321
+   ],
+   "help_range": [
+    1321,
+    1366
+   ]
+  },
+  {
+   "param_range": [
+    1369,
+    1376
+   ],
+   "help_range": [
+    1376,
+    1418
+   ]
+  },
+  {
+   "param_range": [
+    1421,
+    1427
+   ],
+   "help_range": [
+    1427,
+    1474
+   ]
+  }
+ ]
+}

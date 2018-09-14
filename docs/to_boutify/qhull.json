@@ -1,0 +1,12 @@
+{
+ "helptext": [
+  "QH7035 qhull warning: unknown flag h(68)",
+  "QH7036 qhull warning: missing space after flag h(68); reserved for menu. Skipped.",
+  "QH6075 qhull input error: short input file.  Did not find dimension and number of points",
+  "",
+  "While executing:  | qhull -help",
+  "Options selected for Qhull 2010.1 2010/01/14:",
+  "  run-id 1448523770"
+ ],
+ "params": []
+}

@@ -1,0 +1,222 @@
+{
+ "helptext": [
+  "Script to produce a residual time series cleaned by ANATICOR model.",
+  "",
+  "Usage: ",
+  "@ANATICOR    <-ts TimeSeriesVol>  ",
+  "             <-polort polort>",
+  "             <-motion motion.1D>",
+  "             <-aseg aseg.nii>  ",
+  "             <-prefix output>",
+  "             [<-radius r >] ",
+  "             [<-view VIEW>]",
+  "             [<-nuisance nuisance.1D>]",
+  "             [<-no_ventricles>]",
+  "             [<-Rsq_WMe>]",
+  "             [<-coverage>]",
+  "             [-verb] [-dirty] [-echo]",
+  "",
+  "Parameters",
+  "   -ts TimeSeriesVol: Time series volume",
+  "      The time series should have had the following done already:",
+  "         Despiking (if necessary)",
+  "         RetroIcor, and RVT correction",
+  "         Time shifting, and volume registration",
+  "    We strongly recommend you do the preprocessing with afni_proc.py,",
+  "      for example:",
+  "           afni_proc.py  -subj_id ID  -dsets EPI+orig.HEAD \\ ",
+  "               -blocks despike ricor tshift volreg regress \\ ",
+  "               -tcat_remove_first_trs 4 \\ ",
+  "               -ricor_regs_nfirst 0 \\ ",
+  "               -ricor_regs oba.slibase.1D \\ ",
+  "               -ricor_regress_method per-run \\ ",
+  "               -regress_no_motion ",
+  "    This is an example for preprocessing, and you should carefully ",
+  "      look into your study design and the script made by afni_proc.py.",
+  "      See the RETROICOR examples in the help text of afni_proc.py.",
+  "   -polort polort: Polynomial for linear trend removal.",
+  "                   Use the same order as for afni_proc.py",
+  "   -motion motion.1D: head motion parameters from 3dvolreg ",
+  "                      Also created by afni_proc.py",
+  "   -aseg aseg.nii: aseg file from FreeSurfer's segmentation.",
+  "                   This aseg volume must be in register with the EPI",
+  "                   time series. Otherwise you're wasting your time.",
+  "                   This script will automatically make tissue masks",
+  "                   from this file. Do not replace aseg with aparc",
+  "                   volumes for example. If you want other methods",
+  "                   for providing tissue masks, complain to HJJ, ",
+  "                   Email address below.",
+  "   -prefix output: Use output (residual time series) for a prefix",
+  "   -radius r: The radius of a local sphere mask, r mm",
+  "              default = 15 mm, which what was used in HJJ et al. 2010 ",
+  "              for high resolution 1.7x1.7x3mm data. For typical, about",
+  "              3x3x5 resolution, a radius of 30 mm seems to do fine.",
+  "              You should check out the coverage of WMeLocal regressor",
+  "              using -coverage option.",
+  "   -view VIEW: Set the view of the output data. Default is +orig",
+  "               Choose from +orig, +acpc, or +tlrc.",
+  "   -nuisance nuisance.1D: Other nuisance regressors.",
+  "              Each regressor is a column in .1D file",
+  "   -no_ventricles: not include LVe regressor",
+  "   -Rsq_WMe: produce an explained variance map for WMeLOCAL regressor.",
+  "             This may help measuring the sptial pattern of local ",
+  "             artifact like the paper of Jo et al. (2010, Neuroimage).",
+  "   -coverage: produce a spatial coverage map of WMeLOCAL regressor",
+  "   -dirty: Keep temporary files",
+  "   -verb: Verbose flag",
+  "   -echo: Echo each script command for debugging",
+  "",
+  "Please reference the following paper if you publish results from ",
+  " this script.",
+  "'Mapping sources of correlation in resting state FMRI, with ",
+  " artifact detection and removal'",
+  "       Jo, et al., Neuroimage, Vol 52 (2), 571-582, 2010.",
+  "       [http://dx.doi.org/10.1016/j.neuroimage.2010.04.246]",
+  "",
+  "Written by Hang Joon Jo. ",
+  "           hangjoon.jo@nih.gov (Last Update on 12/15/2010)",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    471,
+    474
+   ],
+   "help_range": [
+    490,
+    1324
+   ]
+  },
+  {
+   "param_range": [
+    1328,
+    1335
+   ],
+   "help_range": [
+    1344,
+    1438
+   ]
+  },
+  {
+   "param_range": [
+    1442,
+    1449
+   ],
+   "help_range": [
+    1449,
+    1549
+   ]
+  },
+  {
+   "param_range": [
+    1553,
+    1558
+   ],
+   "help_range": [
+    1558,
+    2052
+   ]
+  },
+  {
+   "param_range": [
+    2056,
+    2063
+   ],
+   "help_range": [
+    2072,
+    2118
+   ]
+  },
+  {
+   "param_range": [
+    2122,
+    2129
+   ],
+   "help_range": [
+    2133,
+    2490
+   ]
+  },
+  {
+   "param_range": [
+    2494,
+    2499
+   ],
+   "help_range": [
+    2506,
+    2606
+   ]
+  },
+  {
+   "param_range": [
+    2610,
+    2619
+   ],
+   "help_range": [
+    2619,
+    2712
+   ]
+  },
+  {
+   "param_range": [
+    2716,
+    2730
+   ],
+   "help_range": [
+    2732,
+    2757
+   ]
+  },
+  {
+   "param_range": [
+    2761,
+    2769
+   ],
+   "help_range": [
+    2771,
+    2964
+   ]
+  },
+  {
+   "param_range": [
+    2968,
+    2977
+   ],
+   "help_range": [
+    2979,
+    3031
+   ]
+  },
+  {
+   "param_range": [
+    3035,
+    3041
+   ],
+   "help_range": [
+    3043,
+    3063
+   ]
+  },
+  {
+   "param_range": [
+    3067,
+    3072
+   ],
+   "help_range": [
+    3074,
+    3086
+   ]
+  },
+  {
+   "param_range": [
+    3090,
+    3095
+   ],
+   "help_range": [
+    3097,
+    3514
+   ]
+  }
+ ]
+}

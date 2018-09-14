@@ -1,0 +1,251 @@
+{
+ "helptext": [
+  "usage: djpeg [switches] [inputfile]",
+  "Switches (names may be abbreviated):",
+  "  -colors N      Reduce image to no more than N colors",
+  "  -fast          Fast, low-quality processing",
+  "  -grayscale     Force grayscale output",
+  "  -rgb           Force RGB output",
+  "  -scale M/N     Scale output image by fraction M/N, eg, 1/8",
+  "  -bmp           Select BMP output format (Windows style)",
+  "  -gif           Select GIF output format",
+  "  -os2           Select BMP output format (OS/2 style)",
+  "  -pnm           Select PBMPLUS (PPM/PGM) output format (default)",
+  "  -targa         Select Targa output format",
+  "Switches for advanced users:",
+  "  -dct int       Use integer DCT method (default)",
+  "  -dct fast      Use fast integer DCT (less accurate)",
+  "  -dct float     Use floating-point DCT method",
+  "  -dither fs     Use F-S dithering (default)",
+  "  -dither none   Don't use dithering in quantization",
+  "  -dither ordered  Use ordered dither (medium speed, quality)",
+  "  -map FILE      Map to colors used in named image file",
+  "  -nosmooth      Don't use high-quality upsampling",
+  "  -onepass       Use 1-pass quantization (fast, low quality)",
+  "  -maxmemory N   Maximum memory to use (in kbytes)",
+  "  -outfile name  Specify name for output file",
+  "  -verbose  or  -debug   Emit debug output"
+ ],
+ "params": [
+  {
+   "param_range": [
+    75,
+    82
+   ],
+   "help_range": [
+    82,
+    127
+   ]
+  },
+  {
+   "param_range": [
+    130,
+    135
+   ],
+   "help_range": [
+    135,
+    173
+   ]
+  },
+  {
+   "param_range": [
+    176,
+    186
+   ],
+   "help_range": [
+    186,
+    213
+   ]
+  },
+  {
+   "param_range": [
+    216,
+    220
+   ],
+   "help_range": [
+    220,
+    247
+   ]
+  },
+  {
+   "param_range": [
+    250,
+    256
+   ],
+   "help_range": [
+    256,
+    308
+   ]
+  },
+  {
+   "param_range": [
+    311,
+    315
+   ],
+   "help_range": [
+    315,
+    366
+   ]
+  },
+  {
+   "param_range": [
+    369,
+    373
+   ],
+   "help_range": [
+    373,
+    408
+   ]
+  },
+  {
+   "param_range": [
+    411,
+    415
+   ],
+   "help_range": [
+    415,
+    463
+   ]
+  },
+  {
+   "param_range": [
+    466,
+    470
+   ],
+   "help_range": [
+    470,
+    529
+   ]
+  },
+  {
+   "param_range": [
+    532,
+    538
+   ],
+   "help_range": [
+    538,
+    602
+   ]
+  },
+  {
+   "param_range": [
+    605,
+    609
+   ],
+   "help_range": [
+    609,
+    652
+   ]
+  },
+  {
+   "param_range": [
+    655,
+    659
+   ],
+   "help_range": [
+    659,
+    706
+   ]
+  },
+  {
+   "param_range": [
+    709,
+    713
+   ],
+   "help_range": [
+    713,
+    753
+   ]
+  },
+  {
+   "param_range": [
+    756,
+    763
+   ],
+   "help_range": [
+    763,
+    798
+   ]
+  },
+  {
+   "param_range": [
+    801,
+    808
+   ],
+   "help_range": [
+    808,
+    851
+   ]
+  },
+  {
+   "param_range": [
+    854,
+    861
+   ],
+   "help_range": [
+    861,
+    913
+   ]
+  },
+  {
+   "param_range": [
+    916,
+    920
+   ],
+   "help_range": [
+    920,
+    969
+   ]
+  },
+  {
+   "param_range": [
+    972,
+    981
+   ],
+   "help_range": [
+    981,
+    1020
+   ]
+  },
+  {
+   "param_range": [
+    1023,
+    1031
+   ],
+   "help_range": [
+    1031,
+    1081
+   ]
+  },
+  {
+   "param_range": [
+    1084,
+    1094
+   ],
+   "help_range": [
+    1094,
+    1132
+   ]
+  },
+  {
+   "param_range": [
+    1135,
+    1143
+   ],
+   "help_range": [
+    1143,
+    1178
+   ]
+  },
+  {
+   "param_range": [
+    1181,
+    1189
+   ],
+   "help_range": [
+    1189,
+    1221
+   ]
+  }
+ ]
+}

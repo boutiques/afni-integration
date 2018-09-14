@@ -1,0 +1,79 @@
+{
+ "helptext": [
+  "",
+  "=============================================================================",
+  "eg_main_chrono.py - a sample main python program, to run on top of some library",
+  "",
+  "                  o  lib_1D.py is used for demonstration",
+  "                  o  most options are processed chronologically",
+  "",
+  "------------------------------------------",
+  "",
+  "   terminal options:",
+  "",
+  "      -help                     : show this help",
+  "      -hist                     : show module history",
+  "      -show_valid_opts          : list valid options",
+  "      -ver                      : show current version",
+  "",
+  "   other options",
+  "      -verb LEVEL               : set the verbosity level",
+  "",
+  "-----------------------------------------------------------------------------",
+  "R Reynolds    March 2009",
+  "=============================================================================",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    354,
+    359
+   ],
+   "help_range": [
+    382,
+    396
+   ]
+  },
+  {
+   "param_range": [
+    403,
+    408
+   ],
+   "help_range": [
+    431,
+    450
+   ]
+  },
+  {
+   "param_range": [
+    457,
+    473
+   ],
+   "help_range": [
+    485,
+    503
+   ]
+  },
+  {
+   "param_range": [
+    510,
+    514
+   ],
+   "help_range": [
+    538,
+    576
+   ]
+  },
+  {
+   "param_range": [
+    583,
+    588
+   ],
+   "help_range": [
+    611,
+    816
+   ]
+  }
+ ]
+}

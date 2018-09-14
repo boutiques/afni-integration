@@ -1,0 +1,9 @@
+{
+ "helptext": [
+  "Traceback (most recent call last):",
+  "  File \"/Users/rossmarkello/abin/uber_proc.py\", line 4, in <module>",
+  "    from PyQt4 import QtCore, QtGui",
+  "ImportError: No module named PyQt4"
+ ],
+ "params": []
+}

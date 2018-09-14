@@ -1,0 +1,7 @@
+{
+ "helptext": [
+  "Usage: rmz [-q] [-#] [-k] filename ...",
+  " -- Zeros out files before removing them"
+ ],
+ "params": []
+}

@@ -1,0 +1,8 @@
+{
+ "helptext": [
+  "Usage: dicom_to_raw fname ...",
+  "Reads images from DICOM file 'fname' and writes them to raw",
+  "file(s) 'fname.raw.0001' etc."
+ ],
+ "params": []
+}

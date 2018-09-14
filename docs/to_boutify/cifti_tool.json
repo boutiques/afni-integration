@@ -1,0 +1,156 @@
+{
+ "helptext": [
+  "ct : short example of reading/writing CIFTI-2 datasets",
+  "",
+  "    This program is to demonstrate how to read a CIFTI-2 dataset.",
+  "",
+  "    basic usage: cifti_tool -input FILE [other options]",
+  "",
+  "    examples:",
+  "",
+  "       cifti_tool -input FILE -disp_cext",
+  "       cifti_tool -input FILE -disp_cext -as_cext",
+  "       cifti_tool -input FILE -disp_cext -output cifti.txt",
+  "",
+  "       cifti_tool -input FILE -eval_cext",
+  "       cifti_tool -input FILE -eval_cext -verb 2",
+  "       cifti_tool -input FILE -eval_cext -eval_type show_summary",
+  "",
+  "       cifti_tool -input FILE -eval_cext -eval_type show_name",
+  "       cifti_tool -input FILE -eval_cext -eval_type has_data",
+  "       cifti_tool -input FILE -eval_cext -eval_type show_text_data",
+  "",
+  "    get a list of unique element types with attached data",
+  "",
+  "       cifti_tool -input FILE -eval_cext -eval_type has_data \\",
+  "                  | sort | uniq",
+  "",
+  "    options:",
+  "",
+  "       -help               : show this help",
+  "",
+  "       -input  INFILE      : specify input dataset",
+  "       -output OUTFILE     : where to write output",
+  "",
+  "       -as_cext            : process the input as just an extension",
+  "       -disp_cext          : display the CIFTI extension",
+  "       -eval_cext          : evaluate the CIFTI extension",
+  "       -eval_type ETYPE    : method for evaluation of axml elements",
+  "",
+  "          valid ETYPES:",
+  "             has_data       - show elements with attached text data",
+  "             has_bdata      - show elements with attached binary data",
+  "             num_tokens     - show the number of tokens in such text",
+  "             show           - like -disp_cext",
+  "             show_names     - show element names, maybe depth indented",
+  "             show_summary   - summarize contents of dataset",
+  "             show_text_data - show the actual text data",
+  "",
+  "       -verb LEVEL         : set the verbose level to LEVEL",
+  "       -verb_read LEVEL    : set verbose level when reading",
+  "       -vboth LEVEL        : apply both -verb options",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    869,
+    874
+   ],
+   "help_range": [
+    891,
+    905
+   ]
+  },
+  {
+   "param_range": [
+    914,
+    920
+   ],
+   "help_range": [
+    936,
+    957
+   ]
+  },
+  {
+   "param_range": [
+    965,
+    972
+   ],
+   "help_range": [
+    987,
+    1008
+   ]
+  },
+  {
+   "param_range": [
+    1017,
+    1025
+   ],
+   "help_range": [
+    1039,
+    1077
+   ]
+  },
+  {
+   "param_range": [
+    1085,
+    1095
+   ],
+   "help_range": [
+    1107,
+    1134
+   ]
+  },
+  {
+   "param_range": [
+    1142,
+    1152
+   ],
+   "help_range": [
+    1164,
+    1192
+   ]
+  },
+  {
+   "param_range": [
+    1200,
+    1210
+   ],
+   "help_range": [
+    1222,
+    1725
+   ]
+  },
+  {
+   "param_range": [
+    1734,
+    1739
+   ],
+   "help_range": [
+    1756,
+    1786
+   ]
+  },
+  {
+   "param_range": [
+    1794,
+    1804
+   ],
+   "help_range": [
+    1816,
+    1846
+   ]
+  },
+  {
+   "param_range": [
+    1854,
+    1860
+   ],
+   "help_range": [
+    1876,
+    1900
+   ]
+  }
+ ]
+}

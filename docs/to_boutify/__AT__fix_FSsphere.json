@@ -1,0 +1,99 @@
+{
+ "helptext": [
+  "",
+  "Usage: @fix_FSsphere <-spec SPEC> <-sphere SPHERE.asc>",
+  "                     [-niter NITER] [-lim LIM] [-keep_temp]",
+  "                     [-project_first]",
+  "",
+  "   Fixes errors in FreeSurfer spherical surfaces.",
+  "   Mandatory parameters:",
+  "   -spec SPEC: Spec file",
+  "   -sphere SPHERE.asc: SPHERE.asc is the sphere to be used.",
+  "   Optional parameters:",
+  "   -niter NITER: Number of local smoothing operations.",
+  "                 Default is 3000",
+  "   -lim LIM: Extent, in mm, by which troubled sections ",
+  "             are fattened. Default is 6",
+  "   -project_first: Project to a sphere, before smoothing.",
+  "                   Default is: 0",
+  "",
+  "   Output:",
+  "   Corrected surface is called SPHERE_fxd.asc",
+  "",
+  "Example:",
+  "@fix_FSsphere -spec ./2005-10-01-km_rh.spec -sphere ./rh.sphere.asc",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    78,
+    84
+   ],
+   "help_range": [
+    92,
+    115
+   ]
+  },
+  {
+   "param_range": [
+    138,
+    152
+   ],
+   "help_range": [
+    153,
+    229
+   ]
+  },
+  {
+   "param_range": [
+    233,
+    238
+   ],
+   "help_range": [
+    245,
+    254
+   ]
+  },
+  {
+   "param_range": [
+    258,
+    265
+   ],
+   "help_range": [
+    265,
+    338
+   ]
+  },
+  {
+   "param_range": [
+    342,
+    348
+   ],
+   "help_range": [
+    356,
+    426
+   ]
+  },
+  {
+   "param_range": [
+    430,
+    434
+   ],
+   "help_range": [
+    440,
+    522
+   ]
+  },
+  {
+   "param_range": [
+    526,
+    540
+   ],
+   "help_range": [
+    542,
+    749
+   ]
+  }
+ ]
+}

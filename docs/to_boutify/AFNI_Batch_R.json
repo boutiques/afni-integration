@@ -1,0 +1,7 @@
+{
+ "helptext": [
+  "/Users/rossmarkello/abin/AFNI_Batch_R",
+  "R CMD BATCH --no-restore --save --no-readline --vanilla  -help --args -help"
+ ],
+ "params": []
+}

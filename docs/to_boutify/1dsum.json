@@ -1,0 +1,61 @@
+{
+ "helptext": [
+  "Usage: 1dsum [options] a.1D b.1D ...",
+  "where each file a.1D, b.1D, etc. is an ASCII file of numbers arranged",
+  "in rows and columns. The sum of each column is written to stdout.",
+  "",
+  "Options:",
+  "  -ignore nn = skip the first nn rows of each file",
+  "  -use    mm = use only mm rows from each file",
+  "  -mean      = compute the average instead of the sum",
+  "  -nocomment = the # comments from the header of the first",
+  "               input file will be reproduced to the output;",
+  "               if you do NOT want this to happen, use the",
+  "               '-nocomment' option.",
+  "",
+  "++ Compile date = May 25 2018 {AFNI_18.1.18:macosx_10.7_Intel_64}",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    185,
+    192
+   ],
+   "help_range": [
+    198,
+    233
+   ]
+  },
+  {
+   "param_range": [
+    236,
+    240
+   ],
+   "help_range": [
+    249,
+    280
+   ]
+  },
+  {
+   "param_range": [
+    283,
+    288
+   ],
+   "help_range": [
+    296,
+    334
+   ]
+  },
+  {
+   "param_range": [
+    337,
+    347
+   ],
+   "help_range": [
+    350,
+    614
+   ]
+  }
+ ]
+}

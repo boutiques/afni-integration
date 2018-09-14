@@ -1,0 +1,50 @@
+{
+ "helptext": [
+  "------------------------------------------------------------",
+  "@afni.run.me   - do something",
+  "",
+  "examples:",
+  "",
+  "options:",
+  "",
+  "    -help                 : show this help",
+  "    -go                   : DO THE WORK",
+  "    -curl                 : default to curl instead of wget",
+  "",
+  "Note that the user must have write permissions in the current",
+  "directory.",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    117,
+    122
+   ],
+   "help_range": [
+    141,
+    155
+   ]
+  },
+  {
+   "param_range": [
+    160,
+    163
+   ],
+   "help_range": [
+    184,
+    195
+   ]
+  },
+  {
+   "param_range": [
+    200,
+    205
+   ],
+   "help_range": [
+    224,
+    329
+   ]
+  }
+ ]
+}

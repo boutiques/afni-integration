@@ -1,0 +1,141 @@
+{
+ "helptext": [
+  "",
+  "Usage:  quickspec ",
+  "        <-tn TYPE NAME> ...",
+  "        <-tsn TYPE STATE NAME> ...",
+  "        [<-spec specfile>] [-h/-help]",
+  "  Use this spec file for quick and dirty way of ",
+  "  loading a surface into SUMA or the command line programs.",
+  "",
+  "Options:",
+  " Specifying surfaces using -t* options: ",
+  "   -tn TYPE NAME: specify surface type and name.",
+  "                  See below for help on the parameters.",
+  "   -tsn TYPE STATE NAME: specify surface type state and name.",
+  "        TYPE: Choose from the following (case sensitive):",
+  "           1D: 1D format",
+  "           FS: FreeSurfer ascii format",
+  "           PLY: ply format",
+  "           MNI: MNI obj ascii format",
+  "           BYU: byu format",
+  "           SF: Caret/SureFit format",
+  "           BV: BrainVoyager format",
+  "           GII: GIFTI format",
+  "        NAME: Name of surface file. ",
+  "           For SF and 1D formats, NAME is composed of two names",
+  "           the coord file followed by the topo file",
+  "        STATE: State of the surface.",
+  "           Default is S1, S2.... for each surface.",
+  "",
+  "   -tsnad TYPE STATE NAME ANATFLAG LDP: ",
+  "                 specify surface type, state, name, anatomical correctness, ",
+  "                 and its Local Domain Parent.",
+  "        ANATFLAG: 'Y' if surface is anatomically correct (default).",
+  "                  'N' if it is not anatomically correct.",
+  "        LDP: Name of Local Domain Parent surface.",
+  "             Use SAME (default) if surface is its own LDP.",
+  "   -tsnadm TYPE STATE NAME ANATFLAG LDP MARKER: ",
+  "                 specify surface type, state, name, anatomical correctness, ",
+  "                 Local Domain Parent, and node marker file.",
+  "        MARKER: A niml.do Displayable Object (DO) to put at every",
+  "                node of the surface. See @DO.examples for information",
+  "                about displayable objects",
+  "   -tsnadl TYPE STATE NAME ANATFLAG LDP LABELDSET: ",
+  "                 specify surface type, state, name, anatomical correctness, ",
+  "                 Local Domain Parent, and a label dataset file.",
+  "        LABELDSET: A surface dataset containing node labels.",
+  "   -spec specfile: Name of spec file output.",
+  "                   Default is quick.spec",
+  "                   The program will only overwrite ",
+  "                   quick.spec (the default) spec file.",
+  "   -h or -help: This message here.",
+  "",
+  "  You can use any combinaton of -tn and -tsn options.",
+  "  Fields in the spec file that are (or cannot) be specified",
+  "  by this program are set to default values.",
+  "",
+  "   This program was written to ward off righteous whiners and is",
+  "  not meant to replace the venerable @SUMA_Make_Spec_XX scripts.",
+  "",
+  "",
+  "Compile Date:",
+  "   May 25 2018",
+  "",
+  "      Ziad S. Saad SSCC/NIMH/NIH saadz@mail.nih.gov ",
+  "\t\t Tue Dec 30",
+  ""
+ ],
+ "params": [
+  {
+   "param_range": [
+    284,
+    287
+   ],
+   "help_range": [
+    299,
+    385
+   ]
+  },
+  {
+   "param_range": [
+    389,
+    393
+   ],
+   "help_range": [
+    411,
+    1001
+   ]
+  },
+  {
+   "param_range": [
+    1006,
+    1012
+   ],
+   "help_range": [
+    1043,
+    1400
+   ]
+  },
+  {
+   "param_range": [
+    1404,
+    1411
+   ],
+   "help_range": [
+    1449,
+    1764
+   ]
+  },
+  {
+   "param_range": [
+    1768,
+    1775
+   ],
+   "help_range": [
+    1816,
+    2018
+   ]
+  },
+  {
+   "param_range": [
+    2022,
+    2027
+   ],
+   "help_range": [
+    2038,
+    2211
+   ]
+  },
+  {
+   "param_range": [
+    2215,
+    2217
+   ],
+   "help_range": [
+    2217,
+    2636
+   ]
+  }
+ ]
+}
