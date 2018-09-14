@@ -399,11 +399,12 @@ def gen_boutify_jsons(help_dir, outdir='boutify_afni', verbose=True):
         # only save out one JSON if that's all we need
         jsons.append(outdir.joinpath('{}.json'.format(tool_name)))
         with jsons[-1].open('w') as dest:
-            json.dump(dict(helptext=helptext, params=params), dest)
+            json.dump(dict(helptext=helptext, params=params), dest,
+                      indent=True)
 
     # write `all_programs` file so we know what's in the directory
     with outdir.joinpath('all_programs').open('w') as dest:
-        json.dump([p.name for p in jsons], dest)
+        json.dump([p.name for p in jsons], dest, indent=True)
 
     return jsons
 
