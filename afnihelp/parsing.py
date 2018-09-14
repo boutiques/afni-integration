@@ -10,7 +10,7 @@ import boutiques.creator as bc
 import numpy as np
 
 ALPHANUM = re.compile("[\W_]+")
-FINDHELP = re.compile("\s*[\[]?(-[\s\w]*)[\s\w]*[\]=:}][\s\S]")
+FINDHELP = re.compile("\s*[\[]?(-[\s\w]*)[\s\w]*[\]=:}][\s]*")
 ENDSLASH = re.compile(".*\s*\\\$")
 NONALPHA = {
     '.': '__PERIOD__',
@@ -408,7 +408,7 @@ def gen_boutify_jsons(help_dir, outdir='boutify_afni', verbose=True):
     return jsons
 
 
-def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
+def gen_boutique_descriptors(help_dir, outdir='afni_boutiques', verbose=True):
     """
     Generates ``boutiques`` descriptors for each AFNI command in `help_dir`
 
@@ -419,6 +419,9 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
     outdir : str, optional
         Path to directory where generated descriptors should be saved. Default:
         'afni_boutiques'
+    verbose : bool, optional
+        Whether to print status messages of which commands are being parsed.
+        Default: True
 
     Returns
     -------
@@ -430,9 +433,11 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
 
     descriptors = []
     for tool in help_dir.glob('*.complete.bash'):
-        cmd = tool.name.replace('.complete.bash', '')
-        help_fname = get_help_fname(help_dir, cmd)
-        out_fname = outdir.joinpath('{}.json'.format(cmd))
+        tool_name = tool.name.replace('.complete.bash', '')
+        if verbose:
+            print('Generating JSON for {}.'.format(tool_name))
+        help_fname = get_help_fname(help_dir, tool_name)
+        out_fname = outdir.joinpath('{}.json'.format(tool_name))
 
         # get hypothetical parameters (both flag and positional!)
         params = parse_help(help_fname, putative=_get_parsed_args(tool))[0]
@@ -459,7 +464,7 @@ def gen_boutique_descriptors(help_dir, outdir='afni_boutiques'):
                 parser.add_argument(arg, type=str, help=desc, **kwargs)
 
         # save out new boutiques descriptor
-        bout = bc.CreateDescriptor(parser, execname=cmd)
+        bout = bc.CreateDescriptor(parser, execname=tool_name)
         bout.save(out_fname)
         descriptors.append(out_fname.as_posix())
 

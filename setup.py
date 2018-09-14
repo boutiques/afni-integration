@@ -37,6 +37,10 @@ def main():
         tests_require=ldict['TESTS_REQUIRES'],
         url=ldict['URL'],
         version=ldict['VERSION'],
+        entry_points={'console_scripts': [
+            'boutify=afnihelp.cli:boutify',
+            'descriptify=afnihelp.cli:descriptify'
+        ]},
     )
 
 
